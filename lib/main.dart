@@ -13,21 +13,60 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+  _goTo(int x){
+      switch (x) {
+        // case 0: Navigator.push(context,MaterialPageRoute(builder: (context) => Home()),);   break;
+        // case 1: Navigator.of(context).pushNamed('/noticications');   break;
+        // case 2: Navigator.push(context,new MaterialPageRoute(builder: (context) => new Home()));   break;
+        // case 3: Navigator.of(context).pushNamed('/chart');   break;
+        // case 4: Navigator.of(context).pushNamed('/chart');   break;
+        // case 5: Navigator.of(context).pushNamed('/chart');   break;
+      }
+   }
+
     return MaterialApp(
       title: 'App',
       routes: <String, WidgetBuilder>{
-        '/login':(BuildContext contex) =>  new Login(),
+        '/login':(BuildContext context) =>  new Login(),
         // '/signUp':(BuildContext contex) => new ,
-        '/home':(BuildContext contex) =>  new Home(),
-        '/details':(BuildContext contex) =>  new Details(),
-        '/profile':(BuildContext contex) =>  new Profile(),
-        '/noticications':(BuildContext contex) =>  new Notifications(),
-        '/cart':(BuildContext contex) =>  new Cart(),
+        '/home':(BuildContext context) =>  new Home(),
+        '/details':(BuildContext context) =>  new Details(),
+        '/profile':(BuildContext context) =>  new Profile(),
+        '/noticications':(BuildContext context) =>  new Notifications(),
+        '/cart':(BuildContext context) =>  new Cart(),
         // '/like':(BuildContext contex) =>  new (),
         // '/search':(BuildContext contex) =>  new S(),
 
       },
-      home: new Home(),
+      home: Scaffold(
+          appBar:AppBar(
+            // backgroundColor: Colors.white12,
+            title: Text('Homeey', style: TextStyle(letterSpacing: 2),),
+            actions: <Widget>[
+              IconButton(icon: Icon(Icons.account_circle), onPressed: ()=> print('object')),
+              IconButton(icon: Icon(Icons.settings), onPressed: ()=> print('object')),
+
+            ],
+          ) ,
+          body: Container(
+            child: new Home()
+          ),
+
+
+           bottomNavigationBar: BottomNavigationBar(items:[
+            BottomNavigationBarItem(icon: Icon(Icons.add_shopping_cart) , title: Text('cart'), ),
+            BottomNavigationBarItem(icon: Icon(Icons.notifications_active) , title: Text('notification')),
+            BottomNavigationBarItem(icon: Icon(Icons.home) , title: Text('home')),
+            BottomNavigationBarItem(icon: Icon(Icons.favorite_border) , title: Text('like')),
+            BottomNavigationBarItem(icon: Icon(Icons.search) , title: Text('search')),
+            ], type: BottomNavigationBarType.fixed,
+             onTap: (int x) => _goTo(x),
+             
+          ),
+          
+          )
+        
 
     );
   }

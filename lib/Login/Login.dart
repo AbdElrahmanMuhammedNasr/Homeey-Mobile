@@ -10,11 +10,6 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-          appBar:AppBar(
-            backgroundColor: Colors.white,
-            title: Text('Homeey', style: TextStyle(letterSpacing: 2, color: Colors.blueAccent),),
-          ) ,
-
           body: Container(
               child:Column(
                 children: <Widget>[

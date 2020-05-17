@@ -6,20 +6,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-          appBar:AppBar(
-            // backgroundColor: Colors.white12,
-            title: Text('Homeey', style: TextStyle(letterSpacing: 2),),
-            actions: <Widget>[
-              IconButton(icon: Icon(Icons.account_circle), onPressed: ()=> print('object')),
-              IconButton(icon: Icon(Icons.settings), onPressed: ()=> print('object')),
-
-            ],
-          ) ,
-
+          
           body: SingleChildScrollView(
               child:Column(
                 children: <Widget>[
@@ -138,27 +131,13 @@ class _HomeState extends State<Home> {
 
 
                   
-
-
-
-
-
-
                 ],
                 
               ) 
                          
           ),
 
-        bottomNavigationBar: BottomNavigationBar(items:[
-            BottomNavigationBarItem(icon: Icon(Icons.add_shopping_cart) , title: Text('data')),
-            BottomNavigationBarItem(icon: Icon(Icons.notifications_active) , title: Text('data')),
-            BottomNavigationBarItem(icon: Icon(Icons.home) , title: Text('home')),
-            BottomNavigationBarItem(icon: Icon(Icons.favorite_border) , title: Text('data')),
-            BottomNavigationBarItem(icon: Icon(Icons.search) , title: Text('search')),
-        ], type: BottomNavigationBarType.fixed,
-          onTap: (int x) => print('object $x'),
-      ),
+       
 
       
     )
