@@ -27,7 +27,9 @@ class _HomeState extends State<Home> {
                           subtitle: Center(child:Text(' 20 EGY.') ,) ,
                         ),
                         RaisedButton.icon(
-                          icon: Icon(Icons.send),
+                          color: Colors.green,
+                          colorBrightness: Brightness.dark,
+                          icon: Icon(Icons.send,),
                           label: const Text('Order'),
                           onPressed: () { print('object');},
                           ),

@@ -11,19 +11,137 @@ class _CartState extends State<Cart> {
     return MaterialApp(
         home: Scaffold(
       
-          body: Container(
-              child:Column(
+          body: SingleChildScrollView(
+             child:Column(
                 children: <Widget>[
-                  Text('Cart'),
-                  RaisedButton(onPressed:()=> { Navigator.of(context).pushNamed('/login') }, child: Text('login'))
-                ],
-                
-              ) 
-                         
-          ),
+                   Card(
+                    margin: EdgeInsets.all(10.0),
+                    child: Column(
+                      children: <Widget>[ 
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage: AssetImage('images/1.jpg'),
+                        ),
+                         ListTile(
+                           enabled: true,
+                          title: Center(child: Text(' Rice' ,) ,),
+                          subtitle: Center(child:Column(
+                            children: <Widget>[
+                              Text('20 EGY') ,
+                              Text('2020-10-5') ,
+                              Text('Tamer') ,
+                            ],
+                          )) ,
+                        ),
+                    ],
+                    ),
+                  ),
 
-       
-    )
+                   Card(
+                    margin: EdgeInsets.all(10.0),
+                    child: Column(
+                      children: <Widget>[ 
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage: AssetImage('images/1.jpg'),
+                        ),
+                         ListTile(
+                           enabled: true,
+                          title: Center(child: Text(' Rice' ,) ,),
+                          subtitle: Center(child:Column(
+                            children: <Widget>[
+                              Text('20 EGY') ,
+                              Text('2020-10-5') ,
+                              Text('Tamer') ,
+                            ],
+                          )) ,
+                        ),
+                    ],
+                    ),
+                  ),
+
+
+                   Card(
+                    margin: EdgeInsets.all(10.0),
+                    child: Column(
+                      children: <Widget>[ 
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage: AssetImage('images/1.jpg'),
+                        ),
+                         ListTile(
+                           enabled: true,
+                          title: Center(child: Text(' Rice' ,) ,),
+                          subtitle: Center(child:Column(
+                            children: <Widget>[
+                              Text('20 EGY') ,
+                              Text('2020-10-5') ,
+                              Text('Tamer') ,
+                            ],
+                          )) ,
+                        ),
+                    ],
+                    ),
+                  ),
+
+
+                   Card(
+                    margin: EdgeInsets.all(10.0),
+                    child: Column(
+                      children: <Widget>[ 
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage: AssetImage('images/1.jpg'),
+                        ),
+                         ListTile(
+                           enabled: true,
+                          title: Center(child: Text(' Rice' ,) ,),
+                          subtitle: Center(child:Column(
+                            children: <Widget>[
+                              Text('20 EGY') ,
+                              Text('2020-10-5') ,
+                              Text('Tamer') ,
+                            ],
+                          )) ,
+                        ),
+                    ],
+                    ),
+                  ),
+
+                   Card(
+                    margin: EdgeInsets.all(10.0),
+                    child: Column(
+                      children: <Widget>[ 
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundImage: AssetImage('images/1.jpg'),
+                        ),
+                         ListTile(
+                           enabled: true,
+                          title: Center(child: Text(' Rice' ,) ,),
+                          subtitle: Center(child:Column(
+                            children: <Widget>[
+                              Text('20 EGY') ,
+                              Text('2020-10-5') ,
+                              Text('Tamer') ,
+                            ],
+                          )) ,
+                        ),
+                    ],
+                    ),
+                  ),
+
+
+
+
+                ]
+    
+          )
+                
+        )
+                
+    ),
     );
+                         
   }
 }
