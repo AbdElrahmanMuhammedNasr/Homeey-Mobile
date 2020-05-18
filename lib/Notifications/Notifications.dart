@@ -39,34 +39,23 @@ class _NotificationsState extends State<Notifications> {
 
 
 
-
-
-
-
-
-      body: SingleChildScrollView(
-          padding: EdgeInsets.only(top: 20),
-          child: Column(
-            children: <Widget>[
-              Card(
-                margin: EdgeInsets.all(10.0),
-                child: Column(
-                  children: <Widget>[
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundImage: AssetImage('images/2.jpg'),
+    body: ListView.builder(itemCount: 50,
+          itemBuilder: (BuildContext context,  int pos){
+            return Container(
+              margin: EdgeInsets.all(10),
+              color: Colors.blue,
+           child: Column(
+              children: <Widget>[
+                Container(
+                  color: Colors.blue[400],
+                  child:ListTile(
+                      title:Text('AbdElrahman', style: TextStyle(fontSize: 20, letterSpacing: 1),),
+                      subtitle: Text('Just order Rice'),
+                      leading: CircleAvatar(radius: 30,backgroundImage: AssetImage('images/2.jpg'),),   
                     ),
-                    ListTile(
-                      title: Center(
-                        child: Text(
-                          'Abdo want  to order',
-                        ),
-                      ),
-                      subtitle: Center(
-                        child: Text('this  rice'),
-                      ),
-                    ),
-                    ButtonBar(
+                ),
+                Container(
+                  child:ButtonBar(
                       children: <Widget>[
                         RaisedButton.icon(
                           color: Colors.green,
@@ -82,218 +71,17 @@ class _NotificationsState extends State<Notifications> {
                         ),
                       ],
                     ),
-                  ],
                 ),
-              ),
-              Card(
-                margin: EdgeInsets.all(10.0),
-                child: Column(
-                  // mainAxisSize: MainAxisSize.,
-                  children: <Widget>[
-                    // Image.asset('images/1.jpg',),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundImage: AssetImage('images/2.jpg'),
-                    ),
-                    ListTile(
-                      title: Center(
-                        child: Text(
-                          'Abdo want  to order',
-                        ),
-                      ),
-                      subtitle: Center(
-                        child: Text('this  rice'),
-                      ),
-                    ),
-                    ButtonBar(
-                      children: <Widget>[
-                        RaisedButton.icon(
-                          color: Colors.green,
-                          label: Text('Accept'),
-                          icon: Icon(Icons.check),
-                          onPressed: () {/* ... */},
-                        ),
-                        RaisedButton.icon(
-                          color: Colors.red,
-                          label: Text('Refuse'),
-                          icon: Icon(Icons.no_encryption),
-                          onPressed: () {/* ... */},
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Card(
-                margin: EdgeInsets.all(10.0),
-                child: Column(
-                  // mainAxisSize: MainAxisSize.,
-                  children: <Widget>[
-                    // Image.asset('images/1.jpg',),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundImage: AssetImage('images/2.jpg'),
-                    ),
-                    ListTile(
-                      title: Center(
-                        child: Text(
-                          'Abdo want  to order',
-                        ),
-                      ),
-                      subtitle: Center(
-                        child: Text('this  rice'),
-                      ),
-                    ),
-                    ButtonBar(
-                      children: <Widget>[
-                        RaisedButton.icon(
-                          color: Colors.green,
-                          label: Text('Accept'),
-                          icon: Icon(Icons.check),
-                          onPressed: () {/* ... */},
-                        ),
-                        RaisedButton.icon(
-                          color: Colors.red,
-                          label: Text('Refuse'),
-                          icon: Icon(Icons.no_encryption),
-                          onPressed: () {/* ... */},
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Card(
-                margin: EdgeInsets.all(10.0),
-                child: Column(
-                  // mainAxisSize: MainAxisSize.,
-                  children: <Widget>[
-                    // Image.asset('images/1.jpg',),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundImage: AssetImage('images/2.jpg'),
-                    ),
-                    ListTile(
-                      title: Center(
-                        child: Text(
-                          'Abdo want  to order',
-                        ),
-                      ),
-                      subtitle: Center(
-                        child: Text('this  rice'),
-                      ),
-                    ),
-                    ButtonBar(
-                      children: <Widget>[
-                        RaisedButton.icon(
-                          color: Colors.green,
-                          label: Text('Accept'),
-                          icon: Icon(Icons.check),
-                          onPressed: () {/* ... */},
-                        ),
-                        RaisedButton.icon(
-                          color: Colors.red,
-                          label: Text('Refuse'),
-                          icon: Icon(Icons.no_encryption),
-                          onPressed: () {/* ... */},
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Card(
-                margin: EdgeInsets.all(10.0),
-                child: Column(
-                  // mainAxisSize: MainAxisSize.,
-                  children: <Widget>[
-                    // Image.asset('images/1.jpg',),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundImage: AssetImage('images/2.jpg'),
-                    ),
-                    ListTile(
-                      title: Center(
-                        child: Text(
-                          'Abdo want  to order',
-                        ),
-                      ),
-                      subtitle: Center(
-                        child: Text('this  rice'),
-                      ),
-                    ),
-                    ButtonBar(
-                      children: <Widget>[
-                        RaisedButton.icon(
-                          color: Colors.green,
-                          label: Text('Accept'),
-                          icon: Icon(Icons.check),
-                          onPressed: () {/* ... */},
-                        ),
-                        RaisedButton.icon(
-                          color: Colors.red,
-                          label: Text('Refuse'),
-                          icon: Icon(Icons.no_encryption),
-                          onPressed: () {/* ... */},
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Card(
-                margin: EdgeInsets.all(10.0),
-                child: Column(
-                  // mainAxisSize: MainAxisSize.,
-                  children: <Widget>[
-                    // Image.asset('images/1.jpg',),
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundImage: AssetImage('images/2.jpg'),
-                    ),
-                    ListTile(
-                      title: Center(
-                        child: Text(
-                          'Abdo want  to order',
-                        ),
-                      ),
-                      subtitle: Center(
-                        child: Text('this  rice'),
-                      ),
-                    ),
-                    ButtonBar(
-                      children: <Widget>[
-                        RaisedButton.icon(
-                          color: Colors.green,
-                          label: Text('Accept'),
-                          icon: Icon(Icons.check),
-                          onPressed: () {/* ... */},
-                        ),
-                        RaisedButton.icon(
-                          color: Colors.red,
-                          label: Text('Refuse'),
-                          icon: Icon(Icons.no_encryption),
-                          onPressed: () {/* ... */},
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          )),
+                       
+              ],
+            ),
+            );
+           
+          }),
 
 
 
 
-
-
-
-
-
-
-
-          
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
