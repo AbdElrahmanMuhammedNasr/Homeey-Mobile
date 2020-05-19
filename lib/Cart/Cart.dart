@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
+import 'package:hommey/profile/Profile_Page.dart';
 
 class Cart extends StatefulWidget {
   @override
@@ -24,7 +25,8 @@ class _CartState extends State<Cart> {
   Widget build(BuildContext context) {
     return MaterialApp(
       
-        home: Scaffold( appBar: AppBar(
+        home: Scaffold( 
+          appBar: AppBar(
 
             title: Text(
               'Homeey',
@@ -33,8 +35,8 @@ class _CartState extends State<Cart> {
             actions: <Widget>[
               IconButton(
                   icon: Icon(Icons.account_circle),
-                  onPressed: () => print('object')),
-              // IconButton(icon: Icon(Icons.settings), onPressed: ()=> print('object')),
+                  onPressed: () => { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProfilePage()))},
+              )
             ],
           ),
 

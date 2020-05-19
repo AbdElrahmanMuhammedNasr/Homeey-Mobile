@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
+import 'package:hommey/profile/Profile_Page.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -9,17 +10,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-   _goTo(int x){
-     switch (x) {
-       case 0: Navigator.of(context).pushNamed('/cart'); break;
-       case 1: Navigator.of(context).pushNamed('/notifications'); break;
-       case 2: Navigator.of(context).pushNamed('/home'); break;
-      //  case 3: Navigator.of(context).pushNamed('/cart'); break;
-      //  case 4: Navigator.of(context).pushNamed('/cart'); break;
-
-       default:
-     }
-   }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,9 +22,11 @@ class _HomeState extends State<Home> {
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.account_circle),
-              onPressed: () => print('object')),
+              onPressed: () => { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProfilePage()))},
+
           // IconButton(icon: Icon(Icons.settings), onPressed: ()=> print('object')),
-        ],
+          )
+          ],
       ),
 
 

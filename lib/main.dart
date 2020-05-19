@@ -16,22 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
- 
 
-    // return MaterialApp(
-    //   title: 'App',
-    //   routes: <String, WidgetBuilder>{
-    //     '/login':(BuildContext context) =>  new Login(),
-    //     // '/signUp':(BuildContext contex) => new ,
-    //     '/home':(BuildContext context) =>  new Home(),
-    //     '/details':(BuildContext context) =>  new Details(),
-    //     '/profile':(BuildContext context) =>  new Profile(),
-    //     '/notifications':(BuildContext context) =>  new Notifications(),
-    //     '/cart':(BuildContext context) =>  new Cart(),
-    //     // '/like':(BuildContext contex) =>  new (),
-    //     // '/search':(BuildContext contex) =>  new S(),
-
-    //   },
       return MaterialApp(
           home: new ProfilePage()
           // )
