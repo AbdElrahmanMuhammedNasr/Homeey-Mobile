@@ -25,7 +25,7 @@ class ProfilePage extends StatelessWidget {
             Column(
               children: <Widget>[
                 Expanded(
-                    flex: 2,
+                    flex: 3,
                     child: Container(
                       color: Colors.red,
                       child: Stack( 
@@ -42,11 +42,22 @@ class ProfilePage extends StatelessWidget {
                               child: Padding(padding: EdgeInsets.all(16),
                               child:Column(
                                   children: <Widget>[
+                                    Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Row(
+                                        children: <Widget>[
+                                          Icon(Icons.block,color: Colors.redAccent,),
+                                          Padding(padding: EdgeInsets.all(5)),
+                                          Text('block'),
+                                        ],
+                                      )
+
+                                    ),
                                     Center(
                                       child: Column(
                                         children: <Widget>[
                                             CircleAvatar(
-                                              radius: 50,
+                                              radius: 60,
                                               backgroundImage: AssetImage('images/2.jpg'),
                                             ),
                                            
@@ -60,7 +71,12 @@ class ProfilePage extends StatelessWidget {
                                                     Text('AbdElrahman ' ,style: TextStyle(fontSize: 18, letterSpacing: 1, color: Colors.white), ),
                                                   ],
                                                 ),
-                                                 
+                                                 Row(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: <Widget>[
+                                                    Text('25 years ' ,style: TextStyle(fontSize: 18, letterSpacing: 1, color: Colors.white), ),
+                                                  ],
+                                                ),
                                                  
                                               ],
                                           ),
@@ -86,8 +102,9 @@ class ProfilePage extends StatelessWidget {
 /********************* second ************************** */
 
                  Expanded(
-                    flex: 6,
+                    flex: 5,
                     child: Container(
+                      margin: EdgeInsets.only(top: 20),
                       color: Colors.white,
                       child: Table(
                         children: [
@@ -100,7 +117,7 @@ class ProfilePage extends StatelessWidget {
                                child: ProfileDetails(
                                   text: "25",
                                   sub: "your Food",
-                                  icon: Icon(Icons.star, color: Colors.blue[300],),
+                                  icon: Icon(Icons.restaurant, color: Colors.blue[300],),
                                 ),
 
                                 ),
@@ -118,12 +135,12 @@ class ProfilePage extends StatelessWidget {
                               ProfileDetails(
                                 text: "15",
                                 sub: "Positive Comment",
-                                icon: Icon(Icons.comment, color: Colors.blue[300],),
+                                icon: Icon(Icons.arrow_upward, color: Colors.blue[300],),
                               ),
                                ProfileDetails(
                                 text: "2",
                                 sub: "Negative Comment",
-                                icon: Icon(Icons.exposure_neg_1,color: Colors.blue[300],),
+                                icon: Icon(Icons.arrow_downward,color: Colors.blue[300],),
                               ),
                               
                             ]
@@ -131,33 +148,33 @@ class ProfilePage extends StatelessWidget {
                           TableRow(
                             children: [
                               ProfileDetails(
-                                text: "25",
-                                sub: "your Food",
+                                text: "4",
+                                sub: "your Rating",
                                 icon: Icon(Icons.star, color: Colors.blue[300],),
                               ),
                                ProfileDetails(
                                 text: "20",
-                                sub: "Customer deal with you",
+                                sub: "Customer Rating you",
                                 icon: Icon(Icons.record_voice_over,color: Colors.blue[300],),
                               ),
                               
                             ]
                           ),
-                           TableRow(
-                            children: [
-                              ProfileDetails(
-                                text: "5",
-                                sub: "Rating",
-                                icon: Icon(Icons.rate_review, color: Colors.blue[300],),
-                              ),
-                               ProfileDetails(
-                                text: "20",
-                                sub: "Customer deal with you",
-                                icon: Icon(Icons.record_voice_over,color: Colors.blue[300],),
-                              ),
+                          //  TableRow(
+                          //   children: [
+                          //     ProfileDetails(
+                          //       text: "5",
+                          //       sub: "Rating",
+                          //       icon: Icon(Icons.rate_review, color: Colors.blue[300],),
+                          //     ),
+                          //      ProfileDetails(
+                          //       text: "20",
+                          //       sub: "Customer deal with you",
+                          //       icon: Icon(Icons.record_voice_over,color: Colors.blue[300],),
+                          //     ),
                               
-                            ]
-                          ),
+                          //   ]
+                          // ),
                          
                         ] ,
                       ),

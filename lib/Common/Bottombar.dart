@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hommey/Cart/Cart.dart';
 import 'package:hommey/Home/Home.dart';
 import 'package:hommey/Notifications/Notifications.dart';
+import 'package:hommey/Search/Search.dart';
 class BottomBar extends StatelessWidget {
 
   @override
@@ -12,7 +13,7 @@ class BottomBar extends StatelessWidget {
        case 1: Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Notifications())); break;
        case 2: Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Home())); break;
       //  case 3: Navigator.of(context).pushNamed('/cart'); break;
-      //  case 4: Navigator.of(context).pushNamed('/cart'); break;
+       case 4: Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchF(),)); break;
 
        default:
      }

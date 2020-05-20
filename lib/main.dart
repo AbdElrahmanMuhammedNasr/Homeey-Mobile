@@ -4,6 +4,8 @@ import 'package:hommey/Details/Details.dart';
 import 'package:hommey/Home/Home.dart';
 import 'package:hommey/Login/Login.dart';
 import 'package:hommey/Notifications/Notifications.dart';
+import 'package:hommey/Search/Search.dart';
+import 'package:hommey/SignUp/SignUp.dart';
 import 'package:hommey/profile/Profile_Page.dart';
 
 void main() {
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
 
 
       return MaterialApp(
-          home: new ProfilePage()
+          home: new SearchF()
           // )
         
     );
