@@ -42,8 +42,6 @@ class _CartState extends State<Cart> {
 
 
 
-
-
       
           body: Container(
 
@@ -57,67 +55,51 @@ class _CartState extends State<Cart> {
                child: Card(
                     margin: EdgeInsets.all(10.0),
                     child: Column(
+
                       children: <Widget>[ 
-                        Image.asset('images/1.jpg'),
+                        Image.asset('images/b2.jpg'),
+                        SizedBox(height: 20,),
                          ListTile(
-                          title: Center(child: Text(' Rice' ,) ,),
+                          title: Center(child: Text('Cake', style: TextStyle(fontSize: 25, letterSpacing: 2),) ,),
                           subtitle: Center(child:Column(
                             children: <Widget>[
-                              Text('20 EGY') ,
-                              Text('2020-10-5') ,
-                              Text('Tamer') ,
+                              SizedBox(height: 10,),
+                              Text('Price : 20 EGY') ,
+                              SizedBox(height: 10,),
+                              Text('Ordered in : 2020-10-5') ,
                             ],
-                          )) ,
+                          ),
+                          ),
                         ),
+                        SizedBox(height: 10,),
+                        Divider(color: Colors.black),
+                       Text('Chef', style: TextStyle(fontSize: 20, letterSpacing: 2),),
+
+                        SizedBox(height: 5,),
+                        Container(
+                          margin: EdgeInsets.all(20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  SizedBox(height: 10,),
+                                  CircleAvatar(
+                                    radius: 30,
+                                    backgroundImage: AssetImage('images/m.jpg'),
+                                  ),
+                                   SizedBox(height: 10,),
+                                   ListTile(
+                                     title:Text('Ali', style: TextStyle(fontSize: 20, letterSpacing: 1),),
+                                     subtitle: Text('Rating - 4.2'),
+    
+                                   )
+                                ],
+                            ),
+                        )
                     ],
                     ),
                   ),
               ),
-              Container(
-                width: 160.0,
-                color: Colors.blueAccent,
-                child: Card(
-                    margin: EdgeInsets.all(10.0),
-                    child: Column(
-                      children: <Widget>[ 
-                        Image.asset('images/1.jpg'),
-                         ListTile(
-                          title: Center(child: Text(' Rice' ,) ,),
-                          subtitle: Center(child:Column(
-                            children: <Widget>[
-                              Text('20 EGY') ,
-                              Text('2020-10-5') ,
-                              Text('Tamer') ,
-                            ],
-                          )) ,
-                        ),
-                    ],
-                    ),
-                  ),
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.blueAccent,
-                child: Card(
-                    margin: EdgeInsets.all(10.0),
-                    child: Column(
-                      children: <Widget>[ 
-                        Image.asset('images/1.jpg'),
-                         ListTile(
-                          title: Center(child: Text(' Rice' ,) ,),
-                          subtitle: Center(child:Column(
-                            children: <Widget>[
-                              Text('20 EGY') ,
-                              Text('2020-10-5') ,
-                              Text('Tamer') ,
-                            ],
-                          )) ,
-                        ),
-                    ],
-                    ),
-                  ),
-              ),
-              
+                
             ],
           ),
                     

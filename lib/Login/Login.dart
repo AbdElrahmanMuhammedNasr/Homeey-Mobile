@@ -37,6 +37,11 @@ class _LoginState extends State<Login> {
 
 
           body: loading ? Loading():Container(
+            //   decoration: BoxDecoration(
+            //     image: DecorationImage(
+            //     image:  AssetImage("images/1127.jpg"), fit: BoxFit.cover)
+            // ),
+
      
             margin: EdgeInsets.all(20),
             child: Column(

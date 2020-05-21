@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
+import 'package:hommey/User/foods.dart';
 import 'package:hommey/profile/profile_details.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -16,7 +17,6 @@ class ProfilePage extends StatelessWidget {
           IconButton(
               icon: Icon(Icons.account_circle),
               onPressed: () => print('object')),
-          // IconButton(icon: Icon(Icons.settings), onPressed: ()=> print('object')),
         ],
       ),
       
@@ -112,7 +112,7 @@ class ProfilePage extends StatelessWidget {
                             children: [
                               GestureDetector(
                                 onTap: (){
-
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Foods()));
                                 },
                                child: ProfileDetails(
                                   text: "25",
