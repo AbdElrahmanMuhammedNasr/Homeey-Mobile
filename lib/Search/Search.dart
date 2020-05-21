@@ -14,7 +14,7 @@ class _SearchFState extends State<SearchF> {
       home: Scaffold(
       appBar: AppBar(
         title: Text(
-          'Homeey',
+          'Search',
           style: TextStyle(letterSpacing: 2),
         ),
         actions: <Widget>[

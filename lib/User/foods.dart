@@ -14,7 +14,7 @@ class _FoodsState extends State<Foods> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Homeey',
+          'Chef Food',
           style: TextStyle(letterSpacing: 2),
         ),
         actions: <Widget>[

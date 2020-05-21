@@ -10,7 +10,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Homeey',
+          'Profile',
           style: TextStyle(letterSpacing: 2),
         ),
         actions: <Widget>[

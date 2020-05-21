@@ -17,7 +17,7 @@ class _NotificationsState extends State<Notifications> {
         home: Scaffold(
       appBar: AppBar(
         title: Text(
-          'Homeey',
+          'Notifications',
           style: TextStyle(letterSpacing: 2),
         ),
         actions: <Widget>[

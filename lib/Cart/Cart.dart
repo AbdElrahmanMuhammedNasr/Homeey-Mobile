@@ -29,9 +29,9 @@ class _CartState extends State<Cart> {
           appBar: AppBar(
 
             title: Text(
-              'Homeey',
-              style: TextStyle(letterSpacing: 2),
+              'Cart', style: TextStyle(letterSpacing: 2),
             ),
+
             actions: <Widget>[
               IconButton(
                   icon: Icon(Icons.account_circle),
@@ -55,7 +55,6 @@ class _CartState extends State<Cart> {
                child: Card(
                     margin: EdgeInsets.all(10.0),
                     child: Column(
-
                       children: <Widget>[ 
                         Image.asset('images/b2.jpg'),
                         SizedBox(height: 20,),
@@ -79,19 +78,163 @@ class _CartState extends State<Cart> {
                         Container(
                           margin: EdgeInsets.all(20),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
-                                  SizedBox(height: 10,),
+                                  SizedBox(height: 7,),
                                   CircleAvatar(
-                                    radius: 30,
+                                    radius: 50,
                                     backgroundImage: AssetImage('images/m.jpg'),
                                   ),
                                    SizedBox(height: 10,),
-                                   ListTile(
-                                     title:Text('Ali', style: TextStyle(fontSize: 20, letterSpacing: 1),),
-                                     subtitle: Text('Rating - 4.2'),
-    
-                                   )
+                                  Text('Tamer Ali', style: TextStyle(fontSize: 20),),
+                                   SizedBox(height: 3,),
+                                  Text('Raiting - 4.2', style: TextStyle(fontSize: 15 ,color: Colors.black26),)
+                                ],
+                            ),
+                        )
+                    ],
+                    ),
+                  ),
+              ),
+
+                    Container(
+                width: 160.0,
+                color: Colors.blueAccent,
+               child: Card(
+                    margin: EdgeInsets.all(10.0),
+                    child: Column(
+                      children: <Widget>[ 
+                        Image.asset('images/1.jpg'),
+                        SizedBox(height: 20,),
+                         ListTile(
+                          title: Center(child: Text('Cake', style: TextStyle(fontSize: 25, letterSpacing: 2),) ,),
+                          subtitle: Center(child:Column(
+                            children: <Widget>[
+                              SizedBox(height: 10,),
+                              Text('Price : 20 EGY') ,
+                              SizedBox(height: 10,),
+                              Text('Ordered in : 2020-10-5') ,
+                            ],
+                          ),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Divider(color: Colors.black),
+                       Text('Chef', style: TextStyle(fontSize: 20, letterSpacing: 2),),
+
+                        SizedBox(height: 5,),
+                        Container(
+                          margin: EdgeInsets.all(20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  SizedBox(height: 7,),
+                                  CircleAvatar(
+                                    radius: 50,
+                                    backgroundImage: AssetImage('images/m.jpg'),
+                                  ),
+                                   SizedBox(height: 10,),
+                                  Text('Tamer Ali', style: TextStyle(fontSize: 20),),
+                                   SizedBox(height: 3,),
+                                  Text('Raiting - 4.2', style: TextStyle(fontSize: 15 ,color: Colors.black26),)
+                                ],
+                            ),
+                        )
+                    ],
+                    ),
+                  ),
+              ),
+
+
+                    Container(
+                width: 160.0,
+                color: Colors.blueAccent,
+               child: Card(
+                    margin: EdgeInsets.all(10.0),
+                    child: Column(
+                      children: <Widget>[ 
+                        Image.asset('images/1.jpg'),
+                        SizedBox(height: 20,),
+                         ListTile(
+                          title: Center(child: Text('Cake', style: TextStyle(fontSize: 25, letterSpacing: 2),) ,),
+                          subtitle: Center(child:Column(
+                            children: <Widget>[
+                              SizedBox(height: 10,),
+                              Text('Price : 20 EGY') ,
+                              SizedBox(height: 10,),
+                              Text('Ordered in : 2020-10-5') ,
+                            ],
+                          ),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Divider(color: Colors.black),
+                       Text('Chef', style: TextStyle(fontSize: 20, letterSpacing: 2),),
+
+                        SizedBox(height: 5,),
+                        Container(
+                          margin: EdgeInsets.all(20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  SizedBox(height: 7,),
+                                  CircleAvatar(
+                                    radius: 50,
+                                    backgroundImage: AssetImage('images/2.jpg'),
+                                  ),
+                                   SizedBox(height: 10,),
+                                  Text('Tamer Ali', style: TextStyle(fontSize: 20),),
+                                   SizedBox(height: 3,),
+                                  Text('Raiting - 4.2', style: TextStyle(fontSize: 15 ,color: Colors.black26),)
+                                ],
+                            ),
+                        )
+                    ],
+                    ),
+                  ),
+              ),
+
+
+                    Container(
+                width: 160.0,
+                color: Colors.blueAccent,
+               child: Card(
+                    margin: EdgeInsets.all(10.0),
+                    child: Column(
+                      children: <Widget>[ 
+                        Image.asset('images/b1.jpg'),
+                        SizedBox(height: 20,),
+                         ListTile(
+                          title: Center(child: Text('Cake', style: TextStyle(fontSize: 25, letterSpacing: 2),) ,),
+                          subtitle: Center(child:Column(
+                            children: <Widget>[
+                              SizedBox(height: 10,),
+                              Text('Price : 20 EGY') ,
+                              SizedBox(height: 10,),
+                              Text('Ordered in : 2020-10-5') ,
+                            ],
+                          ),
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Divider(color: Colors.black),
+                       Text('Chef', style: TextStyle(fontSize: 20, letterSpacing: 2),),
+
+                        SizedBox(height: 5,),
+                        Container(
+                          margin: EdgeInsets.all(20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  SizedBox(height: 7,),
+                                  CircleAvatar(
+                                    radius: 50,
+                                    backgroundImage: AssetImage('images/2.jpg'),
+                                  ),
+                                   SizedBox(height: 10,),
+                                  Text('Tamer Ali', style: TextStyle(fontSize: 20),),
+                                   SizedBox(height: 3,),
+                                  Text('Raiting - 4.2', style: TextStyle(fontSize: 15 ,color: Colors.black26),)
                                 ],
                             ),
                         )
