@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hommey/Cart/Cart.dart';
-import 'package:hommey/Details/Details.dart';
+import 'package:hommey/Common/LoginService.dart';
 import 'package:hommey/Home/Home.dart';
 import 'package:hommey/Login/Login.dart';
-import 'package:hommey/Notifications/Notifications.dart';
-import 'package:hommey/Search/Search.dart';
-import 'package:hommey/SignUp/SignUp.dart';
-import 'package:hommey/profile/Profile_Page.dart';
+import 'package:hommey/Models/user.dart';
+import 'package:hommey/main2.dart';
+import 'package:provider/provider.dart';
 
 void main() {
     runApp(MyApp());
@@ -19,10 +17,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
-      return MaterialApp(
-          home: new SearchF()
-          // )
-        
-    );
+      return StreamProvider<User>.value(
+          value: AuthService().user,
+            child: MaterialApp(             
+              home: new Main2()
+    
+    ),
+      );
   }
 }

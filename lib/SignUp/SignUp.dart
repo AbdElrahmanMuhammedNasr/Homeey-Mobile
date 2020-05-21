@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hommey/Common/LoginService.dart';
+import 'package:hommey/Common/loading.dart';
 import 'package:hommey/Home/Home.dart';
 import 'package:hommey/Login/Login.dart';
 
@@ -8,8 +10,15 @@ class SignUPF extends StatefulWidget {
 }
 
 class _SignUPFState extends State<SignUPF> {
+
+  final AuthService _authService = AuthService();
+  final email = TextEditingController();
+  final password = TextEditingController();
+  bool loading = false;
+
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -19,7 +28,7 @@ class _SignUPFState extends State<SignUPF> {
           ),
         ),
 
-        body: SingleChildScrollView(
+        body: loading?Loading():SingleChildScrollView(
           child: Container(
             margin: EdgeInsets.only(top: 5, left: 15,right: 15,bottom: 5),
             child: Column(
@@ -39,6 +48,7 @@ class _SignUPFState extends State<SignUPF> {
                     ),
                     style: TextStyle(
                         fontSize: 20, letterSpacing: 2, color: Colors.blue),
+                    controller: email,    
                   ),
                 ),
                 Container(
@@ -195,6 +205,7 @@ class _SignUPFState extends State<SignUPF> {
                         icon: Icon(Icons.verified_user)),
                     style: TextStyle(
                         fontSize: 20, letterSpacing: 2, color: Colors.blue),
+                    controller: password,    
                   ),
                 ),
                 Column(
@@ -202,7 +213,21 @@ class _SignUPFState extends State<SignUPF> {
                   children: <Widget>[
                     Container(
                       child: RaisedButton.icon(
-                        onPressed: () => print('object'),
+                        onPressed: () async{
+                          setState(() {
+                            loading = true;
+                          });
+                              print(email.text);
+
+                          dynamic result = await _authService.createNewUser(email.text, password.text);
+
+                          if(result == null){
+                            setState(() {
+                               loading = false;
+
+                            });
+                          }
+                        },
                         color: Colors.red[400],
                         colorBrightness: Brightness.dark,
                         icon: Icon(Icons.ac_unit),
@@ -212,9 +237,7 @@ class _SignUPFState extends State<SignUPF> {
                     Container(
                       child: RaisedButton.icon(
                         onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => Login(),
-                          ));
+                          // dynamic result = await _authService.createNewUser(email.text, password.text);
                         },
                         color: Colors.blue[400],
                         colorBrightness: Brightness.dark,

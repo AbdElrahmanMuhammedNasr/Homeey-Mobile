@@ -57,7 +57,7 @@ class ProfilePage extends StatelessWidget {
                                       child: Column(
                                         children: <Widget>[
                                             CircleAvatar(
-                                              radius: 60,
+                                              radius: 50,
                                               backgroundImage: AssetImage('images/2.jpg'),
                                             ),
                                            
@@ -102,7 +102,7 @@ class ProfilePage extends StatelessWidget {
 /********************* second ************************** */
 
                  Expanded(
-                    flex: 5,
+                    flex: 6,
                     child: Container(
                       margin: EdgeInsets.only(top: 20),
                       color: Colors.white,
@@ -160,21 +160,7 @@ class ProfilePage extends StatelessWidget {
                               
                             ]
                           ),
-                          //  TableRow(
-                          //   children: [
-                          //     ProfileDetails(
-                          //       text: "5",
-                          //       sub: "Rating",
-                          //       icon: Icon(Icons.rate_review, color: Colors.blue[300],),
-                          //     ),
-                          //      ProfileDetails(
-                          //       text: "20",
-                          //       sub: "Customer deal with you",
-                          //       icon: Icon(Icons.record_voice_over,color: Colors.blue[300],),
-                          //     ),
-                              
-                          //   ]
-                          // ),
+                       
                          
                         ] ,
                       ),
@@ -192,7 +178,7 @@ class ProfilePage extends StatelessWidget {
         
         bottomNavigationBar: new BottomBar(),
         drawer: DarwerBar(),
-
+        floatingActionButton: FloatingActionButton(onPressed: () =>{print('object')}, tooltip: 'hi', child:Icon(Icons.add) ,),
 
     );
   }
