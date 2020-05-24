@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
+import 'package:hommey/User/DealCustomer.dart';
 import 'package:hommey/User/foods.dart';
+import 'package:hommey/User/positiveComment.dart';
 import 'package:hommey/profile/profile_details.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -121,10 +123,15 @@ class ProfilePage extends StatelessWidget {
                                 ),
 
                                 ),
-                                ProfileDetails(
-                                  text: "20",
-                                  sub: "Customer deal with you",
-                                  icon: Icon(Icons.record_voice_over,color: Colors.blue[300],),
+                                GestureDetector(
+                                  onTap: (){
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> DealCustomer()));
+                                  },
+                                    child: ProfileDetails(
+                                    text: "20",
+                                    sub: "Customer deal with you",
+                                    icon: Icon(Icons.record_voice_over,color: Colors.blue[300],),
+                                  ),
                                 ),
                               
                               
@@ -132,16 +139,26 @@ class ProfilePage extends StatelessWidget {
                           ),
                           TableRow(
                             children: [
-                              ProfileDetails(
-                                text: "15",
-                                sub: "Positive Comment",
-                                icon: Icon(Icons.arrow_upward, color: Colors.blue[300],),
+                              GestureDetector(
+                                onTap:  () {
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => PositiveComent(),));
+                                },
+                                  child: ProfileDetails(
+                                  text: "15",
+                                  sub: "Positive Comment",
+                                  icon: Icon(Icons.arrow_upward, color: Colors.blue[300],),
+                                ),
                               ),
-                               ProfileDetails(
-                                text: "2",
-                                sub: "Negative Comment",
-                                icon: Icon(Icons.arrow_downward,color: Colors.blue[300],),
+                               GestureDetector(
+                                 onTap: (){
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => PositiveComent(),));
+                                 },
+                                 child: ProfileDetails(
+                                  text: "2",
+                                  sub: "Negative Comment",
+                                  icon: Icon(Icons.arrow_downward,color: Colors.blue[300],),
                               ),
+                               ),
                               
                             ]
                           ),
@@ -153,7 +170,7 @@ class ProfilePage extends StatelessWidget {
                                 icon: Icon(Icons.star, color: Colors.blue[300],),
                               ),
                                ProfileDetails(
-                                text: "20",
+                                text: "15",
                                 sub: "Customer Rating you",
                                 icon: Icon(Icons.record_voice_over,color: Colors.blue[300],),
                               ),

@@ -24,7 +24,6 @@ class _HomeState extends State<Home> {
               icon: Icon(Icons.account_circle),
               onPressed: () => { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProfilePage()))},
 
-          // IconButton(icon: Icon(Icons.settings), onPressed: ()=> print('object')),
           )
           ],
       ),
@@ -34,22 +33,31 @@ class _HomeState extends State<Home> {
 
 
 
-
-
-
-
       
-      body: SingleChildScrollView(
-          child: Column(
-        children: <Widget>[
+      body: ListView.builder(itemCount: 30,
+          itemBuilder: (BuildContext context,  int pos){
+            return
           Card(
             margin: EdgeInsets.all(10.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Image.asset(
-                  'images/1.jpg',
+                Stack(
+                  children: <Widget>[
+                    Image.asset(
+                      'images/1.jpg',
+                    ),
+                    Padding(padding: EdgeInsets.all(10),
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: Icon(Icons.favorite, color: Colors.red,),
+                      ),
+                    )
+                    
+
+                  ],
                 ),
+               
                 ListTile(
                   title: Center(
                     child: Text(
@@ -73,121 +81,9 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
-          ),
-          Card(
-            margin: EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Image.asset(
-                  'images/1.jpg',
-                ),
-                ListTile(
-                  title: Center(
-                    child: Text(
-                      'The name of order',
-                    ),
-                  ),
-                  subtitle: Center(
-                    child: Text(' 20 EGY.'),
-                  ),
-                ),
-                RaisedButton.icon(
-                  icon: Icon(Icons.send),
-                  label: const Text('Order'),
-                  onPressed: () {
-                    print('object');
-                  },
-                ),
-              ],
-            ),
-          ),
-          Card(
-            margin: EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Image.asset(
-                  'images/1.jpg',
-                ),
-                ListTile(
-                  title: Center(
-                    child: Text(
-                      'The name of order',
-                    ),
-                  ),
-                  subtitle: Center(
-                    child: Text(' 20 EGY.'),
-                  ),
-                ),
-                RaisedButton.icon(
-                  icon: Icon(Icons.send),
-                  label: const Text('Order'),
-                  onPressed: () {
-                    print('object');
-                  },
-                ),
-              ],
-            ),
-          ),
-          Card(
-            margin: EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Image.asset(
-                  'images/1.jpg',
-                ),
-                ListTile(
-                  title: Center(
-                    child: Text(
-                      'The name of order',
-                    ),
-                  ),
-                  subtitle: Center(
-                    child: Text(' 20 EGY.'),
-                  ),
-                ),
-                RaisedButton.icon(
-                  icon: Icon(Icons.send),
-                  label: const Text('Order'),
-                  onPressed: () {
-                    print('object');
-                  },
-                ),
-              ],
-            ),
-          ),
-          Card(
-            margin: EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Image.asset(
-                  'images/1.jpg',
-                ),
-                ListTile(
-                  title: Center(
-                    child: Text(
-                      'The name of order',
-                    ),
-                  ),
-                  subtitle: Center(
-                    child: Text(' 20 EGY.'),
-                  ),
-                ),
-                RaisedButton.icon(
-                  icon: Icon(Icons.send),
-                  label: const Text('Order'),
-                  onPressed: () {
-                    print('object');
-                  },
-                ),
-              ],
-            ),
-          ),
-        ],
-      )),
+          );  
+        }
+      ),
 
       
       bottomNavigationBar: new BottomBar(),

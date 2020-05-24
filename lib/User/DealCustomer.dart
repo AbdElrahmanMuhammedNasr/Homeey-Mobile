@@ -1,23 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/Bottombar.dart';
-import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/profile/Profile_Page.dart';
-class PositiveComent extends StatefulWidget {
-
-
+class DealCustomer extends StatefulWidget {
   @override
-  _PositiveComentState createState() => _PositiveComentState();
+  _DealCustomerState createState() => _DealCustomerState();
 }
 
-class _PositiveComentState extends State<PositiveComent> {
-  
-
+class _DealCustomerState extends State<DealCustomer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Comments',
+          'Dealing',
           style: TextStyle(letterSpacing: 2),
         ),
         actions: <Widget>[
@@ -39,24 +34,7 @@ class _PositiveComentState extends State<PositiveComent> {
               leading: Image.asset('images/mos.jpg'),
               title: Text('Mostafa'),
               subtitle: Container(
-                child: Row(
-                  
-                  children: <Widget>[
-                    Container(
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('You are a great Coder'),
-                      )
-                      ),
-                     Container(
-                       margin: EdgeInsets.only(left: 20),
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Icon(Icons.star, color: Colors.yellow,)
-                      )
-                      ),
-                  ],
-                ),
+                child: Text('Ordered -> Fish'),
               ),
               
               )
@@ -68,7 +46,7 @@ class _PositiveComentState extends State<PositiveComent> {
       ) ,
 
       bottomNavigationBar: BottomBar(),
-      drawer: DarwerBar(),
+      drawer: Drawer(),
       
     );
   }

@@ -18,12 +18,12 @@ class _Main2State extends State<Main2> {
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
     if(user == null){
-      // return Login();
-      return Foods(); 
+      return Login();
+      // return Foods(); 
     }else{
       // return ProfilePage();
-      // return Home();
-        return Foods(); 
+      return Home();
+        // return Foods(); 
 
     }
   }
