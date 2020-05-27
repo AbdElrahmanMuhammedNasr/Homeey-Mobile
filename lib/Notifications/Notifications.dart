@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hommey/Common/Alert.dart';
 import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
@@ -50,7 +51,7 @@ class _NotificationsState extends State<Notifications> {
                                 color: Colors.white,
                               ),
                               onPressed: () {
-                                print('object');
+                                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => AlertF(type: 'Report',),));
                               })),
                     ),
                   ),

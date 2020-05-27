@@ -129,7 +129,7 @@ Widget food(image) {
     child: Container(
       margin: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(20),
         image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
       ),
       // child: Container(

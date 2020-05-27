@@ -64,6 +64,7 @@ class _BottomBarState extends State<BottomBar> {
       currentIndex:_index == null ? 0 : _index,
       type: BottomNavigationBarType.fixed,
       onTap: (int x) => _goTo(x),
+      
     );
   }
 }

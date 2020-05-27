@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hommey/Common/Alert.dart';
 import 'package:hommey/profile/Profile_Page.dart';
 
 class AppBarTop extends StatelessWidget with PreferredSizeWidget {
@@ -17,7 +18,9 @@ class AppBarTop extends StatelessWidget with PreferredSizeWidget {
         IconButton(
           icon: title == 'Profile'? Icon(Icons.block, color: Colors.red,) :Icon(Icons.account_circle),
           onPressed: () => {
-            Navigator.of(context)
+            title == 'Profile'?
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => AlertF(type: 'Block',),))
+           :Navigator.of(context)
                 .push(MaterialPageRoute(builder: (context) => ProfilePage()))
           },
         )
