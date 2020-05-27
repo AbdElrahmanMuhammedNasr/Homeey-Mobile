@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/profile/Profile_Page.dart';
@@ -9,45 +10,52 @@ class Notifications extends StatefulWidget {
 }
 
 class _NotificationsState extends State<Notifications> {
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Notifications',
-          style: TextStyle(letterSpacing: 2),
-        ),
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.account_circle),
-              onPressed: () => { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProfilePage()))},
-          )
-       ],
-      ),
 
+      appBar:AppBarTop(title: 'Notifications',),
 
-
-
-    body: ListView.builder(itemCount: 50,
-          itemBuilder: (BuildContext context,  int pos){
+      body: ListView.builder(
+          itemCount: 50,
+          itemBuilder: (BuildContext context, int pos) {
             return Container(
               margin: EdgeInsets.all(10),
               color: Colors.blue,
-           child: Column(
-              children: <Widget>[
-                Container(
-                  color: Colors.blue[400],
-                  child:ListTile(
-                      title:Text('AbdElrahman', style: TextStyle(fontSize: 20, letterSpacing: 1),),
-                      subtitle: Text('Just order Rice'),
-                      leading: CircleAvatar(radius: 30,backgroundImage: AssetImage('images/2.jpg'),),   
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    color: Colors.blue[400],
+                    child: ListTile(
+                      title: Text(
+                        'AbdElrahman',
+                        style: TextStyle(
+                            fontSize: 20,
+                            letterSpacing: 1,
+                            color: Colors.white),
+                      ),
+                      subtitle: Text(
+                        'Just order Rice',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      leading: CircleAvatar(
+                        radius: 30,
+                        backgroundImage: AssetImage('images/2.jpg'),
+                      ),
+                      trailing: Container(
+                          child: IconButton(
+                              icon: Icon(
+                                Icons.report,
+                                color: Colors.white,
+                              ),
+                              onPressed: () {
+                                print('object');
+                              })),
                     ),
-                ),
-                Container(
-                  child:ButtonBar(
+                  ),
+                  Container(
+                    child: ButtonBar(
                       children: <Widget>[
                         RaisedButton.icon(
                           color: Colors.green,
@@ -63,20 +71,13 @@ class _NotificationsState extends State<Notifications> {
                         ),
                       ],
                     ),
-                ),
-                       
-              ],
-            ),
+                  ),
+                ],
+              ),
             );
-           
           }),
-
-
-
       bottomNavigationBar: new BottomBar(),
-
-     drawer: DarwerBar(),
-
+      drawer: DarwerBar(),
     ));
   }
 }

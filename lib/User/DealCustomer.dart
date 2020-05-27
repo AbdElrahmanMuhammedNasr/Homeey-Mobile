@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/profile/Profile_Page.dart';
 class DealCustomer extends StatefulWidget {
@@ -10,18 +11,7 @@ class _DealCustomerState extends State<DealCustomer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Dealing',
-          style: TextStyle(letterSpacing: 2),
-        ),
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.account_circle),
-              onPressed: () => { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProfilePage()))}
-              ),
-        ],
-      ),
+          appBar:AppBarTop(title: 'Dealing',),
 
       body:Container(
         margin: EdgeInsets.symmetric(horizontal: 10),

@@ -237,7 +237,7 @@ class _SignUPFState extends State<SignUPF> {
                     Container(
                       child: RaisedButton.icon(
                         onPressed: () {
-                          // dynamic result = await _authService.createNewUser(email.text, password.text);
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Login(),));
                         },
                         color: Colors.blue[400],
                         colorBrightness: Brightness.dark,

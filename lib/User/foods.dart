@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/profile/Profile_Page.dart';
@@ -12,21 +13,11 @@ class _FoodsState extends State<Foods> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Chef Food',
-          style: TextStyle(letterSpacing: 2),
-        ),
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.account_circle),
-              onPressed: () => { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProfilePage()))}
-              ),
-        ],
+      appBar: AppBarTop(
+        title: 'Chef Food',
       ),
-     
       body: SingleChildScrollView(
-            child: Container(
+        child: Container(
           child: SafeArea(
             child: Container(
               margin: EdgeInsets.all(15),
@@ -36,32 +27,30 @@ class _FoodsState extends State<Foods> {
                   Column(
                     children: <Widget>[
                       ListTile(
-                        title:  Text(
-                              'Find Your Food',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  letterSpacing: 1,
-                                  color: Colors.black54),
-                            ),
+                        title: Text(
+                          'Find Your Food',
+                          style: TextStyle(
+                              fontSize: 15,
+                              letterSpacing: 1,
+                              color: Colors.black54),
+                        ),
                         leading: CircleAvatar(
                           radius: 20,
                           backgroundImage: AssetImage('images/2.jpg'),
                         ),
-                      )
-                     ,
+                      ),
                       SizedBox(
                         height: 5,
                       ),
-                      
                     ],
                   ),
-                   SizedBox(
+                  SizedBox(
                     height: 10,
                   ),
                   Container(
                     margin: EdgeInsets.all(2),
                     color: Colors.black12,
-                    child: TextField( 
+                    child: TextField(
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         prefixIcon: Icon(Icons.search),
@@ -89,41 +78,39 @@ class _FoodsState extends State<Foods> {
                       ),
                     )),
                   ),
-
                   SizedBox(
                     height: 10,
                   ),
-
                   Container(
                     margin: EdgeInsets.only(top: 20),
                     height: 200,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       image: DecorationImage(
-                          image: AssetImage("images/b2.jpg"), fit: BoxFit.cover),
+                          image: AssetImage("images/b2.jpg"),
+                          fit: BoxFit.cover),
                     ),
                   ),
-                  
-                   Container(
+                  Container(
                     margin: EdgeInsets.only(top: 20),
                     height: 200,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       image: DecorationImage(
-                          image: AssetImage("images/b3.jpg"), fit: BoxFit.cover),
+                          image: AssetImage("images/b3.jpg"),
+                          fit: BoxFit.cover),
                     ),
                   ),
                   Container(
-                   margin: EdgeInsets.only(top: 20),
+                    margin: EdgeInsets.only(top: 20),
                     height: 200,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       image: DecorationImage(
-                          image: AssetImage("images/b1.jpg"), fit: BoxFit.cover),
+                          image: AssetImage("images/b1.jpg"),
+                          fit: BoxFit.cover),
                     ),
                   ),
-
-
                 ],
               ),
             ),

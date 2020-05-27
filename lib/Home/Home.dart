@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/profile/Profile_Page.dart';
@@ -14,26 +15,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Homeey',
-          style: TextStyle(letterSpacing: 2),
-        ),
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(Icons.account_circle),
-              onPressed: () => { Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ProfilePage()))},
+        appBar:AppBarTop(title: 'Homeey',),
 
-          )
-          ],
-      ),
-
-
-
-
-
-
-      
       body: ListView.builder(itemCount: 30,
           itemBuilder: (BuildContext context,  int pos){
             return
@@ -50,7 +33,7 @@ class _HomeState extends State<Home> {
                     Padding(padding: EdgeInsets.all(10),
                       child: Align(
                         alignment: Alignment.topRight,
-                        child: Icon(Icons.favorite, color: Colors.red,),
+                        child: Icon(Icons.favorite_border, color: Colors.red,),
                       ),
                     )
                     
