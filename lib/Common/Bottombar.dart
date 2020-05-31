@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hommey/Cart/Cart.dart';
+import 'package:hommey/Form/form.dart';
 import 'package:hommey/Home/Home.dart';
 import 'package:hommey/Notifications/Notifications.dart';
 import 'package:hommey/Search/Search.dart';
@@ -28,11 +29,14 @@ class _BottomBarState extends State<BottomBar> {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => Notifications()));
           break;
+        // case 2:
+
+        //   break;
+
         case 3:
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => Home()));
           break;
-        //  case 3: Navigator.of(context).pushNamed('/like'); break;
         case 4:
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => SearchF(),
@@ -43,7 +47,7 @@ class _BottomBarState extends State<BottomBar> {
 
     return SizedBox(
       // height: 100,
-          child: BottomNavigationBar(
+      child: BottomNavigationBar(
         // selectedItemColor: Colors.red,
         // unselectedItemColor: Colors.black,
         items: [
@@ -52,16 +56,19 @@ class _BottomBarState extends State<BottomBar> {
             title: Text(' '),
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_active),
-              title: Text(' ')),
+              icon: Icon(Icons.notifications_active), title: Text(' ')),
           BottomNavigationBarItem(
             title: Text(' '),
             icon: FlatButton(
               color: Colors.blue,
               onPressed: () {
-                print("object");
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => FormF()));
               },
-              child: Icon(Icons.add,color: Colors.white,),
+              child: Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),

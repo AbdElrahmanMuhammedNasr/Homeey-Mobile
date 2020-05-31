@@ -193,11 +193,11 @@ class ProfilePage extends StatelessWidget {
       ),
       bottomNavigationBar: new BottomBar(),
       drawer: DarwerBar(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => {print('object')},
-        tooltip: 'hi',
-        child: Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () => {print('object')},
+      //   tooltip: 'hi',
+      //   child: Icon(Icons.add),
+      // ),
     );
   }
 }
