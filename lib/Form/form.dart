@@ -15,38 +15,47 @@ class _FormFState extends State<FormF> {
   double _price;
   String _inger;
   String _dis;
+  bool _isSwitched = false;
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.blue,
         appBar: AppBarTop(
           title: 'Add',
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.all(10),
+        body: Center(
+          child: SingleChildScrollView(
             child: Form(
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
                     Container(
-                        margin: EdgeInsets.all(2),
+                        margin: EdgeInsets.all(10),
                         child: Column(
                           children: <Widget>[
                             OutlineButton(
+                              borderSide: BorderSide(color: Colors.white),
                               onPressed: () {
                                 _openImageOptins();
                               },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Icon(Icons.camera_alt),
+                                  Icon(
+                                    Icons.camera_alt,
+                                    color: Colors.white,
+                                  ),
                                   SizedBox(
                                     width: 5,
                                   ),
-                                  Text('Add Image')
+                                  Text(
+                                    'Add Image',
+                                    style: TextStyle(color: Colors.white),
+                                  )
                                 ],
                               ),
                             ),
@@ -65,23 +74,40 @@ class _FormFState extends State<FormF> {
                           ],
                         )),
                     Container(
-                      margin: EdgeInsets.all(2),
+                      margin: EdgeInsets.all(10),
+                      height: 60.0,
+                      decoration: BoxDecoration(
+                        color: Colors.blue[300],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: TextFormField(
+                        style: TextStyle(color: Colors.white),
+                        decoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(10),
+                            border: InputBorder.none,
+                            labelText: 'Name',
+                            // hintText: 'Name',
+                            prefixIcon: Icon(
+                              Icons.nature,
+                              color: Colors.white,
+                            )),
                         validator: (String val) {
                           if (val.isEmpty) {
                             return 'required';
                           }
                         },
-                        decoration: InputDecoration(
-                          labelText: 'Name',
-                        ),
                         onSaved: (String val) {
                           _name = val;
                         },
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.all(2),
+                      margin: EdgeInsets.all(10),
+                      height: 60.0,
+                      decoration: BoxDecoration(
+                        color: Colors.blue[300],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: TextFormField(
                         keyboardType: TextInputType.number,
                         validator: (String val) {
@@ -92,7 +118,13 @@ class _FormFState extends State<FormF> {
                           }
                         },
                         decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(10),
+                          border: InputBorder.none,
                           labelText: 'Price',
+                          prefixIcon: Icon(
+                            Icons.attach_money,
+                            color: Colors.white,
+                          ),
                         ),
                         onSaved: (String val) {
                           _price = double.parse(val);
@@ -100,16 +132,26 @@ class _FormFState extends State<FormF> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.all(2),
+                      margin: EdgeInsets.all(10),
+                      height: 60.0,
+                      decoration: BoxDecoration(
+                        color: Colors.blue[300],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: TextFormField(
-                        maxLines: 2,
                         validator: (String val) {
                           if (val.isEmpty) {
                             return 'required';
                           }
                         },
                         decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(10),
+                          border: InputBorder.none,
                           labelText: 'Ingredients',
+                          prefixIcon: Icon(
+                            Icons.fastfood,
+                            color: Colors.white,
+                          ),
                         ),
                         onSaved: (String val) {
                           _inger = val;
@@ -117,20 +159,46 @@ class _FormFState extends State<FormF> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.all(2),
+                      margin: EdgeInsets.all(10),
+                      height: 60.0,
+                      decoration: BoxDecoration(
+                        color: Colors.blue[300],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: TextFormField(
-                        maxLines: 5,
                         validator: (String val) {
                           if (val.isEmpty) {
                             return 'required';
                           }
                         },
                         decoration: InputDecoration(
+                          contentPadding: EdgeInsets.all(10),
+                          border: InputBorder.none,
                           labelText: 'Discribe',
+                          prefixIcon: Icon(
+                            Icons.details,
+                            color: Colors.white,
+                          ),
                         ),
                         onSaved: (String val) {
                           _dis = val;
                         },
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text('available Now'),
+                          Switch(
+                              value: _isSwitched,
+                              activeColor: Colors.blue[100],
+                              onChanged: (val) {
+                                setState(() {
+                                  _isSwitched = val;
+                                });
+                              }),
+                        ],
                       ),
                     ),
                     RaisedButton(
@@ -149,6 +217,7 @@ class _FormFState extends State<FormF> {
                           'price': _price,
                           'inger': _inger,
                           'dis': _dis,
+                          'ava':_isSwitched,
                         };
                         print(pro);
                       },
