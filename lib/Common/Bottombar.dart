@@ -12,14 +12,13 @@ class BottomBar extends StatefulWidget {
 class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
-    var _index ;
+    var _index;
     _goTo(int x) {
+      setState(() {
+        _index = x;
+        print(_index);
+      });
 
-       setState(() {
-            _index = x;
-            print(_index);
-          });
-          
       switch (x) {
         case 0:
           Navigator.of(context)
@@ -29,7 +28,7 @@ class _BottomBarState extends State<BottomBar> {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => Notifications()));
           break;
-        case 2:
+        case 3:
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => Home()));
           break;
@@ -39,32 +38,43 @@ class _BottomBarState extends State<BottomBar> {
             builder: (context) => SearchF(),
           ));
           break;
-
-         
       }
     }
 
-    return BottomNavigationBar(
-      // selectedItemColor: Colors.red,
-      // unselectedItemColor: Colors.black,
-      items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.add_shopping_cart),
-          title: Text('cart'),
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_active),
-            title: Text('notification')),
-        BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('home')),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border), title: Text('like')),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.search), title: Text('search')),
-      ],
-      currentIndex:_index == null ? 0 : _index,
-      type: BottomNavigationBarType.fixed,
-      onTap: (int x) => _goTo(x),
-      
+    return SizedBox(
+      // height: 100,
+          child: BottomNavigationBar(
+        // selectedItemColor: Colors.red,
+        // unselectedItemColor: Colors.black,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_shopping_cart),
+            title: Text(' '),
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.notifications_active),
+              title: Text(' ')),
+          BottomNavigationBarItem(
+            title: Text(' '),
+            icon: FlatButton(
+              color: Colors.blue,
+              onPressed: () {
+                print("object");
+              },
+              child: Icon(Icons.add,color: Colors.white,),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text(' ')),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite_border), title: Text(' ')),
+        ],
+        currentIndex: _index == null ? 0 : _index,
+        type: BottomNavigationBarType.fixed,
+        onTap: (int x) => _goTo(x),
+      ),
     );
   }
 }

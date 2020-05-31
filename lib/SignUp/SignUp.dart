@@ -21,13 +21,7 @@ class _SignUPFState extends State<SignUPF> {
 
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Homeey',
-            style: TextStyle(letterSpacing: 2),
-          ),
-        ),
-
+        
         body: loading?Loading():SingleChildScrollView(
           child: Container(
             margin: EdgeInsets.only(top: 5, left: 15,right: 15,bottom: 5),
@@ -234,20 +228,20 @@ class _SignUPFState extends State<SignUPF> {
                         label: Text('SignUP'),
                       ),
                     ),
-                    Container(
-                      child: RaisedButton.icon(
-                        onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Login(),));
-                        },
-                        color: Colors.blue[400],
-                        colorBrightness: Brightness.dark,
-                        icon: Icon(Icons.ac_unit),
-                        label: Text(
-                          'Login',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ),
-                    ),
+                    // Container(
+                    //   child: RaisedButton.icon(
+                    //     onPressed: () {
+                    //         Navigator.of(context).push(MaterialPageRoute(builder: (context) => Login(),));
+                    //     },
+                    //     color: Colors.blue[400],
+                    //     colorBrightness: Brightness.dark,
+                    //     icon: Icon(Icons.ac_unit),
+                    //     label: Text(
+                    //       'Login',
+                    //       style: TextStyle(fontSize: 18),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 )
               ],

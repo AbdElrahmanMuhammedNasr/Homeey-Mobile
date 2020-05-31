@@ -11,10 +11,12 @@ class AlertF extends StatelessWidget {
       body: AlertDialog(
         title: Container(
           width: double.infinity,
-          child: Column(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              //  Align(alignment: Alignment.centerRight,child: Icon(Icons.close, color: Colors.red,)),
                Align(alignment: Alignment.centerLeft,child: Text('${type} confirm')),
+               Align(alignment: Alignment.centerRight,child: Icon(Icons.close, color: Colors.red,)),
+
             ],
           ),
         ),

@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/Alert.dart';
 import 'package:hommey/Common/AppBarTop.dart';
@@ -41,6 +44,7 @@ class _HomeState extends State<Home> {
                               ? Container(
                                   child: IconButton(
                                       icon: Icon(Icons.favorite_border),
+                                      iconSize: 30,
                                       onPressed: () {
                                         setState(() {
                                           _choose = true;
@@ -49,11 +53,14 @@ class _HomeState extends State<Home> {
                                 )
                               : Container(
                                   child: IconButton(
-                                      icon: Icon(Icons.favorite_border),
+                                      icon: Icon(
+                                        Icons.favorite,
+                                        color: Colors.red,
+                                      ),
                                       onPressed: () {
-                                        // setState(() {
-                                        //   _choose = false;
-                                        // });
+                                        setState(() {
+                                          _choose = false;
+                                        });
                                       }),
                                 ),
                         ),
@@ -63,11 +70,17 @@ class _HomeState extends State<Home> {
                   ListTile(
                     title: Center(
                       child: Text(
-                        'The name of order',
+                        'Fruit Salad',
+                        style: TextStyle(
+                            fontFamily: 'Raleway', fontWeight: FontWeight.w700),
                       ),
                     ),
                     subtitle: Center(
-                      child: Text(' 20 EGY.'),
+                      child: Text(
+                        ' 20 EGY.',
+                        style: TextStyle(
+                            fontFamily: 'Raleway', fontWeight: FontWeight.w700),
+                      ),
                     ),
                   ),
                   RaisedButton.icon(
@@ -76,13 +89,24 @@ class _HomeState extends State<Home> {
                     icon: Icon(
                       Icons.send,
                     ),
-                    label: const Text('Order'),
+                    label: const Text(
+                      'Order',
+                      style: TextStyle(
+                          fontFamily: 'Raleway', fontWeight: FontWeight.w700),
+                    ),
                     onPressed: () {
+
+                      // final assetsAudioPlayer = AssetsAudioPlayer();
+                      // assetsAudioPlayer.open(
+                      //   Audio("audios/1.mp3"),
+                      // );
+                      // assetsAudioPlayer.pause()
+
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => AlertF(
                           type: 'order',
                         ),
-                      ));
+                      ),);
                     },
                   ),
                 ],
