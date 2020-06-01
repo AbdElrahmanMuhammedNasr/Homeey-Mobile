@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/DrawerBar.dart';
+import 'package:hommey/Form/formService.dart';
 import 'package:image_picker/image_picker.dart';
 
 class FormF extends StatefulWidget {
@@ -12,7 +13,7 @@ class FormF extends StatefulWidget {
 
 class _FormFState extends State<FormF> {
   String _name;
-  double _price;
+  String _price;
   String _inger;
   String _dis;
   bool _isSwitched = false;
@@ -127,7 +128,7 @@ class _FormFState extends State<FormF> {
                           ),
                         ),
                         onSaved: (String val) {
-                          _price = double.parse(val);
+                          _price = val;
                         },
                       ),
                     ),
@@ -212,14 +213,17 @@ class _FormFState extends State<FormF> {
                         _formKey.currentState.save();
 
                         final Map<String, dynamic> pro = {
-                          'image': _image,
+                          // 'image': _image,
+                          'image':'https://pixabay.com/photos/woman-girl-coffee-phone-comfort-5146765/',
                           'name': _name,
                           'price': _price,
                           'inger': _inger,
                           'dis': _dis,
                           'ava':_isSwitched,
                         };
-                        print(pro);
+                        FormService().addProduct(pro);
+                        _formKey.currentState.reset();
+                        // print(pro);
                       },
                       child: Text('Save'),
                     )
