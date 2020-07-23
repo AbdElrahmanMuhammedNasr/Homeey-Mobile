@@ -1,4 +1,7 @@
 import 'dart:math';
+import 'package:hommey/Home/SingleFood.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
@@ -7,29 +10,25 @@ import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/Common/loading.dart';
-import 'package:hommey/Home/homeService.dart';
 import 'package:hommey/Models/Product.dart';
 import 'package:hommey/profile/Profile_Page.dart';
+import 'package:flutter/services.dart';
 
 class Home extends StatefulWidget {
-  List<Product> list = [
-    // Product(name: 'abdo', image: "https://pixabay.com/photos/woman-girl-coffee-phone-comfort-5146765/")
-
-  ];
-  Home() {
-    // list =  HomeService().getProduct() ;
-  }
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  bool _choose = false;
-
-  @override
-  void initState() {
-    super.initState();
-  }
+  List<Map<String, dynamic>> food = [
+    {"image": "b1.jpg", "name": "rice", "price": 12},
+    {"image": "b4.jpg", "name": "cake", "price": 10},
+    {"image": "b2.jpg", "name": "rice", "price": 20},
+    {"image": "b3.jpg", "name": "bake", "price": 15},
+    {"image": "1.jpg", "name": "rice", "price": 12},
+    {"image": "9.jpg", "name": "cake", "price": 10},
+    {"image": "2.jpg", "name": "rice", "price": 20},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,97 +37,19 @@ class _HomeState extends State<Home> {
       appBar: AppBarTop(
         title: 'Homeey',
       ),
-      body:widget.list.isEmpty? Loading():ListView.builder(
-          itemCount: widget.list.length,
-          itemBuilder: (BuildContext context, int pos) {
-            return Card(
-              margin: EdgeInsets.all(10.0),
+      body: food.isEmpty
+          ? Loading()
+          : SingleChildScrollView(
               child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Stack(
-                    children: <Widget>[
-                      Image.network(
-                        widget.list[pos].image,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Align(
-                          alignment: Alignment.topRight,
-                          child: _choose == false
-                              ? Container(
-                                  child: IconButton(
-                                      icon: Icon(Icons.favorite_border),
-                                      iconSize: 30,
-                                      onPressed: () {
-                                        setState(() {
-                                          _choose = true;
-                                        });
-                                      }),
-                                )
-                              : Container(
-                                  child: IconButton(
-                                      icon: Icon(
-                                        Icons.favorite,
-                                        color: Colors.red,
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          _choose = false;
-                                        });
-                                      }),
-                                ),
-                        ),
-                      )
-                    ],
-                  ),
-                  ListTile(
-                    title: Center(
-                      child: Text(
-                        widget.list[pos].name,
-                        style: TextStyle(
-                            fontFamily: 'Raleway', fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                    subtitle: Center(
-                      child: Text(
-                        widget.list[pos].price,
-                        style: TextStyle(
-                            fontFamily: 'Raleway', fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                  ),
-                  RaisedButton.icon(
-                    color: Colors.green,
-                    colorBrightness: Brightness.dark,
-                    icon: Icon(
-                      Icons.send,
-                    ),
-                    label: const Text(
-                      'Order',
-                      style: TextStyle(
-                          fontFamily: 'Raleway', fontWeight: FontWeight.w700),
-                    ),
-                    onPressed: () {
-                      // final assetsAudioPlayer = AssetsAudioPlayer();
-                      // assetsAudioPlayer.open(
-                      //   Audio("audios/1.mp3"),
-                      // );
-                      // assetsAudioPlayer.pause()
-
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => AlertF(
-                            type: 'order',
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ],
+                children: food
+                    .map((e) => new SingleFood(
+                          image: e["image"],
+                          name: e["name"],
+                          price: e["price"],
+                        ))
+                    .toList(),
               ),
-            );
-          }),
+            ),
       bottomNavigationBar: new BottomBar(),
       drawer: DarwerBar(),
     ));

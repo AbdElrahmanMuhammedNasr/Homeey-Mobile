@@ -17,7 +17,7 @@ class _Main2State extends State<Main2> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
-    if(user == null){
+    if(user == null) {
       // return Login();
       return Home();
       // return Foods(); 

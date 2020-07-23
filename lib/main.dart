@@ -6,23 +6,16 @@ import 'package:hommey/Models/user.dart';
 import 'package:hommey/main2.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-    runApp(MyApp());
+void main()  {
+  runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-
-
-      return StreamProvider<User>.value(
-          value: AuthService().user,
-            child: MaterialApp(             
-              home: new Main2()
-    
-    ),
-      );
+    return StreamProvider<User>.value(
+      value: AuthService().user,
+      child: MaterialApp(home: new Main2()),
+    );
   }
 }
