@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/Alert.dart';
+import 'package:hommey/Models/user.dart';
 import 'package:hommey/Search/Search.dart';
 import 'package:hommey/profile/Profile_Page.dart';
 
@@ -24,7 +25,9 @@ class AppBarTop extends StatelessWidget with PreferredSizeWidget {
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchF(),));
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => SearchF(),
+              ),);
             }),
         IconButton(
           icon: title == 'Profile'
@@ -40,8 +43,10 @@ class AppBarTop extends StatelessWidget with PreferredSizeWidget {
                       type: 'Block',
                     ),
                   ))
-                : Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ProfilePage()))
+                : Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => ProfilePage(
+                          name: User().getUserName()
+                        ),),)
           },
         )
       ],

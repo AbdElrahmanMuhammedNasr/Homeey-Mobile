@@ -214,12 +214,13 @@ class _FormFState extends State<FormF> {
 
                         final Map<String, dynamic> pro = {
                           // 'image': _image,
-                          'image':'https://pixabay.com/photos/woman-girl-coffee-phone-comfort-5146765/',
+                          'image':
+                              'https://pixabay.com/photos/woman-girl-coffee-phone-comfort-5146765/',
                           'name': _name,
                           'price': _price,
                           'inger': _inger,
                           'dis': _dis,
-                          'ava':_isSwitched,
+                          'ava': _isSwitched,
                         };
                         FormService().addProduct(pro);
                         _formKey.currentState.reset();

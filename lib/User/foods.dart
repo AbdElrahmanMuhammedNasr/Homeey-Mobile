@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
+import 'package:hommey/Details/Details.dart';
 import 'package:hommey/profile/Profile_Page.dart';
 
 class Foods extends StatefulWidget {
@@ -61,7 +62,7 @@ class _FoodsState extends State<Foods> {
                   SizedBox(
                     height: 15,
                   ),
-                    Text(
+                  Text(
                     'Best Sale',
                     style: TextStyle(
                         fontSize: 20,
@@ -76,11 +77,11 @@ class _FoodsState extends State<Foods> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
-                            food("images/b1.jpg"),
-                            food("images/b2.jpg"),
-                            food("images/b3.jpg"),
-                            food("images/b4.jpg"),
-                            food("images/b2.jpg"),
+                            food(context,"images/b1.jpg"),
+                            food(context,"images/b2.jpg"),
+                            food(context,"images/b3.jpg"),
+                            food(context,"images/b4.jpg"),
+                            food(context,"images/b2.jpg"),
                           ],
                         ),
                       ),
@@ -120,14 +121,19 @@ class _FoodsState extends State<Foods> {
   }
 }
 
-Widget food(image) {
+Widget food(context,image) {
   return AspectRatio(
     aspectRatio: 2.5 / 3,
-    child: Container(
-      margin: EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
+    child: InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Details(id: "1",),));
+      },
+      child: Container(
+        margin: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
+        ),
       ),
     ),
   );

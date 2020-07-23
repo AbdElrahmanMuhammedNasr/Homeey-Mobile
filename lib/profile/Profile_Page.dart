@@ -8,6 +8,9 @@ import 'package:hommey/User/positiveComment.dart';
 import 'package:hommey/profile/profile_details.dart';
 
 class ProfilePage extends StatelessWidget {
+  String name;
+  ProfilePage({this.name});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +63,7 @@ class ProfilePage extends StatelessWidget {
                                                 MainAxisAlignment.center,
                                             children: <Widget>[
                                               Text(
-                                                'AbdElrahman ',
+                                                '${name} ',
                                                 style: TextStyle(
                                                     fontSize: 18,
                                                     letterSpacing: 1,
@@ -68,19 +71,7 @@ class ProfilePage extends StatelessWidget {
                                               ),
                                             ],
                                           ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Text(
-                                                '25 years ',
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    letterSpacing: 1,
-                                                    color: Colors.white),
-                                              ),
-                                            ],
-                                          ),
+                                          
                                         ],
                                       ),
                                     ],

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hommey/Common/Alert.dart';
 import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
+import 'package:hommey/profile/Profile_Page.dart';
 
 class Details extends StatefulWidget {
   String id;
@@ -51,7 +53,7 @@ class _DetailsState extends State<Details> {
                   Text(
                     '${widget.singledetil["name"]}',
                     style: TextStyle(
-                        fontSize: 20, color: Colors.black, letterSpacing: 2),
+                        fontSize: 25, color: Colors.black, letterSpacing: 2, fontFamily: 'Raleway',fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: 20,
@@ -59,7 +61,7 @@ class _DetailsState extends State<Details> {
                   Text(
                     '${widget.singledetil["price"]} EGP',
                     style: TextStyle(
-                        fontSize: 20, color: Colors.black, letterSpacing: 2),
+                        fontSize: 18, color: Colors.black, letterSpacing: 2,fontFamily: 'Raleway',fontWeight: FontWeight.bold),
                   ),
                   Padding(padding: EdgeInsets.all(10)),
                   Container(
@@ -100,7 +102,9 @@ class _DetailsState extends State<Details> {
                                     Icons.timer,
                                     color: Colors.green,
                                   ),
-                                  SizedBox(width: 10,),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
                                   Text(
                                     'Avilable',
                                     style: TextStyle(
@@ -122,9 +126,11 @@ class _DetailsState extends State<Details> {
                       children: <Widget>[
                         Icon(
                           Icons.directions_bike,
-                          color: Colors.green[100],
+                          color: Colors.green,
                         ),
-                        SizedBox(width: 10,),
+                        SizedBox(
+                          width: 10,
+                        ),
                         Text(
                           '${widget.singledetil["time"]} min',
                           style: TextStyle(
@@ -136,15 +142,30 @@ class _DetailsState extends State<Details> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.all(15),
-                    child: Text(
-                      'Chef: ${widget.singledetil["chef"]}',
-                      style: TextStyle(
-                        fontSize: 20,
-                        letterSpacing: 1,
-                      ),
-                    ),
-                  ),
+                      width: double.infinity,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            '${widget.singledetil["chef"]}',
+                            style: TextStyle(
+                              fontSize: 20,
+                              letterSpacing: 1,
+                              fontFamily: 'Raleway',
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          IconButton(
+                              icon: Icon(Icons.arrow_right),
+                              onPressed: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => ProfilePage(
+                                    name: widget.singledetil["chef"],
+                                  ),
+                                ));
+                              })
+                        ],
+                      )),
                   Container(
                     width: double.infinity,
                     padding: EdgeInsets.all(15),
@@ -165,6 +186,29 @@ class _DetailsState extends State<Details> {
                       ],
                     ),
                   ),
+                  Container(
+                    child: RaisedButton.icon(
+                      color: Colors.green,
+                      colorBrightness: Brightness.dark,
+                      icon: Icon(
+                        Icons.send,
+                      ),
+                      label: const Text(
+                        'Order',
+                        style: TextStyle(
+                            fontFamily: 'Raleway', fontWeight: FontWeight.w700),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => AlertF(
+                              type: 'order',
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  )
                 ],
               ),
             ),

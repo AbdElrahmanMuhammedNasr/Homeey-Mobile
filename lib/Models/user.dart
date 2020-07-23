@@ -1,6 +1,11 @@
-class User  {
-  final String uid;
+class User {
+  static  String userName;
 
-  User({this.uid});
+  String getUserName() {
+    return userName;
+  }
 
+  void setUserName(String email) {
+    userName = email;
+  }
 }
