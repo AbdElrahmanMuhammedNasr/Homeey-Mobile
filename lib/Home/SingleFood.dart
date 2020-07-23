@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/Alert.dart';
+import 'package:hommey/Details/Details.dart';
+import 'package:hommey/Like/Like.dart';
 
 class SingleFood extends StatefulWidget {
+  String id;
   String image;
   String name;
   int price;
 
-  SingleFood({this.image, this.name, this.price});
+  SingleFood({this.id, this.image, this.name, this.price});
 
   @override
   _SingleFoodState createState() => _SingleFoodState();
@@ -36,9 +39,17 @@ class _SingleFoodState extends State<SingleFood> {
                 children: <Widget>[
                   Align(
                     child: IconButton(
-                        icon: Icon(Icons.info, color: Colors.blue,),
+                        icon: Icon(
+                          Icons.info,
+                          color: Colors.blue,
+                        ),
                         onPressed: () {
-                          print('object');
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => Details(
+                                      id: widget.id,
+                                    )),
+                          );
                         }),
                   ),
                   Padding(

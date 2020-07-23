@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hommey/Cart/Cart.dart';
 import 'package:hommey/Form/form.dart';
 import 'package:hommey/Home/Home.dart';
+import 'package:hommey/Like/Like.dart';
 import 'package:hommey/Notifications/Notifications.dart';
 import 'package:hommey/Search/Search.dart';
 
@@ -17,7 +18,6 @@ class _BottomBarState extends State<BottomBar> {
     _goTo(int x) {
       setState(() {
         _index = x;
-        print(_index);
       });
 
       switch (x) {
@@ -39,7 +39,7 @@ class _BottomBarState extends State<BottomBar> {
           break;
         case 4:
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => SearchF(),
+            builder: (context) => Like(),
           ));
           break;
       }

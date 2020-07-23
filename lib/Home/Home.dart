@@ -17,13 +17,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<Map<String, dynamic>> food = [
-    {"image": "b1.jpg", "name": "rice", "price": 12},
-    {"image": "b4.jpg", "name": "cake", "price": 10},
-    {"image": "b2.jpg", "name": "rice", "price": 20},
-    {"image": "b3.jpg", "name": "bake", "price": 15},
-    {"image": "1.jpg", "name": "rice", "price": 12},
-    {"image": "9.png", "name": "cake", "price": 10},
-    {"image": "2.jpg", "name": "rice", "price": 20},
+    {"id":'1', "image": "b1.jpg", "name": "rice", "price": 12},
+    {"id":'2', "image": "b4.jpg", "name": "cake", "price": 10},
+    {"id":'3', "image": "b2.jpg", "name": "rice", "price": 20},
+    {"id":'4', "image": "b3.jpg", "name": "bake", "price": 15},
+    {"id":'5', "image": "1.jpg", "name": "rice", "price": 12},
+    {"id":'6', "image": "9.png", "name": "cake", "price": 10},
+    {"id":'7', "image": "2.jpg", "name": "rice", "price": 20},
   ];
 
   @override
@@ -39,6 +39,7 @@ class _HomeState extends State<Home> {
               child: Column(
                 children: food
                     .map((e) => new SingleFood(
+                          id: e["id"],
                           image: e["image"],
                           name: e["name"],
                           price: e["price"],
