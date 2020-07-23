@@ -1,250 +1,229 @@
 import 'package:flutter/material.dart';
-import 'package:hommey/Common/LoginService.dart';
-import 'package:hommey/Common/loading.dart';
 import 'package:hommey/Home/Home.dart';
-import 'package:hommey/Login/Login.dart';
 
-class SignUPF extends StatefulWidget {
+class SignUp extends StatefulWidget {
   @override
-  _SignUPFState createState() => _SignUPFState();
+  _SignUp createState() => _SignUp();
 }
 
-class _SignUPFState extends State<SignUPF> {
-
-  final AuthService _authService = AuthService();
-  final email = TextEditingController();
-  final password = TextEditingController();
-  bool loading = false;
-
+class _SignUp extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       home: Scaffold(
-        
-        body: loading?Loading():SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.only(top: 5, left: 15,right: 15,bottom: 5),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Padding(padding: EdgeInsets.all(15)),
-                Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  padding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-                  color: Colors.black12,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: ' Email',
-                      icon: Icon(Icons.email),
-                    ),
-                    style: TextStyle(
-                        fontSize: 20, letterSpacing: 2, color: Colors.blue),
-                    controller: email,    
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  padding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-                  color: Colors.black12,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'First Name',
-                      icon: Icon(Icons.ac_unit),
-                    ),
-                    style: TextStyle(
-                        fontSize: 20, letterSpacing: 2, color: Colors.blue),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  padding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-                  color: Colors.black12,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'Last Name',
-                      icon: Icon(Icons.ac_unit),
-                    ),
-                    style: TextStyle(
-                        fontSize: 20, letterSpacing: 2, color: Colors.blue),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  padding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-                  color: Colors.black12,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: ' City',
-                      icon: Icon(Icons.location_city),
-                    ),
-                    style: TextStyle(
-                        fontSize: 20, letterSpacing: 2, color: Colors.blue),
-                  ),
-                ),
-                 Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  padding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-                  color: Colors.black12,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: ' State',
-                      icon: Icon(Icons.location_city),
-                    ),
-                    style: TextStyle(
-                        fontSize: 20, letterSpacing: 2, color: Colors.blue),
-                  ),
-                ),
-                 Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  padding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-                  color: Colors.black12,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: ' Code',
-                      icon: Icon(Icons.cloud_done),
-                    ),
-                    style: TextStyle(
-                        fontSize: 20, letterSpacing: 2, color: Colors.blue),
-                  ),
-                ),
-                Container(
-                  // date
-                  // margin: EdgeInsets.only(bottom: 10),
-                  // padding:
-                      // EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-                  // child: CalendarDatePicker(initialDate:DateTime(1920, 2, 1) , firstDate: DateTime(1980, 1, 1), lastDate: DateTime(2000, 1, 1), onDateChanged: (DateTime newDateTime) {
-                  // Do something
-                // },
-                // )
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  padding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-                  color: Colors.black12,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: ' Phone',
-                      icon: Icon(Icons.phone),
-                    ),
-                    style: TextStyle(
-                        fontSize: 20, letterSpacing: 2, color: Colors.blue),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  padding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-                  color: Colors.black12,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: ' Email',
-                      icon: Icon(Icons.email),
-                    ),
-                    style: TextStyle(
-                        fontSize: 20, letterSpacing: 2, color: Colors.blue),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 10, bottom: 30),
-                  padding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(right: 50),
-                        child: Row(
-                          children: <Widget>[
-                            Radio(value: 1, groupValue: 1, onChanged: null),
-                            Text('Male')
-                          ],
-                        ),
-                      ),
-                      Container(
-                        child: Row(
-                          children: <Widget>[
-                            Radio(value: 0, groupValue: 1, onChanged: null),
-                            Text('Feamle')
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                 Container(
-                  margin: EdgeInsets.only(top: 10, bottom: 30),
-                  padding:
-                      EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
-                  color: Colors.black12,
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: ' Password ',
-                        icon: Icon(Icons.verified_user)),
-                    style: TextStyle(
-                        fontSize: 20, letterSpacing: 2, color: Colors.blue),
-                    controller: password,    
-                  ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Container(
-                      child: RaisedButton.icon(
-                        onPressed: () async{
-                          setState(() {
-                            loading = true;
-                          });
-                              print(email.text);
-
-                          dynamic result = await _authService.createNewUser(email.text, password.text);
-
-                          if(result == null){
-                            setState(() {
-                               loading = false;
-
-                            });
-                          }
-                        },
-                        color: Colors.red[400],
-                        colorBrightness: Brightness.dark,
-                        icon: Icon(Icons.ac_unit),
-                        label: Text('SignUP'),
-                      ),
-                    ),
-                    // Container(
-                    //   child: RaisedButton.icon(
-                    //     onPressed: () {
-                    //         Navigator.of(context).push(MaterialPageRoute(builder: (context) => Login(),));
-                    //     },
-                    //     color: Colors.blue[400],
-                    //     colorBrightness: Brightness.dark,
-                    //     icon: Icon(Icons.ac_unit),
-                    //     label: Text(
-                    //       'Login',
-                    //       style: TextStyle(fontSize: 18),
-                    //     ),
-                    //   ),
-                    // ),
-                  ],
-                )
+        body: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              colors: [
+                Colors.blue[900],
+                Colors.blue[800],
+                Colors.blue[400],
               ],
+            ),
+          ),
+          child: Expanded(
+            child: SafeArea(
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 30, horizontal: 25),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            'Sign Up',
+                            style: TextStyle(fontSize: 30, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(60),
+                              topRight: Radius.circular(60),
+                              bottomLeft: Radius.circular(0),
+                              bottomRight: Radius.circular(0),
+                            )),
+                      child: Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+                        child: Column(
+                          children: <Widget>[
+
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.black)),
+                              child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      hintText: "First Name",
+                                      border: InputBorder.none),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.black)),
+                              child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: "Last Name",
+                                    border: InputBorder.none,
+                                    // suffixIcon: Icon(Icons.panorama_fish_eye),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.black)),
+                              child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: "Email",
+                                    border: InputBorder.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.black)),
+                              child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: "Password",
+                                    border: InputBorder.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.black)),
+                              child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: "Confirm Password",
+                                    border: InputBorder.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  // color: Colors.orangeAccent,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.black)),
+                              child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: "Address",
+                                    border: InputBorder.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  // color: Colors.orangeAccent,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.black)),
+                              child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: "little About You",
+                                    border: InputBorder.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => Home(),
+                                  ),
+                                );
+                              },
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => Home(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  height: 50,
+                                  margin: EdgeInsets.symmetric(horizontal: 50),
+                                  decoration: BoxDecoration(
+                                      color: Colors.blue,
+                                      borderRadius: BorderRadius.circular(50)),
+                                  child: Center(
+                                    child: Text(
+                                      'Sign UP',
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                          ],
+                        ),
+                      ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hommey/Common/LoginService.dart';
 import 'package:hommey/Login/Login.dart';
 
 class DarwerBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final AuthService _authService = AuthService();
 
     return Drawer(
       child: SafeArea(
@@ -37,8 +35,8 @@ class DarwerBar extends StatelessWidget {
               height: 5,
             ),
             RaisedButton.icon(
-              onPressed: () async {
-                await _authService.signOut();
+              onPressed: ()  {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => Login(),));
               },
               color: Colors.red,
               colorBrightness: Brightness.dark,

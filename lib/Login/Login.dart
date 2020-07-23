@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hommey/Common/LoginService.dart';
-import 'package:hommey/Common/loading.dart';
 import 'package:hommey/Home/Home.dart';
-import 'package:hommey/Models/user.dart';
 import 'package:hommey/SignUp/SignUp.dart';
 
 class Login extends StatefulWidget {
@@ -11,124 +8,166 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final AuthService _authService = AuthService();
-
-  final email = TextEditingController();
-  final password = TextEditingController();
-  String error = '';
-  bool loading = false;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Hommey',style: TextStyle(letterSpacing: 2),),
-            bottom: TabBar(tabs: [
-              Tab(
-                icon: Icon(Icons.add_to_home_screen),
-                text: 'Login',
-              ),
-              Tab(
-                icon: Icon(Icons.create),
-                text: 'SignUp',
-              ),
-            ]),
+      home: Scaffold(
+        body: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              colors: [
+                Colors.blue[900],
+                Colors.blue[800],
+                Colors.blue[400],
+              ],
+            ),
           ),
-          body: TabBarView(children: [
-            Container(
-              child: loading
-                  ? Loading()
-                  : Container(
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Padding(padding: EdgeInsets.all(15)),
-                          Container(
-                            margin: EdgeInsets.only(bottom: 10),
-                            child: Text(
-                              error,
-                              style: TextStyle(color: Colors.red),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(bottom: 10),
-                            padding: EdgeInsets.only(
-                                left: 10, right: 10, bottom: 5, top: 5),
-                            color: Colors.black12,
-                            child: TextField(
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: ' Email',
-                                icon: Icon(Icons.email),
+          child: SafeArea(
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 40, horizontal: 25),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          'Login',
+                          style: TextStyle(fontSize: 50, color: Colors.white),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'welcome back',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Expanded(
+                  flex: 5,
+                  child: SingleChildScrollView(
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(40),
+                            topRight: Radius.circular(40),
+                            bottomLeft: Radius.circular(40),
+                            bottomRight: Radius.circular(40),
+                          )),
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 30, vertical: 100),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              decoration: BoxDecoration(
+                                  // color: Colors.orangeAccent,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.black)),
+                              child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                      hintText: "Email or Phone",
+                                      border: InputBorder.none),
+                                ),
                               ),
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  letterSpacing: 2,
-                                  color: Colors.blue),
-                              controller: email,
                             ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(top: 10, bottom: 30),
-                            padding: EdgeInsets.only(
-                                left: 10, right: 10, bottom: 5, top: 5),
-                            color: Colors.black12,
-                            child: TextField(
-                              decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: ' Password ',
-                                  icon: Icon(Icons.verified_user)),
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  letterSpacing: 2,
-                                  color: Colors.blue),
-                              controller: password,
+                            SizedBox(
+                              height: 30,
                             ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              Container(
-                                child: RaisedButton.icon(
-                                  onPressed: () async {
-                                    setState(() {
-                                      loading = true;
-                                    });
-                                    dynamic result = await _authService.signIn(
-                                        email.text, password.text);
-
-                                    if (result == null) {
-                                      setState(() {
-                                        error = "wrong Email or Password";
-                                        loading = false;
-                                      });
-                                    }
-                                  },
-                                  color: Colors.blue[400],
-                                  colorBrightness: Brightness.dark,
-                                  icon: Icon(Icons.ac_unit),
-                                  label: Text(
-                                    'Login',
-                                    style: TextStyle(fontSize: 18),
+                            Container(
+                              decoration: BoxDecoration(
+                                  // color: Colors.orangeAccent,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(color: Colors.black)),
+                              child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: "Password",
+                                    border: InputBorder.none,
+                                    // suffixIcon: Icon(Icons.panorama_fish_eye),
                                   ),
                                 ),
                               ),
-                           
-                            ],
-                          )
-                        ],
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => Home(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                height: 50,
+                                margin: EdgeInsets.symmetric(horizontal: 50),
+                                decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'login',
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => SignUp(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                height: 50,
+                                margin: EdgeInsets.symmetric(horizontal: 50),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(50),
+                                    border: Border.all(color: Colors.black)),
+                                child: Center(
+                                  child: Text(
+                                    'SignUp',
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
+                  ),
+                ),
+              ],
             ),
-            Container(
-              child: SignUPF(),
-            ),
-          ]),
+          ),
         ),
       ),
     );
