@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hommey/Cart/SingleCart.dart';
 import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
@@ -10,6 +11,12 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
+  List<Map<String, dynamic>> cart = [
+    {"image": 'b1.jpg', "name": 'rice', "ordered": '12-5-2017', "chef": 'Ali',"price":"50"},
+    {"image": 'b2.jpg', "name": 'meat', "ordered": '12-5-2017', "chef": 'Hassan',"price":"20"},
+    {"image": 'b3.jpg', "name": 'Cake', "ordered": '12-5-2017', "chef": 'Tamer',"price":"10"},
+  ];
+
   _goTo(int x) {
     switch (x) {
       case 0:
@@ -27,6 +34,7 @@ class _CartState extends State<Cart> {
       default:
     }
   }
+  // Divider(color: Colors.black),
 
   @override
   Widget build(BuildContext context) {
@@ -38,130 +46,13 @@ class _CartState extends State<Cart> {
         body: Container(
           child: PageView(
             scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              Container(
-                width: 160.0,
-                color: Colors.blueAccent,
-                child: Card(
-                  margin: EdgeInsets.all(10.0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset('images/b2.jpg'),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      ListTile(
-                        title: Center(
-                          child: Text(
-                            'Cake',
-                            style: TextStyle(fontSize: 25, letterSpacing: 2),
-                          ),
-                        ),
-                        subtitle: Center(
-                          child: Column(
-                            children: <Widget>[
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text('Price : 20 EGY'),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text('Ordered in : 2020-10-5'),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text('Chef : Ali Mohamed '),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                width: 160.0,
-                color: Colors.blueAccent,
-                child: Card(
-                  margin: EdgeInsets.all(10.0),
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset('images/1.jpg'),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      ListTile(
-                        title: Center(
-                          child: Text(
-                            'Cake',
-                            style: TextStyle(fontSize: 25, letterSpacing: 2),
-                          ),
-                        ),
-                        subtitle: Center(
-                          child: Column(
-                            children: <Widget>[
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text('Price : 20 EGY'),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text('Ordered in : 2020-10-5'),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Divider(color: Colors.black),
-                      Text(
-                        'Chef',
-                        style: TextStyle(fontSize: 20, letterSpacing: 2),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            SizedBox(
-                              height: 7,
-                            ),
-                            CircleAvatar(
-                              radius: 50,
-                              backgroundImage: AssetImage('images/m.jpg'),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              'Tamer Ali',
-                              style: TextStyle(fontSize: 20),
-                            ),
-                            SizedBox(
-                              height: 3,
-                            ),
-                            Text(
-                              'Raiting - 4.2',
-                              style: TextStyle(
-                                  fontSize: 15, color: Colors.black26),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-            ],
+            children:cart.map((e) => SingleCart(
+              image: e["image"],
+              name: e["name"],
+              price: e["price"],
+              ordered: e["ordered"],
+              chef: e["chef"],
+            )).toList(),
           ),
         ),
         bottomNavigationBar: new BottomBar(),

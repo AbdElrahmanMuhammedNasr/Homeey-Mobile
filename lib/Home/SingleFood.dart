@@ -42,7 +42,7 @@ class _SingleFoodState extends State<SingleFood> {
                         }),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(5),
                     child: Align(
                       alignment: Alignment.topRight,
                       child: _choose == false

@@ -5,14 +5,10 @@ import 'dart:convert';
 
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
-import 'package:hommey/Common/Alert.dart';
 import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/Common/loading.dart';
-import 'package:hommey/Models/Product.dart';
-import 'package:hommey/profile/Profile_Page.dart';
-import 'package:flutter/services.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -26,7 +22,7 @@ class _HomeState extends State<Home> {
     {"image": "b2.jpg", "name": "rice", "price": 20},
     {"image": "b3.jpg", "name": "bake", "price": 15},
     {"image": "1.jpg", "name": "rice", "price": 12},
-    {"image": "9.jpg", "name": "cake", "price": 10},
+    {"image": "9.png", "name": "cake", "price": 10},
     {"image": "2.jpg", "name": "rice", "price": 20},
   ];
 

@@ -59,56 +59,53 @@ class _FoodsState extends State<Foods> {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: 15,
+                  ),
+                    Text(
+                    'Best Sale',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.w700),
                   ),
                   Container(
                     height: 250,
                     child: Expanded(
-                        child: Container(
-                      height: 200,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: <Widget>[
-                          food("images/b1.jpg"),
-                          food("images/b2.jpg"),
-                          food("images/b3.jpg"),
-                          food("images/b4.jpg"),
-                          food("images/b2.jpg"),
-                        ],
+                      child: Container(
+                        height: 200,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: <Widget>[
+                            food("images/b1.jpg"),
+                            food("images/b2.jpg"),
+                            food("images/b3.jpg"),
+                            food("images/b4.jpg"),
+                            food("images/b2.jpg"),
+                          ],
+                        ),
                       ),
-                    )),
+                    ),
                   ),
+                  // ),
                   SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    margin: EdgeInsets.only(top: 20),
-                    height: 200,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      image: DecorationImage(
-                          image: AssetImage("images/b2.jpg"),
-                          fit: BoxFit.cover),
-                    ),
+                  Text(
+                    'Catigory',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.w700),
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 20),
-                    height: 200,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      image: DecorationImage(
-                          image: AssetImage("images/b3.jpg"),
-                          fit: BoxFit.cover),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: 20),
-                    height: 200,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      image: DecorationImage(
-                          image: AssetImage("images/b1.jpg"),
-                          fit: BoxFit.cover),
+                    child: Column(
+                      children: <Widget>[
+                        Catigory('b1.jpg', 'Sweet'),
+                        Catigory('b2.jpg', 'Juice'),
+                        Catigory('b3.jpg', 'Meat'),
+                        Catigory('b4.jpg', 'cold')
+                      ],
                     ),
                   ),
                 ],
@@ -132,18 +129,35 @@ Widget food(image) {
         borderRadius: BorderRadius.circular(20),
         image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
       ),
-      // child: Container(
-      //   decoration: BoxDecoration(
-      //     gradient: LinearGradient(
-      //     begin: Alignment.bottomRight,
-      //     stops: [0.1, 0.8],
-      //     colors: [
-      //       // Colors.black.withOpacity(.8),
-      //       // Colors.black.withOpacity(.2),
-      //       ]
-      //   )
-      //   ),
-      // ),
+    ),
+  );
+}
+
+Widget Catigory(image, type) {
+  return Container(
+    height: 200,
+    width: double.infinity,
+    margin: EdgeInsets.symmetric(vertical: 10),
+    decoration: BoxDecoration(
+      image: DecorationImage(
+          image: AssetImage('images/${image}'), fit: BoxFit.cover),
+    ),
+    child: Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.bottomRight,
+          colors: [
+            Colors.black.withOpacity(.8),
+            Colors.black.withOpacity(.2),
+          ],
+        ),
+      ),
+      child: Align(
+          alignment: Alignment.center,
+          child: Text(
+            '${type}',
+            style: TextStyle(fontSize: 30, color: Colors.white),
+          )),
     ),
   );
 }
