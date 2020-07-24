@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hommey/Common/Alert.dart';
 import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
+import 'package:hommey/Common/CatigoryAlert.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/Details/Details.dart';
+import 'package:hommey/User/LsitOfFoodTypes.dart';
 import 'package:hommey/profile/Profile_Page.dart';
 
 class Foods extends StatefulWidget {
@@ -14,8 +17,15 @@ class _FoodsState extends State<Foods> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarTop(
-        title: 'Chef Food',
+      appBar: AppBar(
+        title: Text(
+          'Chef Food',
+          style: TextStyle(
+              letterSpacing: 3,
+              fontFamily: 'Billabong',
+              fontWeight: FontWeight.w300),
+        ),
+        leading: Icon(Icons.arrow_back),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -48,17 +58,7 @@ class _FoodsState extends State<Foods> {
                   SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    margin: EdgeInsets.all(2),
-                    color: Colors.black12,
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        prefixIcon: Icon(Icons.search),
-                        hintText: 'Search',
-                      ),
-                    ),
-                  ),
+
                   SizedBox(
                     height: 15,
                   ),
@@ -77,11 +77,11 @@ class _FoodsState extends State<Foods> {
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: <Widget>[
-                            food(context,"images/b1.jpg"),
-                            food(context,"images/b2.jpg"),
-                            food(context,"images/b3.jpg"),
-                            food(context,"images/b4.jpg"),
-                            food(context,"images/b2.jpg"),
+                            food(context, "b1.jpg"),
+                            food(context, "b2.jpg"),
+                            food(context, "b3.jpg"),
+                            food(context, "b4.jpg"),
+                            food(context, "b2.jpg"),
                           ],
                         ),
                       ),
@@ -91,21 +91,36 @@ class _FoodsState extends State<Foods> {
                   SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    'Catigory',
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Raleway',
-                        fontWeight: FontWeight.w700),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'Catigory',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Raleway',
+                            fontWeight: FontWeight.w700),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.add),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => CatigoryAlert(),
+                          ));
+                        },
+                      )
+                    ],
                   ),
+
                   Container(
                     margin: EdgeInsets.only(top: 20),
                     child: Column(
                       children: <Widget>[
-                        Catigory('b1.jpg', 'Sweet'),
-                        Catigory('b2.jpg', 'Juice'),
-                        Catigory('b3.jpg', 'Meat'),
-                        Catigory('b4.jpg', 'cold')
+                        Catigory(context, 'b1.jpg', 'brakfast'),
+                        Catigory(context, 'b2.jpg', 'Sweet'),
+                        Catigory(context, '12.jpg', 'Juice'),
+                        Catigory(context, 'b3.jpg', 'Fruit'),
+                        Catigory(context, 'b4.jpg', 'vegen')
                       ],
                     ),
                   ),
@@ -121,49 +136,63 @@ class _FoodsState extends State<Foods> {
   }
 }
 
-Widget food(context,image) {
+Widget food(context, image) {
   return AspectRatio(
     aspectRatio: 2.5 / 3,
     child: InkWell(
       onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Details(id: "1",),));
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => Details(
+            id: "1",
+          ),
+        ));
       },
       child: Container(
         margin: EdgeInsets.all(20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          image: DecorationImage(image: AssetImage(image), fit: BoxFit.cover),
+          image: DecorationImage(
+              image: AssetImage('images/${image}'), fit: BoxFit.cover),
         ),
       ),
     ),
   );
 }
 
-Widget Catigory(image, type) {
-  return Container(
-    height: 200,
-    width: double.infinity,
-    margin: EdgeInsets.symmetric(vertical: 10),
-    decoration: BoxDecoration(
-      image: DecorationImage(
-          image: AssetImage('images/${image}'), fit: BoxFit.cover),
-    ),
-    child: Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.bottomRight,
-          colors: [
-            Colors.black.withOpacity(.8),
-            Colors.black.withOpacity(.2),
-          ],
+Widget Catigory(context, image, type) {
+  return InkWell(
+    onTap: () {
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => ListOfFood(
+          type: type,
         ),
+      ));
+    },
+    child: Container(
+      height: 200,
+      width: double.infinity,
+      margin: EdgeInsets.symmetric(vertical: 10),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('images/${image}'), fit: BoxFit.cover),
       ),
-      child: Align(
-          alignment: Alignment.center,
-          child: Text(
-            '${type}',
-            style: TextStyle(fontSize: 30, color: Colors.white),
-          )),
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.bottomRight,
+            colors: [
+              Colors.black.withOpacity(.8),
+              Colors.black.withOpacity(.2),
+            ],
+          ),
+        ),
+        child: Align(
+            alignment: Alignment.center,
+            child: Text(
+              '${type}',
+              style: TextStyle(fontSize: 30, color: Colors.white),
+            )),
+      ),
     ),
   );
 }

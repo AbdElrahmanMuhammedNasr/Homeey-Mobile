@@ -31,8 +31,15 @@ class _NotificationsState extends State<Notifications> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBarTop(
-        title: 'Notifications',
+      appBar: AppBar(
+        title: Text(
+          'Notifications',
+          style: TextStyle(
+              letterSpacing: 3,
+              fontFamily: 'Billabong',
+              fontWeight: FontWeight.w300),
+        ),
+        leading: Icon(Icons.arrow_back),
       ),
       body: SingleChildScrollView(
         child: Column(

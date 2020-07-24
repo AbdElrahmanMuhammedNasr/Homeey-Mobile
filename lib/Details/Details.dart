@@ -28,8 +28,15 @@ class _DetailsState extends State<Details> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBarTop(
-        title: 'Details',
+      appBar: AppBar(
+        title: Text(
+          'Details',
+          style: TextStyle(
+              letterSpacing: 3,
+              fontFamily: 'Billabong',
+              fontWeight: FontWeight.w300),
+        ),
+        leading: Icon(Icons.arrow_back),
       ),
       body: Container(
         child: Column(
@@ -53,7 +60,11 @@ class _DetailsState extends State<Details> {
                   Text(
                     '${widget.singledetil["name"]}',
                     style: TextStyle(
-                        fontSize: 25, color: Colors.black, letterSpacing: 2, fontFamily: 'Raleway',fontWeight: FontWeight.bold),
+                        fontSize: 25,
+                        color: Colors.black,
+                        letterSpacing: 2,
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: 20,
@@ -61,7 +72,11 @@ class _DetailsState extends State<Details> {
                   Text(
                     '${widget.singledetil["price"]} EGP',
                     style: TextStyle(
-                        fontSize: 18, color: Colors.black, letterSpacing: 2,fontFamily: 'Raleway',fontWeight: FontWeight.bold),
+                        fontSize: 18,
+                        color: Colors.black,
+                        letterSpacing: 2,
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.bold),
                   ),
                   Padding(padding: EdgeInsets.all(10)),
                   Container(
@@ -149,11 +164,10 @@ class _DetailsState extends State<Details> {
                           Text(
                             '${widget.singledetil["chef"]}',
                             style: TextStyle(
-                              fontSize: 20,
-                              letterSpacing: 1,
-                              fontFamily: 'Raleway',
-                              fontWeight: FontWeight.bold
-                            ),
+                                fontSize: 20,
+                                letterSpacing: 1,
+                                fontFamily: 'Raleway',
+                                fontWeight: FontWeight.bold),
                           ),
                           IconButton(
                               icon: Icon(Icons.arrow_right),

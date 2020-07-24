@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class AlertF extends StatelessWidget {
-  String type;
-  AlertF({this.type});
-
+class CatigoryAlert extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,32 +10,34 @@ class AlertF extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text('${type} confirm')),
-              Align(
-                alignment: Alignment.centerRight,
-                child: IconButton(
-                  icon: Icon(
-                    Icons.close,
-                    color: Colors.red,
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
+              Text('Add New Catigory'),
+              IconButton(
+                icon: Icon(
+                  Icons.close,
+                  color: Colors.red,
                 ),
-              ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
             ],
           ),
         ),
         content: SingleChildScrollView(
           child: ListBody(
             children: <Widget>[
-              Text('This is a ${type} alert .'),
-              SizedBox(
-                height: 10,
+              Container(
+                decoration: BoxDecoration(
+
+                ),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                      hintText: 'Enter Catigory Name',
+                      helperText: 'Juice , Sweet ,vegan ..etc',
+                      //  border: InputBorder.none,
+                       ),
+                ),
               ),
-              Text('Would you like to approve of this Action?'),
               SizedBox(
                 height: 20,
               ),
@@ -47,7 +45,7 @@ class AlertF extends StatelessWidget {
                 color: Colors.blue,
                 colorBrightness: Brightness.dark,
                 child: Text(
-                  'Approve',
+                  'Add',
                   style: TextStyle(letterSpacing: 1),
                 ),
                 onPressed: () {

@@ -53,12 +53,12 @@ class _BottomBarState extends State<BottomBar> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.add_shopping_cart),
-            title: Text(' '),
+            title: Text('Cart'),
           ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_active), title: Text(' ')),
+              icon: Icon(Icons.notifications_active), title: Text('notifications ')),
           BottomNavigationBarItem(
-            title: Text(' '),
+            title: Text('Add'),
             icon: FlatButton(
               color: Colors.blue,
               onPressed: () {
@@ -74,9 +74,9 @@ class _BottomBarState extends State<BottomBar> {
               ),
             ),
           ),
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text(' ')),
+          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border), title: Text(' ')),
+              icon: Icon(Icons.favorite_border), title: Text('Liked')),
         ],
         currentIndex: _index == null ? 0 : _index,
         type: BottomNavigationBarType.fixed,

@@ -25,8 +25,15 @@ class _FormFState extends State<FormF> {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.blue,
-        appBar: AppBarTop(
-          title: 'Add',
+         appBar: AppBar(
+          title: Text(
+            'Add',
+            style: TextStyle(
+                letterSpacing: 3,
+                fontFamily: 'Billabong',
+                fontWeight: FontWeight.w300),
+          ),
+          leading: Icon(Icons.arrow_back),
         ),
         body: Center(
           child: SingleChildScrollView(

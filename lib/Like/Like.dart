@@ -15,8 +15,15 @@ class _LikeState extends State<Like> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBarTop(
-          title: 'Liked',
+        appBar: AppBar(
+          title: Text(
+            'Like',
+            style: TextStyle(
+                letterSpacing: 3,
+                fontFamily: 'Billabong',
+                fontWeight: FontWeight.w300),
+          ),
+          leading: Icon(Icons.arrow_back),
         ),
         body: Container(
           child: ListView(
@@ -24,7 +31,6 @@ class _LikeState extends State<Like> {
               children: widget.like.map((e) => food(e)).toList()),
         ),
         bottomNavigationBar: new BottomBar(),
-        drawer: DarwerBar(),
       ),
     );
   }

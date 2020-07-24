@@ -52,142 +52,133 @@ class _SignUp extends State<SignUp> {
                               bottomLeft: Radius.circular(0),
                               bottomRight: Radius.circular(0),
                             )),
-                      child: Container(
-                        margin:
-                            EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-                        child: Column(
-                          children: <Widget>[
-
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: Colors.black)),
-                              child: Padding(
-                                padding: EdgeInsets.all(5),
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                      hintText: "First Name",
-                                      border: InputBorder.none),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: Colors.black)),
-                              child: Padding(
-                                padding: EdgeInsets.all(5),
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Last Name",
-                                    border: InputBorder.none,
-                                    // suffixIcon: Icon(Icons.panorama_fish_eye),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(
+                              vertical: 50, horizontal: 20),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: Colors.black)),
+                                child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                        hintText: "First Name",
+                                        border: InputBorder.none),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: Colors.black)),
-                              child: Padding(
-                                padding: EdgeInsets.all(5),
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Email",
-                                    border: InputBorder.none,
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: Colors.black)),
+                                child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "Last Name",
+                                      border: InputBorder.none,
+                                      // suffixIcon: Icon(Icons.panorama_fish_eye),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: Colors.black)),
-                              child: Padding(
-                                padding: EdgeInsets.all(5),
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Password",
-                                    border: InputBorder.none,
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: Colors.black)),
+                                child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "Email",
+                                      border: InputBorder.none,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: Colors.black)),
-                              child: Padding(
-                                padding: EdgeInsets.all(5),
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Confirm Password",
-                                    border: InputBorder.none,
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: Colors.black)),
+                                child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "Password",
+                                      border: InputBorder.none,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  // color: Colors.orangeAccent,
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: Colors.black)),
-                              child: Padding(
-                                padding: EdgeInsets.all(5),
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "Address",
-                                    border: InputBorder.none,
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: Colors.black)),
+                                child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "Confirm Password",
+                                      border: InputBorder.none,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  // color: Colors.orangeAccent,
-                                  borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: Colors.black)),
-                              child: Padding(
-                                padding: EdgeInsets.all(5),
-                                child: TextField(
-                                  decoration: InputDecoration(
-                                    hintText: "little About You",
-                                    border: InputBorder.none,
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    // color: Colors.orangeAccent,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: Colors.black)),
+                                child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "Address",
+                                      border: InputBorder.none,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => Home(),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    // color: Colors.orangeAccent,
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: Colors.black)),
+                                child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      hintText: "little About You",
+                                      border: InputBorder.none,
+                                    ),
                                   ),
-                                );
-                              },
-                              child: InkWell(
+                                ),
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              InkWell(
                                 onTap: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
@@ -212,13 +203,12 @@ class _SignUp extends State<SignUp> {
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 30,
-                            ),
-                          ],
+                              SizedBox(
+                                height: 30,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
                       ),
                     ),
                   ),

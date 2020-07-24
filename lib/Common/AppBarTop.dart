@@ -25,28 +25,20 @@ class AppBarTop extends StatelessWidget with PreferredSizeWidget {
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => SearchF(),
-              ),);
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => SearchF(),
+                ),
+              );
             }),
         IconButton(
-          icon: title == 'Profile'
-              ? Icon(
-                  Icons.block,
-                  color: Colors.red,
-                )
-              : Icon(Icons.account_circle),
+          icon: Icon(Icons.account_circle),
           onPressed: () => {
-            title == 'Profile'
-                ? Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => AlertF(
-                      type: 'Block',
-                    ),
-                  ))
-                : Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ProfilePage(
-                          name: User().getUserName()
-                        ),),)
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => ProfilePage(name: User().getUserName()),
+              ),
+            )
           },
         )
       ],

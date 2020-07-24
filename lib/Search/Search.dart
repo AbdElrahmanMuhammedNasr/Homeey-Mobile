@@ -14,8 +14,15 @@ class _SearchFState extends State<SearchF> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBarTop(
-          title: 'Search',
+        appBar: AppBar(
+          title: Text(
+            'Search',
+            style: TextStyle(
+                letterSpacing: 3,
+                fontFamily: 'Billabong',
+                fontWeight: FontWeight.w300),
+          ),
+          leading: Icon(Icons.arrow_back),
         ),
         body: SingleChildScrollView(
           child: Container(
