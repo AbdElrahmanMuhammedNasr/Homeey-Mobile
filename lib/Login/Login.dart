@@ -79,7 +79,7 @@ class _LoginState extends State<Login> {
                               Container(
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(color: Colors.black)),
+                                    border: Border.all(color: Colors.black),),
                                 child: Padding(
                                   padding: EdgeInsets.all(5),
                                   child: TextFormField(

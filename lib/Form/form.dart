@@ -1,7 +1,7 @@
 import 'dart:io';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/Form/formService.dart';
 import 'package:hommey/Models/user.dart';
@@ -58,7 +58,7 @@ class _FormFState extends State<FormF> {
                           child: Column(
                             children: <Widget>[
                               OutlineButton(
-                                borderSide: BorderSide(color: Colors.black12),
+                                borderSide: BorderSide(color: Colors.blue),
                                 onPressed: () {
                                   _openImageOptins();
                                 },
@@ -67,14 +67,14 @@ class _FormFState extends State<FormF> {
                                   children: <Widget>[
                                     Icon(
                                       Icons.camera_alt,
-                                      color: Colors.black12,
+                                      color: Colors.blue,
                                     ),
                                     SizedBox(
                                       width: 5,
                                     ),
                                     Text(
                                       'Add Image',
-                                      style: TextStyle(color: Colors.black12),
+                                      style: TextStyle(color: Colors.blue),
                                     )
                                   ],
                                 ),
@@ -97,11 +97,11 @@ class _FormFState extends State<FormF> {
                         margin: EdgeInsets.all(10),
                         height: 60.0,
                         decoration: BoxDecoration(
-                          color: Colors.blue[100],
+                          border: Border.all(color: Colors.black),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextFormField(
-                          style: TextStyle(color: Colors.black12),
+                          style: TextStyle(color: Colors.blue),
                           decoration: InputDecoration(
                               contentPadding: EdgeInsets.all(10),
                               border: InputBorder.none,
@@ -109,7 +109,7 @@ class _FormFState extends State<FormF> {
                               // hintText: 'Name',
                               prefixIcon: Icon(
                                 Icons.nature,
-                                color: Colors.black12,
+                                color: Colors.blue,
                               )),
                           validator: (String val) {
                             if (val.isEmpty) {
@@ -125,7 +125,7 @@ class _FormFState extends State<FormF> {
                         margin: EdgeInsets.all(10),
                         height: 60.0,
                         decoration: BoxDecoration(
-                          color: Colors.blue[100],
+                          border: Border.all(color: Colors.black),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextFormField(
@@ -143,7 +143,7 @@ class _FormFState extends State<FormF> {
                             labelText: 'Price',
                             prefixIcon: Icon(
                               Icons.attach_money,
-                              color: Colors.black12,
+                              color: Colors.blue,
                             ),
                           ),
                           onSaved: (String val) {
@@ -155,7 +155,7 @@ class _FormFState extends State<FormF> {
                         margin: EdgeInsets.all(10),
                         height: 60.0,
                         decoration: BoxDecoration(
-                          color: Colors.blue[100],
+                          border: Border.all(color: Colors.black),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextFormField(
@@ -171,7 +171,7 @@ class _FormFState extends State<FormF> {
                             labelText: 'Ingredients',
                             prefixIcon: Icon(
                               Icons.fastfood,
-                              color: Colors.black12,
+                              color: Colors.blue,
                             ),
                           ),
                           onSaved: (String val) {
@@ -183,7 +183,7 @@ class _FormFState extends State<FormF> {
                         margin: EdgeInsets.all(10),
                         height: 60.0,
                         decoration: BoxDecoration(
-                          color: Colors.blue[100],
+                          border: Border.all(color: Colors.black),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextFormField(
@@ -198,7 +198,7 @@ class _FormFState extends State<FormF> {
                             labelText: 'Discribe',
                             prefixIcon: Icon(
                               Icons.disc_full,
-                              color: Colors.black12,
+                              color: Colors.blue,
                             ),
                           ),
                           onSaved: (String val) {
@@ -210,7 +210,7 @@ class _FormFState extends State<FormF> {
                         margin: EdgeInsets.all(10),
                         height: 60.0,
                         decoration: BoxDecoration(
-                          color: Colors.blue[100],
+                          border: Border.all(color: Colors.black),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextFormField(
@@ -225,7 +225,7 @@ class _FormFState extends State<FormF> {
                             labelText: 'Category',
                             prefixIcon: Icon(
                               Icons.category,
-                              color: Colors.black12,
+                              color: Colors.blue,
                             ),
                           ),
                           onSaved: (String val) {
@@ -237,7 +237,7 @@ class _FormFState extends State<FormF> {
                         margin: EdgeInsets.all(10),
                         height: 60.0,
                         decoration: BoxDecoration(
-                          color: Colors.blue[100],
+                          border: Border.all(color: Colors.black),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextFormField(
@@ -252,7 +252,7 @@ class _FormFState extends State<FormF> {
                             labelText: 'Address',
                             prefixIcon: Icon(
                               Icons.location_city,
-                              color: Colors.black12,
+                              color: Colors.blue,
                             ),
                           ),
                           onSaved: (String val) {
@@ -264,7 +264,7 @@ class _FormFState extends State<FormF> {
                         margin: EdgeInsets.all(10),
                         height: 60.0,
                         decoration: BoxDecoration(
-                          color: Colors.blue[100],
+                          border: Border.all(color: Colors.black),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: TextFormField(
@@ -279,7 +279,7 @@ class _FormFState extends State<FormF> {
                             labelText: 'Time',
                             prefixIcon: Icon(
                               Icons.timer,
-                              color: Colors.black12,
+                              color: Colors.blue,
                             ),
                           ),
                           onSaved: (String val) {
@@ -333,8 +333,25 @@ class _FormFState extends State<FormF> {
     final pickedFile = await picker.getImage(source: source);
     setState(() {
       _image = File(pickedFile.path);
+
+      print('-----------------------------------');
+      uploadFile();
+      print('-----------------------------------');
     });
     Navigator.pop(context);
+  }
+
+  Future uploadFile() async {
+    StorageReference ref = FirebaseStorage.instance.ref().child("uploads/");
+    StorageUploadTask uploadTask = ref.putFile(_image);
+    await uploadTask.onComplete;    
+
+    ref.getDownloadURL().then((fileURL) {
+      print(fileURL);
+      // setState(() {
+      //   _uploadedFileURL = fileURL;
+      // });
+    });
   }
 
   void _openImageOptins() {
