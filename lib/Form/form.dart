@@ -22,6 +22,8 @@ class _FormFState extends State<FormF> {
   String _time;
   String _uploadedFileURL;
 
+  bool uploadDone = false;
+
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -94,6 +96,9 @@ class _FormFState extends State<FormF> {
                                     ),
                             ],
                           )),
+                        Container(
+                          child: uploadDone == false ? Text('Wait Until Uploading'):Text('Done'),
+                        ),
                       Container(
                         margin: EdgeInsets.all(10),
                         height: 60.0,
@@ -333,16 +338,13 @@ class _FormFState extends State<FormF> {
     final pickedFile = await picker.getImage(source: source);
     setState(() {
       _image = File(pickedFile.path);
-
-      print('-----------------------------------');
       uploadFile();
-      print('-----------------------------------');
     });
     Navigator.pop(context);
   }
 
   Future uploadFile() async {
-    StorageReference ref = FirebaseStorage.instance.ref().child("uploads/");
+    StorageReference ref = FirebaseStorage.instance.ref().child("uploads/${_image.path}");
     StorageUploadTask uploadTask = ref.putFile(_image);
     await uploadTask.onComplete;    
 
@@ -350,6 +352,7 @@ class _FormFState extends State<FormF> {
       // print(fileURL);
       setState(() {
         _uploadedFileURL = fileURL;
+        uploadDone = true;
       });
     });
   }
