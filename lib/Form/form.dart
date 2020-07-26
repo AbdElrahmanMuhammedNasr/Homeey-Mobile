@@ -20,6 +20,7 @@ class _FormFState extends State<FormF> {
   String _address;
   String _category;
   String _time;
+  String _uploadedFileURL;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -299,8 +300,7 @@ class _FormFState extends State<FormF> {
 
                           final Map<String, dynamic> pro = {
                             // 'image': _image,
-                            'image':
-                                'https://pixabay.com/photos/woman-girl-coffee-phone-comfort-5146765/',
+                            'image':_uploadedFileURL,
                             'name': _name,
                             'price': _price,
                             'inger': _inger,
@@ -347,10 +347,10 @@ class _FormFState extends State<FormF> {
     await uploadTask.onComplete;    
 
     ref.getDownloadURL().then((fileURL) {
-      print(fileURL);
-      // setState(() {
-      //   _uploadedFileURL = fileURL;
-      // });
+      // print(fileURL);
+      setState(() {
+        _uploadedFileURL = fileURL;
+      });
     });
   }
 
