@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/Form/formService.dart';
 import 'package:hommey/Models/user.dart';
@@ -97,7 +98,7 @@ class _FormFState extends State<FormF> {
                             ],
                           )),
                         Container(
-                          child: uploadDone == false ? Text('Wait Until Uploading'):Text('Done'),
+                          child: uploadDone == false ? Text('Wait Until Uploading..'):Text('Done',style: TextStyle(color: Colors.green),),
                         ),
                       Container(
                         margin: EdgeInsets.all(10),
@@ -293,7 +294,7 @@ class _FormFState extends State<FormF> {
                           },
                         ),
                       ),
-                      RaisedButton(
+                      uploadDone == false ? Container(child: Text('Save will show when uploading image')):RaisedButton(
                         color: Colors.blue,
                         colorBrightness: Brightness.dark,
                         onPressed: () {
@@ -317,6 +318,7 @@ class _FormFState extends State<FormF> {
                           };
                           FormService().addProduct(pro);
                           _formKey.currentState.reset();
+                          _image = null;
                           // print(pro);
                         },
                         child: Text('Save'),
@@ -326,7 +328,7 @@ class _FormFState extends State<FormF> {
             ),
           ),
         ),
-        drawer: DarwerBar(),
+        bottomNavigationBar: BottomBar(),
       ),
     );
   }
