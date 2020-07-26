@@ -1,29 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/Alert.dart';
-import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/profile/Profile_Page.dart';
 
 class Details extends StatefulWidget {
   String id;
-  Details({this.id});
+  String image;
+  String name;
+  int price;
 
-  Map<String, dynamic> singledetil = {
-    "image": "b1.jpg",
-    "name": 'Rice',
-    "price": '12',
-    "address": '34 st - kafr Elzayat - Tanta',
-    "time": '20',
-    "rate": '4',
-    "chef": 'Tamer ALi',
-  };
+  String category;
+  String address;
+  String email;
+  String inger;
+  String dis;
+  String time;
+
+  Details({this.time,this.id, this.image, this.name, this.price, this.address, this.category,this.dis, this.email, this.inger});
+
+
+ 
 
   @override
   _DetailsState createState() => _DetailsState();
 }
 
 class _DetailsState extends State<Details> {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -50,7 +54,7 @@ class _DetailsState extends State<Details> {
               child: Container(
                   height: 300,
                   width: double.infinity,
-                  child: Image.asset('images/${widget.singledetil["image"]}')),
+                  child: Image.network('${widget.image}')),
             ),
             Padding(padding: EdgeInsets.all(5)),
             Container(
@@ -58,7 +62,7 @@ class _DetailsState extends State<Details> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    '${widget.singledetil["name"]}',
+                    '${widget.name}',
                     style: TextStyle(
                         fontSize: 25,
                         color: Colors.black,
@@ -70,7 +74,7 @@ class _DetailsState extends State<Details> {
                     height: 20,
                   ),
                   Text(
-                    '${widget.singledetil["price"]} EGP',
+                    '${widget.price} EGP',
                     style: TextStyle(
                         fontSize: 18,
                         color: Colors.black,
@@ -94,7 +98,7 @@ class _DetailsState extends State<Details> {
                                   color: Colors.blue,
                                 ),
                                 Text(
-                                  '${widget.singledetil["address"]}',
+                                  '${widget.address}',
                                   style: TextStyle(
                                       fontSize: 20, color: Colors.black),
                                 ),
@@ -147,7 +151,7 @@ class _DetailsState extends State<Details> {
                           width: 10,
                         ),
                         Text(
-                          '${widget.singledetil["time"]} min',
+                          '${widget.time} min',
                           style: TextStyle(
                               fontSize: 20,
                               letterSpacing: 1,
@@ -162,7 +166,7 @@ class _DetailsState extends State<Details> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            '${widget.singledetil["chef"]}',
+                            '${widget.email}',
                             style: TextStyle(
                                 fontSize: 20,
                                 letterSpacing: 1,
@@ -174,32 +178,12 @@ class _DetailsState extends State<Details> {
                               onPressed: () {
                                 Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => ProfilePage(
-                                    name: widget.singledetil["chef"],
+                                    name: widget.email,
                                   ),
                                 ));
                               })
                         ],
                       )),
-                  Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.all(15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          '${widget.singledetil["rate"]}',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Icon(
-                          Icons.star,
-                          color: Colors.red,
-                        ),
-                      ],
-                    ),
-                  ),
                   Container(
                     child: RaisedButton.icon(
                       color: Colors.green,

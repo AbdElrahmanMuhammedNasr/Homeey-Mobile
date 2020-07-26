@@ -20,18 +20,6 @@ class AppBarTop extends StatelessWidget with PreferredSizeWidget {
       ),
       actions: <Widget>[
         IconButton(
-            icon: Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => SearchF(),
-                ),
-              );
-            }),
-        IconButton(
           icon: Icon(Icons.account_circle),
           onPressed: () => {
             Navigator.of(context).push(

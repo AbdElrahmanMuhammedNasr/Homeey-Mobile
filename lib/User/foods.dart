@@ -91,26 +91,26 @@ class _FoodsState extends State<Foods> {
                   SizedBox(
                     height: 10,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        'Catigory',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Raleway',
-                            fontWeight: FontWeight.w700),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.add),
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => CatigoryAlert(),
-                          ));
-                        },
-                      )
-                    ],
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //   children: <Widget>[
+                  //     Text(
+                  //       'Catigory',
+                  //       style: TextStyle(
+                  //           fontSize: 20,
+                  //           fontFamily: 'Raleway',
+                  //           fontWeight: FontWeight.w700),
+                  //     ),
+                  //     IconButton(
+                  //       icon: Icon(Icons.add),
+                  //       onPressed: () {
+                  //         Navigator.of(context).push(MaterialPageRoute(
+                  //           builder: (context) => CatigoryAlert(),
+                  //         ));
+                  //       },
+                  //     )
+                  //   ],
+                  // ),
 
                   Container(
                     margin: EdgeInsets.only(top: 20),

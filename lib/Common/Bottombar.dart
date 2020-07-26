@@ -39,7 +39,7 @@ class _BottomBarState extends State<BottomBar> {
           break;
         case 4:
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => Like(),
+            builder: (context) => SearchF(),
           ));
           break;
       }
@@ -76,7 +76,7 @@ class _BottomBarState extends State<BottomBar> {
           ),
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border), title: Text('Liked')),
+              icon: Icon(Icons.search), title: Text('Search')),
         ],
         currentIndex: _index == null ? 0 : _index,
         type: BottomNavigationBarType.fixed,

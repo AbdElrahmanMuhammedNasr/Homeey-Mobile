@@ -9,7 +9,14 @@ class SingleFood extends StatefulWidget {
   String name;
   int price;
 
-  SingleFood({this.id, this.image, this.name, this.price});
+  String category;
+  String address;
+  String email;
+  String inger;
+  String dis;
+  String time;
+
+  SingleFood({this.time,this.id, this.image, this.name, this.price, this.address, this.category,this.dis, this.email, this.inger});
 
   @override
   _SingleFoodState createState() => _SingleFoodState();
@@ -33,7 +40,7 @@ class _SingleFoodState extends State<SingleFood> {
         children: <Widget>[
           Stack(
             children: <Widget>[
-              Image.asset('images/${widget.image}'),
+              Image.network('${widget.image}'),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -48,39 +55,20 @@ class _SingleFoodState extends State<SingleFood> {
                             MaterialPageRoute(
                                 builder: (context) => Details(
                                       id: widget.id,
+                                      image: widget.name,
+                                      name: widget.name,
+                                      price: widget.price,
+                                      category: widget.category,
+                                      address: widget.address,
+                                      email: widget.email,
+                                      inger: widget.inger,
+                                      dis: widget.dis,
+                                      time: widget.time,
                                     )),
                           );
                         }),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(5),
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: _choose == false
-                          ? Container(
-                              child: IconButton(
-                                  icon: Icon(Icons.favorite_border),
-                                  iconSize: 25,
-                                  onPressed: () {
-                                    setState(() {
-                                      _choose = true;
-                                    });
-                                  }),
-                            )
-                          : Container(
-                              child: IconButton(
-                                  icon: Icon(
-                                    Icons.favorite,
-                                    color: Colors.red,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _choose = false;
-                                    });
-                                  }),
-                            ),
-                    ),
-                  )
+                  
                 ],
               )
             ],

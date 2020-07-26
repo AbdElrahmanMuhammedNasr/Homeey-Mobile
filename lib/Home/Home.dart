@@ -1,9 +1,7 @@
-import 'dart:math';
 import 'package:hommey/Home/SingleFood.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 
-import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
@@ -16,15 +14,46 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<Map<String, dynamic>> food = [
-    {"id":'1', "image": "b1.jpg", "name": "rice", "price": 12},
-    {"id":'2', "image": "b4.jpg", "name": "cake", "price": 10},
-    {"id":'3', "image": "b2.jpg", "name": "rice", "price": 20},
-    {"id":'4', "image": "b3.jpg", "name": "bake", "price": 15},
-    {"id":'5', "image": "1.jpg", "name": "rice", "price": 12},
-    {"id":'6', "image": "9.png", "name": "cake", "price": 10},
-    {"id":'7', "image": "2.jpg", "name": "rice", "price": 20},
-  ];
+
+  List<Map<String, dynamic>> food = [];
+
+  @override
+  void initState() {
+    super.initState();
+    // food = getAllProducts();
+  }
+
+  @override
+  void setState(fn) {
+    super.setState(fn);
+    // food = getAllProducts();
+  }
+
+  List getAllProducts() {
+    final List<Map<String, dynamic>> products = [];
+    http
+        .get('https://hommey-b9aa6.firebaseio.com/products.json')
+        .then((http.Response res) {
+      final Map<String, dynamic> resData = json.decode(res.body);
+      resData.forEach((String id, dynamic data) {
+        final obj = {
+          "id":id,
+          "image": data["image"],
+          "name": data["name"],
+          "price": data["price"],
+          "category": data["category"],
+          "address": data["address"],
+          "email": data["email"],
+          "inger": data["inger"],
+          "dis": data["dis"],
+          "time":data["time"]
+        };
+        products.add(obj);
+      });
+    });
+    return products;
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +72,12 @@ class _HomeState extends State<Home> {
                           image: e["image"],
                           name: e["name"],
                           price: e["price"],
+                          category: e["category"],
+                          address: e["address"],
+                          email: e["email"],
+                          inger: e["inger"],
+                          dis: e["dis"],
+                          time: e["time"],
                         ))
                     .toList(),
               ),
