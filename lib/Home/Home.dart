@@ -14,30 +14,25 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   List<Map<String, dynamic>> food = [];
 
   @override
   void initState() {
     super.initState();
-    // food = getAllProducts();
+    getAllProducts();
   }
 
-  @override
-  void setState(fn) {
-    super.setState(fn);
-    // food = getAllProducts();
-  }
-
-  List getAllProducts() {
-    final List<Map<String, dynamic>> products = [];
+   getAllProducts() {
+    print('i am in home functio');
     http
         .get('https://hommey-b9aa6.firebaseio.com/products.json')
         .then((http.Response res) {
+      print('i am in home functio2');
+
       final Map<String, dynamic> resData = json.decode(res.body);
       resData.forEach((String id, dynamic data) {
         final obj = {
-          "id":id,
+          "id": id,
           "image": data["image"],
           "name": data["name"],
           "price": data["price"],
@@ -46,14 +41,14 @@ class _HomeState extends State<Home> {
           "email": data["email"],
           "inger": data["inger"],
           "dis": data["dis"],
-          "time":data["time"]
+          "time": data["time"]
         };
-        products.add(obj);
+        setState(() {
+          food.add(obj);
+        });
       });
     });
-    return products;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +66,7 @@ class _HomeState extends State<Home> {
                           id: e["id"],
                           image: e["image"],
                           name: e["name"],
-                          price: e["price"],
+                          price: e["price"].toString(),
                           category: e["category"],
                           address: e["address"],
                           email: e["email"],

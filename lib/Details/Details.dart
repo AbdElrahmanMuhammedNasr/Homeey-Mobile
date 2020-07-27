@@ -8,7 +8,7 @@ class Details extends StatefulWidget {
   String id;
   String image;
   String name;
-  int price;
+  String price;
 
   String category;
   String address;
@@ -17,19 +17,27 @@ class Details extends StatefulWidget {
   String dis;
   String time;
 
-  Details({this.time,this.id, this.image, this.name, this.price, this.address, this.category,this.dis, this.email, this.inger});
-
-
- 
+  Details(
+      {this.time,
+      this.id,
+      this.image,
+      this.name,
+      this.price,
+      this.address,
+      this.category,
+      this.dis,
+      this.email,
+      this.inger});
 
   @override
   _DetailsState createState() => _DetailsState();
 }
 
 class _DetailsState extends State<Details> {
-
   @override
   Widget build(BuildContext context) {
+    // print('Details immage ${widget.image}');
+
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
@@ -54,7 +62,7 @@ class _DetailsState extends State<Details> {
               child: Container(
                   height: 300,
                   width: double.infinity,
-                  child: Image.network('${widget.image}')),
+                  child: Image.network(widget.image)),
             ),
             Padding(padding: EdgeInsets.all(5)),
             Container(

@@ -7,7 +7,7 @@ class SingleFood extends StatefulWidget {
   String id;
   String image;
   String name;
-  int price;
+  String price;
 
   String category;
   String address;
@@ -40,7 +40,7 @@ class _SingleFoodState extends State<SingleFood> {
         children: <Widget>[
           Stack(
             children: <Widget>[
-              Image.network('${widget.image}'),
+              Image.network(widget.image),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -55,7 +55,7 @@ class _SingleFoodState extends State<SingleFood> {
                             MaterialPageRoute(
                                 builder: (context) => Details(
                                       id: widget.id,
-                                      image: widget.name,
+                                      image: widget.image,
                                       name: widget.name,
                                       price: widget.price,
                                       category: widget.category,

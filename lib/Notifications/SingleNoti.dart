@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hommey/Common/Alert.dart';
 
 class SingleNot extends StatefulWidget {
-  String name;
+  String user;
   String order;
-  String image;
-  SingleNot({this.name, this.order, this.image});
+  String time;
+  SingleNot({this.user, this.order, this.time});
 
   @override
   _SingleNotState createState() => _SingleNotState();
@@ -22,7 +22,7 @@ class _SingleNotState extends State<SingleNot> {
             color: Colors.blue[400],
             child: ListTile(
               title: Text(
-                '${widget.name}',
+                '${widget.user}',
                 style: TextStyle(
                     fontSize: 20, letterSpacing: 1, color: Colors.white),
               ),
@@ -30,10 +30,7 @@ class _SingleNotState extends State<SingleNot> {
                 'Just order ${widget.order}',
                 style: TextStyle(color: Colors.white),
               ),
-              leading: CircleAvatar(
-                radius: 30,
-                backgroundImage: AssetImage('images/${widget.image}'),
-              ),
+              // leading: Text('${widget.user}'),
               trailing: Container(
                   child: IconButton(
                       icon: Icon(
