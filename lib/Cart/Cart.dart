@@ -3,7 +3,10 @@ import 'package:hommey/Cart/SingleCart.dart';
 import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
-import 'package:hommey/profile/Profile_Page.dart';
+import 'package:hommey/Common/loading.dart';
+import 'package:hommey/Models/user.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class Cart extends StatefulWidget {
   @override
@@ -12,29 +15,46 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   List<Map<String, dynamic>> cart = [
-    {"image": 'b1.jpg', "name": 'rice', "ordered": '12-5-2017', "chef": 'Ali',"price":"50"},
-    {"image": 'b2.jpg', "name": 'meat', "ordered": '12-5-2017', "chef": 'Hassan',"price":"20"},
-    {"image": 'b3.jpg', "name": 'Cake', "ordered": '12-5-2017', "chef": 'Tamer',"price":"10"},
+    // {"image": 'b1.jpg', "name": 'rice', "ordered": '12-5-2017', "chef": 'Ali',"price":"50"},
+    // {"image": 'b2.jpg', "name": 'meat', "ordered": '12-5-2017', "chef": 'Hassan',"price":"20"},
+    // {"image": 'b3.jpg', "name": 'Cake', "ordered": '12-5-2017', "chef": 'Tamer',"price":"10"},
   ];
 
-  _goTo(int x) {
-    switch (x) {
-      case 0:
-        Navigator.of(context).pushNamed('/cart');
-        break;
-      case 1:
-        Navigator.of(context).pushNamed('/notifications');
-        break;
-      case 2:
-        Navigator.of(context).pushNamed('/home');
-        break;
-      //  case 3: Navigator.of(context).pushNamed('/cart'); break;
-      //  case 4: Navigator.of(context).pushNamed('/cart'); break;
+  getAllNotifications() {
+    print('cart1 ${new User().getUserName()}');
 
-      default:
-    }
+    http
+        .get('https://hommey-b9aa6.firebaseio.com/Cart.json')
+        .then((http.Response res) {
+      final Map<String, dynamic> resData = json.decode(res.body);
+      resData.forEach((String id, dynamic data) {
+        if (data["email"] == new User().getUserName()) {
+          final obj = {
+            "id": id,
+            "time": data["Time"],
+            "chefEmail": data["chefEmail"],
+            "email": data["email"],
+            "image": data["image"],
+            "name": data["name"],
+            "price": data["price"],
+          };
+          print('cart2');
+          setState(() {
+            cart.add(obj);
+          });
+        }
+      });
+    });
   }
+
+ 
   // Divider(color: Colors.black),
+
+  @override
+  void initState() {
+    super.initState();
+    getAllNotifications();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,16 +63,20 @@ class _CartState extends State<Cart> {
         appBar: AppBarTop(
           title: 'Cart',
         ),
-        body: Container(
+        body:cart.isEmpty? Loading() :Container(
           child: PageView(
             scrollDirection: Axis.horizontal,
-            children:cart.map((e) => SingleCart(
-              image: e["image"],
-              name: e["name"],
-              price: e["price"],
-              ordered: e["ordered"],
-              chef: e["chef"],
-            )).toList(),
+            children: cart
+                .map((e) => SingleCart(
+                      id: e["id"],
+                      time: e["time"],
+                      chefEmail: e["chefEmail"],
+                      email: e["email"],
+                      image: e["image"],
+                      name: e["name"],
+                      price: e["price"].toString(),
+                    ))
+                .toList(),
           ),
         ),
         bottomNavigationBar: new BottomBar(),

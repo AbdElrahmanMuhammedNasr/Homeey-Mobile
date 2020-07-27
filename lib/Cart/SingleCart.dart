@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 
 class SingleCart extends StatefulWidget {
+  String id;
   String image;
   String name;
   String price;
-  String ordered;
-  String chef;
-  SingleCart({this.image, this.name, this.price, this.ordered, this.chef});
+  String time;
+  String chefEmail;
+  String email;
+  SingleCart(
+      {this.id,
+      this.email,
+      this.image,
+      this.name,
+      this.price,
+      this.time,
+      this.chefEmail});
 
   @override
   _SingleCartState createState() => _SingleCartState();
@@ -15,6 +24,8 @@ class SingleCart extends StatefulWidget {
 class _SingleCartState extends State<SingleCart> {
   @override
   Widget build(BuildContext context) {
+      // print(widget.image);
+
     return Container(
       width: 160.0,
       color: Colors.blueAccent,
@@ -22,7 +33,7 @@ class _SingleCartState extends State<SingleCart> {
         margin: EdgeInsets.all(10.0),
         child: Column(
           children: <Widget>[
-            Image.asset('images/${widget.image}'),
+            Image.network(widget.image),
             SizedBox(
               height: 20,
             ),
@@ -43,11 +54,11 @@ class _SingleCartState extends State<SingleCart> {
                     SizedBox(
                       height: 10,
                     ),
-                    Text('Ordered in :${widget.ordered}'),
+                    Text('Ordered in :${widget.time}'),
                     SizedBox(
                       height: 10,
                     ),
-                    Text('Chef : ${widget.chef} '),
+                    Text('Chef : ${widget.chefEmail} '),
                   ],
                 ),
               ),

@@ -5,7 +5,8 @@ class SingleNot extends StatefulWidget {
   String user;
   String order;
   String time;
-  SingleNot({this.user, this.order, this.time});
+  String userImage;
+  SingleNot({this.user, this.order, this.time, this.userImage});
 
   @override
   _SingleNotState createState() => _SingleNotState();
@@ -30,7 +31,10 @@ class _SingleNotState extends State<SingleNot> {
                 'Just order ${widget.order}',
                 style: TextStyle(color: Colors.white),
               ),
-              // leading: Text('${widget.user}'),
+              leading: CircleAvatar(
+                radius: 30,
+                backgroundImage: NetworkImage(widget.userImage),
+              ),
               trailing: Container(
                   child: IconButton(
                       icon: Icon(

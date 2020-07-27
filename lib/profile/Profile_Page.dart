@@ -15,16 +15,15 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-            'Profile',
-            style: TextStyle(
-                letterSpacing: 3,
-                fontFamily: 'Billabong',
-                fontWeight: FontWeight.w300),
-          ),
-          leading: Icon(Icons.arrow_back),
+        title: Text(
+          'Profile',
+          style: TextStyle(
+              letterSpacing: 3,
+              fontFamily: 'Billabong',
+              fontWeight: FontWeight.w300),
         ),
-
+        leading: Icon(Icons.arrow_back),
+      ),
       body: Stack(
         children: <Widget>[
           Column(
@@ -52,7 +51,6 @@ class ProfilePage extends StatelessWidget {
                                 Center(
                                   child: Column(
                                     children: <Widget>[
-                                      
                                       CircleAvatar(
                                         radius: 50,
                                         backgroundImage:
@@ -78,7 +76,6 @@ class ProfilePage extends StatelessWidget {
                                               ),
                                             ],
                                           ),
-                                          
                                         ],
                                       ),
                                     ],
@@ -108,41 +105,10 @@ class ProfilePage extends StatelessWidget {
                                 builder: (context) => Foods()));
                           },
                           child: ProfileDetails(
-                            text: "25",
-                            sub: "your Food",
+                            text: "click",
+                            sub: "Chef Food",
                             icon: Icon(
                               Icons.restaurant,
-                              color: Colors.blue[300],
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => DealCustomer()));
-                          },
-                          child: ProfileDetails(
-                            text: "20",
-                            sub: "Customer deal with you",
-                            icon: Icon(
-                              Icons.record_voice_over,
-                              color: Colors.blue[300],
-                            ),
-                          ),
-                        ),
-                      ]),
-                      TableRow(children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => PositiveComent(),
-                            ));
-                          },
-                          child: ProfileDetails(
-                            text: "15",
-                            sub: "Positive Comment",
-                            icon: Icon(
-                              Icons.arrow_upward,
                               color: Colors.blue[300],
                             ),
                           ),
@@ -155,29 +121,35 @@ class ProfilePage extends StatelessWidget {
                           },
                           child: ProfileDetails(
                             text: "2",
-                            sub: "Negative Comment",
+                            sub: " Comment",
                             icon: Icon(
-                              Icons.arrow_downward,
+                              Icons.comment,
                               color: Colors.blue[300],
                             ),
                           ),
                         ),
                       ]),
                       TableRow(children: [
-                        ProfileDetails(
-                          text: "4",
-                          sub: "your Rating",
-                          icon: Icon(
-                            Icons.star,
-                            color: Colors.blue[300],
+                        GestureDetector(
+                          
+                          child: ProfileDetails(
+                            text: "15",
+                            sub: "Number Of Food",
+                            icon: Icon(
+                              Icons.confirmation_number,
+                              color: Colors.blue[300],
+                            ),
                           ),
                         ),
-                        ProfileDetails(
-                          text: "15",
-                          sub: "Customer Rating you",
-                          icon: Icon(
-                            Icons.record_voice_over,
-                            color: Colors.blue[300],
+                        GestureDetector(
+                       
+                          child: ProfileDetails(
+                            text: "20",
+                            sub: "Customer deal",
+                            icon: Icon(
+                              Icons.record_voice_over,
+                              color: Colors.blue[300],
+                            ),
                           ),
                         ),
                       ]),
@@ -191,11 +163,6 @@ class ProfilePage extends StatelessWidget {
       ),
       bottomNavigationBar: new BottomBar(),
       drawer: DarwerBar(),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () => {print('object')},
-      //   tooltip: 'hi',
-      //   child: Icon(Icons.add),
-      // ),
     );
   }
 }

@@ -32,6 +32,7 @@ class _NotificationsState extends State<Notifications> {
             "order": data["order"],
             "time": data["time"],
             "user": data["user"],
+            "userImage": data["userImage"],
           };
           print('not2');
           setState(() {
@@ -72,6 +73,7 @@ class _NotificationsState extends State<Notifications> {
                           order: e['order'],
                           time: e['time'],
                           user: e['user'],
+                          userImage:e['userImage']
                         ))
                     .toList(),
               ),
