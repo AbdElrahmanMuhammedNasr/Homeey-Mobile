@@ -18,14 +18,14 @@ class _NotificationsState extends State<Notifications> {
   ];
 
   getAllNotifications() {
-    print('not1');
+    print('not1 ${new User().getUserName()}');
 
     http
         .get('https://hommey-b9aa6.firebaseio.com/Notifications.json')
         .then((http.Response res) {
       final Map<String, dynamic> resData = json.decode(res.body);
       resData.forEach((String id, dynamic data) {
-        if (data["emial"] == new User().getUserName()) {
+        if (data["email"] == new User().getUserName()) {
           final obj = {
             "id": id,
             "email": data["email"],
