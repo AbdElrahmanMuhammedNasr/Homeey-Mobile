@@ -16,7 +16,17 @@ class SingleFood extends StatefulWidget {
   String dis;
   String time;
 
-  SingleFood({this.time,this.id, this.image, this.name, this.price, this.address, this.category,this.dis, this.email, this.inger});
+  SingleFood(
+      {this.time,
+      this.id,
+      this.image,
+      this.name,
+      this.price,
+      this.address,
+      this.category,
+      this.dis,
+      this.email,
+      this.inger});
 
   @override
   _SingleFoodState createState() => _SingleFoodState();
@@ -38,40 +48,28 @@ class _SingleFoodState extends State<SingleFood> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Stack(
-            children: <Widget>[
-              Image.network(widget.image),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Align(
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.info,
-                          color: Colors.blue,
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                                builder: (context) => Details(
-                                      id: widget.id,
-                                      image: widget.image,
-                                      name: widget.name,
-                                      price: widget.price,
-                                      category: widget.category,
-                                      address: widget.address,
-                                      email: widget.email,
-                                      inger: widget.inger,
-                                      dis: widget.dis,
-                                      time: widget.time,
-                                    )),
-                          );
-                        }),
-                  ),
-                  
-                ],
-              )
-            ],
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                    builder: (context) => Details(
+                          id: widget.id,
+                          image: widget.image,
+                          name: widget.name,
+                          price: widget.price,
+                          category: widget.category,
+                          address: widget.address,
+                          email: widget.email,
+                          inger: widget.inger,
+                          dis: widget.dis,
+                          time: widget.time,
+                        )),
+              );
+            },
+            child: Container(
+                height: 150,
+                width: double.infinity,
+                child: Image.network(widget.image, fit: BoxFit.fill,)),
           ),
           ListTile(
             title: Center(
@@ -88,27 +86,6 @@ class _SingleFoodState extends State<SingleFood> {
                     fontFamily: 'Raleway', fontWeight: FontWeight.w700),
               ),
             ),
-          ),
-          RaisedButton.icon(
-            color: Colors.green,
-            colorBrightness: Brightness.dark,
-            icon: Icon(
-              Icons.send,
-            ),
-            label: const Text(
-              'Order',
-              style:
-                  TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.w700),
-            ),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => AlertF(
-                    type: 'order',
-                  ),
-                ),
-              );
-            },
           ),
         ],
       ),

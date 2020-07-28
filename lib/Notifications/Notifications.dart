@@ -53,33 +53,63 @@ class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Notifications',
-          style: TextStyle(
-              letterSpacing: 3,
-              fontFamily: 'Billabong',
-              fontWeight: FontWeight.w300),
-        ),
-        leading: Icon(Icons.arrow_back),
-      ),
-      body: nots.isEmpty
-          ? Loading()
-          : SingleChildScrollView(
-              child: Column(
-                children: nots
-                    .map((e) => SingleNot(
-                          order: e['order'],
-                          time: e['time'],
-                          user: e['user'],
-                          userImage:e['userImage']
-                        ))
-                    .toList(),
+      home: Scaffold(
+        body: SafeArea(
+            child: Column(
+          children: <Widget>[
+            Container(
+              color: Colors.blue,
+              height: 55,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      IconButton(
+                          icon: Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                          Navigator.of(context).pop();
+                          }),
+                      Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text(
+                          'Notifications',
+                          style: TextStyle(
+                              color: Colors.white,
+                              letterSpacing: 3,
+                              fontFamily: 'Billabong',
+                              fontSize: 25,
+                              fontWeight: FontWeight.w300),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
               ),
             ),
-      bottomNavigationBar: new BottomBar(),
-      drawer: DarwerBar(),
-    ));
+            Expanded(
+              child: nots.isEmpty
+                  ? Loading()
+                  : SingleChildScrollView(
+                      child: Column(
+                        children: nots
+                            .map((e) => SingleNot(
+                                order: e['order'],
+                                time: e['time'],
+                                user: e['user'],
+                                userImage: e['userImage']))
+                            .toList(),
+                      ),
+                    ),
+            ),
+          ],
+        )),
+        bottomNavigationBar: new BottomBar(),
+        drawer: DarwerBar(),
+      ),
+    );
   }
 }

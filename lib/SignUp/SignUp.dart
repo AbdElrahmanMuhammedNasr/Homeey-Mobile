@@ -59,7 +59,11 @@ class _SignUp extends State<SignUp> {
                             children: <Widget>[
                               Container(
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(15),
+                                      topRight: Radius.circular(15),
+                                      bottomLeft: Radius.circular(15),
+                                    ),
                                     border: Border.all(color: Colors.black)),
                                 child: Padding(
                                   padding: EdgeInsets.all(5),
@@ -75,7 +79,11 @@ class _SignUp extends State<SignUp> {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(15),
+                                      topRight: Radius.circular(15),
+                                      bottomLeft: Radius.circular(15),
+                                    ),
                                     border: Border.all(color: Colors.black)),
                                 child: Padding(
                                   padding: EdgeInsets.all(5),
@@ -93,7 +101,11 @@ class _SignUp extends State<SignUp> {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(15),
+                                      topRight: Radius.circular(15),
+                                      bottomLeft: Radius.circular(15),
+                                    ),
                                     border: Border.all(color: Colors.black)),
                                 child: Padding(
                                   padding: EdgeInsets.all(5),
@@ -110,7 +122,11 @@ class _SignUp extends State<SignUp> {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(15),
+                                      topRight: Radius.circular(15),
+                                      bottomLeft: Radius.circular(15),
+                                    ),
                                     border: Border.all(color: Colors.black)),
                                 child: Padding(
                                   padding: EdgeInsets.all(5),
@@ -127,7 +143,11 @@ class _SignUp extends State<SignUp> {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(15),
+                                      topRight: Radius.circular(15),
+                                      bottomLeft: Radius.circular(15),
+                                    ),
                                     border: Border.all(color: Colors.black)),
                                 child: Padding(
                                   padding: EdgeInsets.all(5),
@@ -145,7 +165,11 @@ class _SignUp extends State<SignUp> {
                               Container(
                                 decoration: BoxDecoration(
                                     // color: Colors.orangeAccent,
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(15),
+                                      topRight: Radius.circular(15),
+                                      bottomLeft: Radius.circular(15),
+                                    ),
                                     border: Border.all(color: Colors.black)),
                                 child: Padding(
                                   padding: EdgeInsets.all(5),
@@ -163,7 +187,11 @@ class _SignUp extends State<SignUp> {
                               Container(
                                 decoration: BoxDecoration(
                                     // color: Colors.orangeAccent,
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(15),
+                                      topRight: Radius.circular(15),
+                                      bottomLeft: Radius.circular(15),
+                                    ),
                                     border: Border.all(color: Colors.black)),
                                 child: Padding(
                                   padding: EdgeInsets.all(5),

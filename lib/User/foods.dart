@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/Alert.dart';
-import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
-import 'package:hommey/Common/CatigoryAlert.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/Details/Details.dart';
 import 'package:hommey/User/LsitOfFoodTypes.dart';
@@ -91,26 +89,6 @@ class _FoodsState extends State<Foods> {
                   SizedBox(
                     height: 10,
                   ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //   children: <Widget>[
-                  //     Text(
-                  //       'Catigory',
-                  //       style: TextStyle(
-                  //           fontSize: 20,
-                  //           fontFamily: 'Raleway',
-                  //           fontWeight: FontWeight.w700),
-                  //     ),
-                  //     IconButton(
-                  //       icon: Icon(Icons.add),
-                  //       onPressed: () {
-                  //         Navigator.of(context).push(MaterialPageRoute(
-                  //           builder: (context) => CatigoryAlert(),
-                  //         ));
-                  //       },
-                  //     )
-                  //   ],
-                  // ),
 
                   Container(
                     margin: EdgeInsets.only(top: 20),

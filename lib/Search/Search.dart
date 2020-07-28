@@ -21,7 +21,7 @@ class _SearchFState extends State<SearchF> {
     super.initState();
   }
 
-   getAllSearch() {
+  getAllSearch() {
     // print('fun1');
 
     http
@@ -55,62 +55,90 @@ class _SearchFState extends State<SearchF> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Search',
-            style: TextStyle(
-                letterSpacing: 3,
-                fontFamily: 'Billabong',
-                fontWeight: FontWeight.w300),
-          ),
-          leading: Icon(Icons.arrow_back),
-        ),
-        body: SingleChildScrollView(
-          child: Container(
-            child: Column(
+        body: SafeArea(
+            child: Column(children: <Widget>[
+          Container(
+            color: Colors.blue,
+            height: 55,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Container(
-                  margin: EdgeInsets.all(10),
-                  padding: EdgeInsets.all(5),
-                  color: Colors.white,
-                  child: TextField(
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search),
-                        border: InputBorder.none,
-                        hintText: 'Search'),
-                    style: TextStyle(fontSize: 20, letterSpacing: 1),
-                    onSubmitted: (value) {
-                      setState(() {
-                        _searchKey = value;
-                        searchOut=[];
-                        getAllSearch();
-                      });
-                      // print(value);
-                    },
-                  ),
-                ),
-                searchOut.isEmpty
-                    ? Loading()
-                    : Column(
-                        children: searchOut
-                            .map((e) => Item(
-                                context,
-                                e["id"],
-                                e["category"],
-                                e["address"],
-                                e["email"],
-                                e["inger"],
-                                e["dis"],
-                                e["time"],
-                                e["image"],
-                                e["name"],
-                                e["price"].toString()))
-                            .toList(),
+                Row(
+                  children: <Widget>[
+                    IconButton(
+                        icon: Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        }),
+                    Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Text(
+                        'Search',
+                        style: TextStyle(
+                            color: Colors.white,
+                            letterSpacing: 3,
+                            fontFamily: 'Billabong',
+                            fontSize: 25,
+                            fontWeight: FontWeight.w300),
                       ),
+                    )
+                  ],
+                ),
               ],
             ),
           ),
-        ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(5),
+                      color: Colors.white,
+                      child: TextField(
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.search),
+                            border: InputBorder.none,
+                            hintText: 'Search'),
+                        style: TextStyle(fontSize: 20, letterSpacing: 1),
+                        onSubmitted: (value) {
+                          setState(() {
+                            _searchKey = value;
+                            searchOut = [];
+                            getAllSearch();
+                          });
+                          // print(value);
+                        },
+                      ),
+                    ),
+                    searchOut.isEmpty
+                        ? Loading()
+                        : Column(
+                            children: searchOut
+                                .map((e) => Item(
+                                    context,
+                                    e["id"],
+                                    e["category"],
+                                    e["address"],
+                                    e["email"],
+                                    e["inger"],
+                                    e["dis"],
+                                    e["time"],
+                                    e["image"],
+                                    e["name"],
+                                    e["price"].toString()))
+                                .toList(),
+                          ),
+                  ],
+                ),
+              ),
+            ),
+          )
+        ])),
         bottomNavigationBar: new BottomBar(),
         drawer: new DarwerBar(),
       ),
@@ -141,24 +169,42 @@ Widget Item(context, id, category, address, email, inger, dis, time, image,
     },
     child: Container(
       margin: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          color: Colors.blue[300],
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            bottomLeft: Radius.circular(30),
+            bottomRight: Radius.circular(30),
+          )),
       child: Column(
         children: <Widget>[
           Container(
             margin: EdgeInsets.all(5),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.blueAccent),
               borderRadius: BorderRadius.circular(10),
             ),
             child: ListTile(
-                title: Text(
-                  '${name}',
-                  style: TextStyle(fontSize: 20, letterSpacing: 1),
+              title: Text(
+                '${name}',
+                style: TextStyle(fontSize: 20, letterSpacing: 1),
+              ),
+              subtitle: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text('${price} EGP'),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text('${category}')
+                ],
+              ),
+              leading: Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  child: Image.network(image),
                 ),
-                subtitle: Text('${price} EGP'),
-                leading: CircleAvatar(
-                  radius: 30,
-                  backgroundImage: NetworkImage(image),
-                )),
+              ),
+            ),
           ),
         ],
       ),

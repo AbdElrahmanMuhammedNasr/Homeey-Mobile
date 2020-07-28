@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/profile/Profile_Page.dart';
@@ -13,9 +12,9 @@ class _PositiveComentState extends State<PositiveComent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarTop(
-        title: 'Comments',
-      ),
+      // appBar: AppBarTop(
+      //   title: 'Comments',
+      // ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 10),
         padding: EdgeInsets.all(5),

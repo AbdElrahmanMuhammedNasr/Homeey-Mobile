@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hommey/Cart/SingleCart.dart';
-import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/Common/loading.dart';
@@ -47,7 +46,6 @@ class _CartState extends State<Cart> {
     });
   }
 
- 
   // Divider(color: Colors.black),
 
   @override
@@ -60,24 +58,62 @@ class _CartState extends State<Cart> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBarTop(
-          title: 'Cart',
-        ),
-        body:cart.isEmpty? Loading() :Container(
-          child: PageView(
-            scrollDirection: Axis.horizontal,
-            children: cart
-                .map((e) => SingleCart(
-                      id: e["id"],
-                      time: e["time"],
-                      chefEmail: e["chefEmail"],
-                      email: e["email"],
-                      image: e["image"],
-                      name: e["name"],
-                      price: e["price"].toString(),
-                    ))
-                .toList(),
-          ),
+        body: SafeArea(
+          child: Column(children: <Widget>[
+            Container(
+              color: Colors.blue,
+              height: 55,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      IconButton(
+                          icon: Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                          Navigator.of(context).pop();
+                          }),
+                      Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text(
+                          'Cart',
+                          style: TextStyle(
+                              color: Colors.white,
+                              letterSpacing: 3,
+                              fontFamily: 'Billabong',
+                              fontSize: 25,
+                              fontWeight: FontWeight.w300),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: cart.isEmpty
+                  ? Loading()
+                  : Container(
+                      child: PageView(
+                        scrollDirection: Axis.horizontal,
+                        children: cart
+                            .map((e) => SingleCart(
+                                  id: e["id"],
+                                  time: e["time"],
+                                  chefEmail: e["chefEmail"],
+                                  email: e["email"],
+                                  image: e["image"],
+                                  name: e["name"],
+                                  price: e["price"].toString(),
+                                ))
+                            .toList(),
+                      ),
+                    ),
+            )
+          ]),
         ),
         bottomNavigationBar: new BottomBar(),
         drawer: DarwerBar(),

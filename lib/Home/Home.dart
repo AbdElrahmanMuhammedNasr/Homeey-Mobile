@@ -1,9 +1,10 @@
 import 'package:hommey/Home/SingleFood.dart';
+import 'package:hommey/Models/user.dart';
+import 'package:hommey/profile/Profile_Page.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
-import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/Common/loading.dart';
@@ -22,7 +23,7 @@ class _HomeState extends State<Home> {
     getAllProducts();
   }
 
-   getAllProducts() {
+  getAllProducts() {
     print('i am in home functio');
     http
         .get('https://hommey-b9aa6.firebaseio.com/products.json')
@@ -54,29 +55,71 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBarTop(
-        title: 'Homeey',
-      ),
-      body: food.isEmpty
-          ? Loading()
-          : SingleChildScrollView(
-              child: Column(
-                children: food
-                    .map((e) => new SingleFood(
-                          id: e["id"],
-                          image: e["image"],
-                          name: e["name"],
-                          price: e["price"].toString(),
-                          category: e["category"],
-                          address: e["address"],
-                          email: e["email"],
-                          inger: e["inger"],
-                          dis: e["dis"],
-                          time: e["time"],
-                        ))
-                    .toList(),
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Container(
+              color: Colors.blue,
+              height: 55,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text(
+                          'Hommey',
+                          style: TextStyle(
+                              color: Colors.white,
+                              letterSpacing: 3,
+                              fontFamily: 'Billabong',
+                              fontSize: 25,
+                              fontWeight: FontWeight.w300),
+                        ),
+                      )
+                    ],
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.account_circle, color: Colors.white),
+                    onPressed: () => {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              ProfilePage(name: User().getUserName()),
+                        ),
+                      )
+                    },
+                  )
+                ],
               ),
             ),
+            Container(
+              height: 655,
+              child: food.isEmpty
+                  ? Loading()
+                  : GridView.count(
+                      crossAxisCount: 2,
+                      childAspectRatio:2.5/3,
+                      children: food
+                          .map((e) => new SingleFood(
+                                id: e["id"],
+                                image: e["image"],
+                                name: e["name"],
+                                price: e["price"].toString(),
+                                category: e["category"],
+                                address: e["address"],
+                                email: e["email"],
+                                inger: e["inger"],
+                                dis: e["dis"],
+                                time: e["time"],
+                              ))
+                          .toList(),
+                    ),
+            )
+          ],
+        ),
+      ),
       bottomNavigationBar: new BottomBar(),
       drawer: DarwerBar(),
     ));

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hommey/Common/AppBarTop.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/User/DealCustomer.dart';
@@ -14,16 +13,16 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Profile',
-          style: TextStyle(
-              letterSpacing: 3,
-              fontFamily: 'Billabong',
-              fontWeight: FontWeight.w300),
-        ),
-        leading: Icon(Icons.arrow_back),
-      ),
+      // appBar: AppBar(
+      //   title: Text(
+      //     'Profile',
+      //     style: TextStyle(
+      //         letterSpacing: 3,
+      //         fontFamily: 'Billabong',
+      //         fontWeight: FontWeight.w300),
+      //   ),
+      //   leading: Icon(Icons.arrow_back),
+      // ),
       body: Stack(
         children: <Widget>[
           Column(

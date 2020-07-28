@@ -78,8 +78,13 @@ class _LoginState extends State<Login> {
                             children: <Widget>[
                               Container(
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(color: Colors.black),),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(15),
+                                    topRight: Radius.circular(15),
+                                    bottomLeft: Radius.circular(15),
+                                  ),
+                                  border: Border.all(color: Colors.black),
+                                ),
                                 child: Padding(
                                   padding: EdgeInsets.all(5),
                                   child: TextFormField(
@@ -97,7 +102,11 @@ class _LoginState extends State<Login> {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(15),
+                                      topRight: Radius.circular(15),
+                                      bottomLeft: Radius.circular(15),
+                                    ),
                                     border: Border.all(color: Colors.black)),
                                 child: Padding(
                                   padding: EdgeInsets.all(5),
@@ -117,9 +126,9 @@ class _LoginState extends State<Login> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  _formKey.currentState.save(); 
-                                   User c = new  User();
-                                   c.setUserName(_email);
+                                  _formKey.currentState.save();
+                                  User c = new User();
+                                  c.setUserName(_email);
 
                                   Navigator.of(context).push(
                                     MaterialPageRoute(

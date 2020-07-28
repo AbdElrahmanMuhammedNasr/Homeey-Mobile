@@ -31,25 +31,14 @@ class _FormFState extends State<FormF> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.blue,
-        appBar: AppBar(
-          title: Text(
-            'Add',
-            style: TextStyle(
-                letterSpacing: 3,
-                fontFamily: 'Billabong',
-                fontWeight: FontWeight.w300),
-          ),
-          leading: Icon(Icons.arrow_back),
-        ),
+   
         body: Container(
           margin: EdgeInsets.only(top: 20),
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(60),
-              topRight: Radius.circular(60),
-            ),
+            // borderRadius: BorderRadius.only(
+              // topLeft: Radius.circular(60),
+              // topRight: Radius.circular(60),
+            // ),
           ),
           child: Center(
             child: SingleChildScrollView(
@@ -172,10 +161,9 @@ class _FormFState extends State<FormF> {
                             }
                           },
                           decoration: InputDecoration(
-                            helperText: ' make sure is seperate with * ',
                             contentPadding: EdgeInsets.all(10),
                             border: InputBorder.none,
-                            labelText: 'Ingredients',
+                            labelText: 'Ingredients seperate with * ',
                             prefixIcon: Icon(
                               Icons.fastfood,
                               color: Colors.blue,
