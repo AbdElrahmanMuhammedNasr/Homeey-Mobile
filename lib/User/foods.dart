@@ -2,175 +2,152 @@ import 'package:flutter/material.dart';
 import 'package:hommey/Common/Alert.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
+import 'package:hommey/Common/loading.dart';
 import 'package:hommey/Details/Details.dart';
-import 'package:hommey/User/LsitOfFoodTypes.dart';
+import 'package:hommey/Home/SingleFood.dart';
+import 'package:hommey/Models/user.dart';
 import 'package:hommey/profile/Profile_Page.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class Foods extends StatefulWidget {
+
+  String image;
+
+  Foods({this.image});
+
   @override
   _FoodsState createState() => _FoodsState();
 }
 
 class _FoodsState extends State<Foods> {
+  final List<Map<String, dynamic>> userFood = [];
+
+  @override
+  void initState() {
+    super.initState();
+    getAllUserProducts();
+  }
+
+  getAllUserProducts() {
+    http
+        .get('https://hommey-b9aa6.firebaseio.com/products.json')
+        .then((http.Response res) {
+      print('i am in home functio2');
+
+      final Map<String, dynamic> resData = json.decode(res.body);
+      resData.forEach((String id, dynamic data) {
+        if (data["email"] == new User().getUserName()) {
+          final obj = {
+            "id": id,
+            "image": data["image"],
+            "name": data["name"],
+            "price": data["price"],
+            "category": data["category"],
+            "address": data["address"],
+            "email": data["email"],
+            "inger": data["inger"],
+            "dis": data["dis"],
+            "time": data["time"]
+          };
+          setState(() {
+            userFood.add(obj);
+          });
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Chef Food',
-          style: TextStyle(
-              letterSpacing: 3,
-              fontFamily: 'Billabong',
-              fontWeight: FontWeight.w300),
-        ),
-        leading: Icon(Icons.arrow_back),
-      ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: SafeArea(
-            child: Container(
-              margin: EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Container(
+              color: Colors.blue,
+              height: 55,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Column(
+                  Row(
                     children: <Widget>[
-                      ListTile(
-                        title: Text(
-                          'Find Your Food',
+                      IconButton(
+                          icon: Icon(
+                            Icons.arrow_back_ios,
+                            color: Colors.white,
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          }),
+                      Padding(
+                        padding: EdgeInsets.only(left: 20),
+                        child: Text(
+                          'Chef Food',
                           style: TextStyle(
-                              fontSize: 15,
-                              letterSpacing: 1,
-                              color: Colors.black54),
-                        ),
-                        leading: CircleAvatar(
-                          radius: 20,
-                          backgroundImage: AssetImage('images/2.jpg'),
+                              color: Colors.white,
+                              letterSpacing: 3,
+                              fontFamily: 'Billabong',
+                              fontSize: 25,
+                              fontWeight: FontWeight.w300),
                         ),
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
+                      
                     ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Text(
-                    'Best Sale',
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Raleway',
-                        fontWeight: FontWeight.w700),
-                  ),
-                  Container(
-                    height: 250,
-                    child: Expanded(
-                      child: Container(
-                        height: 200,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: <Widget>[
-                            food(context, "b1.jpg"),
-                            food(context, "b2.jpg"),
-                            food(context, "b3.jpg"),
-                            food(context, "b4.jpg"),
-                            food(context, "b2.jpg"),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  // ),
-                  SizedBox(
-                    height: 10,
-                  ),
-
-                  Container(
-                    margin: EdgeInsets.only(top: 20),
-                    child: Column(
-                      children: <Widget>[
-                        Catigory(context, 'b1.jpg', 'brakfast'),
-                        Catigory(context, 'b2.jpg', 'Sweet'),
-                        Catigory(context, '12.jpg', 'Juice'),
-                        Catigory(context, 'b3.jpg', 'Fruit'),
-                        Catigory(context, 'b4.jpg', 'vegen')
-                      ],
-                    ),
                   ),
                 ],
               ),
             ),
-          ),
+            SingleChildScrollView(
+              child: Container(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Column(children: <Widget>[
+                        ListTile(
+                          title: Text(
+                            'Find Your Food...',
+                            style: TextStyle(
+                                fontSize: 15,
+                                letterSpacing: 1,
+                                color: Colors.black54),
+                          ),
+                          leading: CircleAvatar(
+                            radius: 20,
+                            backgroundImage: NetworkImage(widget.image),
+                          ),
+                        ),
+                        Container(
+                          height: 600,
+                          child: userFood.isEmpty
+                              ? Loading()
+                              : GridView.count(
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 2.2/ 3,
+                                  children: userFood
+                                      .map((e) => new SingleFood(
+                                            id: e["id"],
+                                            image: e["image"],
+                                            name: e["name"],
+                                            price: e["price"].toString(),
+                                            category: e["category"],
+                                            address: e["address"],
+                                            email: e["email"],
+                                            inger: e["inger"],
+                                            dis: e["dis"],
+                                            time: e["time"],
+                                          ))
+                                      .toList(),
+                                ),
+                        ),
+                      ]),
+                    ]),
+              ),
+            ),
+          ],
         ),
       ),
-      bottomNavigationBar: new BottomBar(),
-      drawer: DarwerBar(),
+      bottomNavigationBar: BottomBar(),
     );
   }
-}
-
-Widget food(context, image) {
-  return AspectRatio(
-    aspectRatio: 2.5 / 3,
-    child: InkWell(
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Details(
-            id: "1",
-          ),
-        ));
-      },
-      child: Container(
-        margin: EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: DecorationImage(
-              image: AssetImage('images/${image}'), fit: BoxFit.cover),
-        ),
-      ),
-    ),
-  );
-}
-
-Widget Catigory(context, image, type) {
-  return InkWell(
-    onTap: () {
-      Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => ListOfFood(
-          type: type,
-        ),
-      ));
-    },
-    child: Container(
-      height: 200,
-      width: double.infinity,
-      margin: EdgeInsets.symmetric(vertical: 10),
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('images/${image}'), fit: BoxFit.cover),
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.bottomRight,
-            colors: [
-              Colors.black.withOpacity(.8),
-              Colors.black.withOpacity(.2),
-            ],
-          ),
-        ),
-        child: Align(
-            alignment: Alignment.center,
-            child: Text(
-              '${type}',
-              style: TextStyle(fontSize: 30, color: Colors.white),
-            )),
-      ),
-    ),
-  );
 }
