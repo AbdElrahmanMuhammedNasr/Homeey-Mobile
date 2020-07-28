@@ -57,160 +57,124 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: userData.isEmpty
-            ? Loading()
-            : Column(children: <Widget>[
-                Container(
-                  color: Colors.blue,
-                  height: 55,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          IconButton(
-                              icon: Icon(
-                                Icons.arrow_back_ios,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              }),
-                          Padding(
-                            padding: EdgeInsets.only(left: 20),
-                            child: Text(
-                              'profile',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  letterSpacing: 3,
-                                  fontFamily: 'Billabong',
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w300),
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: Container(
-                    child: Stack(
+        child: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+              image: AssetImage('images/1.jpg') ,fit: BoxFit.fill,
+              ),
+              ),
+          child: userData.isEmpty
+              ? Loading()
+              : Column(children: <Widget>[
+                  Container(
+                    color: Colors.grey[350],
+                    height: 55,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        SafeArea(
-                          child: Padding(
-                              padding: EdgeInsets.all(16),
-                              child: Column(
-                                children: <Widget>[
-                                  Center(
-                                    child: Column(
-                                      children: <Widget>[
-                                        CircleAvatar(
-                                          radius: 50,
-                                          backgroundImage: NetworkImage(
-                                              userData[0]["image"]),
-                                        ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Text(
-                                              '${userData[0]["firstName"]} ${userData[0]["lastName"]} ',
-                                              style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontFamily: 'Raleway',
-                                                  fontWeight: FontWeight.bold,
-                                                  letterSpacing: 1,
-                                                  color: Colors.black),
-                                            ),
-                                            SizedBox(
-                                              height: 20,
-                                            ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                Container(
-                                                  child: Column(
-                                                    children: <Widget>[
-                                                      Text(
-                                                        '20',
-                                                        style: TextStyle(
-                                                          fontSize: 20,
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        'Food',
-                                                        style: TextStyle(
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontFamily:
-                                                                'Raleway'),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 50,
-                                                ),
-                                                Container(
-                                                  child: Column(
-                                                    children: <Widget>[
-                                                      Text(
-                                                        '20',
-                                                        style: TextStyle(
-                                                          fontSize: 20,
-                                                        ),
-                                                      ),
-                                                      Text(
-                                                        'Client',
-                                                        style: TextStyle(
-                                                            fontSize: 18,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontFamily:
-                                                                'Raleway'),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              )),
+                        Row(
+                          children: <Widget>[
+                            IconButton(
+                                icon: Icon(
+                                  Icons.arrow_back_ios,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                }),
+                            Padding(
+                              padding: EdgeInsets.only(left: 20),
+                              child: Text(
+                                'profile',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    letterSpacing: 3,
+                                    fontFamily: 'Billabong',
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                            )
+                          ],
                         ),
                       ],
                     ),
                   ),
-                ),
-
-/********************* second ************************** */
-
-                Expanded(
-                  flex: 6,
-                  child: Container(
+                  SafeArea(
+                    child: Padding(
+                        padding: EdgeInsets.all(16),
+                        child: Column(
+                          children: <Widget>[
+                            Center(
+                              child: Column(
+                                children: <Widget>[
+                                  CircleAvatar(
+                                    radius: 70,
+                                    backgroundImage:
+                                        NetworkImage(userData[0]["image"]),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text(
+                                        '${userData[0]["firstName"]} ${userData[0]["lastName"]} ',
+                                        style: TextStyle(
+                                            fontSize: 25,
+                                            fontFamily: 'Raleway',
+                                            fontWeight: FontWeight.bold,
+                                            letterSpacing: 1,
+                                            color: Colors.black),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Text(
+                                        '${userData[0]["email"]}',
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: 'Raleway',
+                                            fontWeight: FontWeight.bold,
+                                            letterSpacing: 1,
+                                            color: Colors.black),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Text(
+                                        '${userData[0]["phone"]}',
+                                        style: TextStyle(
+                                            fontSize: 12,
+                                            fontFamily: 'Raleway',
+                                            fontWeight: FontWeight.bold,
+                                            letterSpacing: 1,
+                                            color: Colors.black),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        )),
+                  ),
+                  Container(
                     margin: EdgeInsets.only(top: 20),
-                    color: Colors.white,
                     child: Table(
                       children: [
                         TableRow(children: [
                           GestureDetector(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => Foods(image: userData[0]["image"],)));
+                                  builder: (context) => Foods(
+                                        image: userData[0]["image"],
+                                      )));
                             },
                             child: ProfileDetails(
-                              text: "click",
                               sub: "Chef Food",
                               icon: Icon(
                                 Icons.restaurant,
@@ -225,7 +189,6 @@ class _ProfilePageState extends State<ProfilePage> {
                               ));
                             },
                             child: ProfileDetails(
-                              text: "2",
                               sub: " Comment",
                               icon: Icon(
                                 Icons.comment,
@@ -234,37 +197,13 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ),
                         ]),
-                        TableRow(children: [
-                          GestureDetector(
-                            child: ProfileDetails(
-                              text: "15",
-                              sub: "Number Of Food",
-                              icon: Icon(
-                                Icons.confirmation_number,
-                                color: Colors.blue[300],
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            child: ProfileDetails(
-                              text: "20",
-                              sub: "Customer deal",
-                              icon: Icon(
-                                Icons.record_voice_over,
-                                color: Colors.blue[300],
-                              ),
-                            ),
-                          ),
-                        ]),
                       ],
                     ),
                   ),
-                ),
-              ]),
+                ]),
+        ),
       ),
-
       bottomNavigationBar: new BottomBar(),
-      // drawer: DarwerBar(),
     );
   }
 }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hommey/Common/loading.dart';
 import 'package:hommey/Home/Home.dart';
 import 'package:hommey/Models/user.dart';
 import 'package:hommey/SignUp/SignUp.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
   @override
@@ -9,13 +12,43 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  User c = new User();
   String _email;
   String _password;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  bool login = false;
+
+ Future getAllUserProducts() async{
+   await http
+        .get('https://hommey-b9aa6.firebaseio.com/Login.json')
+        .then((http.Response res) {
+      final Map<String, dynamic> resData = json.decode(res.body);
+
+      resData.forEach((String id, dynamic data) {
+        print('1');
+        if (data["email"].toString() == _email.toString() &&
+            data["password"].toString() == _password.toString()) {
+          print('2');
+
+          setState(() {
+            login = true;
+          });
+          // print(login);
+        }
+      });
+    });
+    setState(() {
+      login = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    // c.setUserName(null);
+    // login = false;
+
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -83,13 +116,14 @@ class _LoginState extends State<Login> {
                                     topRight: Radius.circular(15),
                                     bottomLeft: Radius.circular(15),
                                   ),
-                                  border: Border.all(color: Colors.black),
+                                  border:
+                                      Border.all(width: 2, color: Colors.black),
                                 ),
                                 child: Padding(
                                   padding: EdgeInsets.all(5),
                                   child: TextFormField(
                                     decoration: InputDecoration(
-                                        hintText: "Email or Phone",
+                                        hintText: "Email",
                                         border: InputBorder.none),
                                     onSaved: (val) {
                                       _email = val;
@@ -107,10 +141,12 @@ class _LoginState extends State<Login> {
                                       topRight: Radius.circular(15),
                                       bottomLeft: Radius.circular(15),
                                     ),
-                                    border: Border.all(color: Colors.black)),
+                                    border: Border.all(
+                                        width: 2, color: Colors.black)),
                                 child: Padding(
                                   padding: EdgeInsets.all(5),
                                   child: TextFormField(
+                                    obscureText: true,
                                     decoration: InputDecoration(
                                       hintText: "Password",
                                       border: InputBorder.none,
@@ -127,22 +163,31 @@ class _LoginState extends State<Login> {
                               InkWell(
                                 onTap: () {
                                   _formKey.currentState.save();
-                                  User c = new User();
-                                  c.setUserName(_email);
+                                  // print('-----------------------');
+                                  // print(login);
 
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                      builder: (context) => Home(),
-                                    ),
-                                  );
-                                  _formKey.currentState.reset();
+                                  //  getAllUserProducts();
+                                  // print(login);
+
+                                  // print('-----------------------');
+                                  // if (login == true) {
+                                    c.setUserName(_email);
+                                  //   if (c.getUserName().length > 0) {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => Home(),
+                                        ),
+                                      );
+                                      _formKey.currentState.reset();
+                                  //   }
+                                  // }
                                 },
                                 child: Container(
                                   height: 50,
                                   margin: EdgeInsets.symmetric(horizontal: 50),
                                   decoration: BoxDecoration(
                                     color: Colors.blue,
-                                    borderRadius: BorderRadius.circular(50),
+                                    borderRadius: BorderRadius.circular(30),
                                   ),
                                   child: Center(
                                     child: Text(

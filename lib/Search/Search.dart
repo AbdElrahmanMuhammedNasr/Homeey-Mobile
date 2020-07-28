@@ -15,6 +15,7 @@ class _SearchFState extends State<SearchF> {
   List<Map<String, dynamic>> searchOut = [];
 
   String _searchKey;
+  bool loading = false;
 
   @override
   void initState() {
@@ -22,7 +23,7 @@ class _SearchFState extends State<SearchF> {
   }
 
   getAllSearch() {
-    // print('fun1');
+    print('Serach');
 
     http
         .get('https://hommey-b9aa6.firebaseio.com/products.json')
@@ -108,6 +109,7 @@ class _SearchFState extends State<SearchF> {
                         onSubmitted: (value) {
                           setState(() {
                             _searchKey = value;
+                            loading = true;
                             searchOut = [];
                             getAllSearch();
                           });
@@ -115,7 +117,7 @@ class _SearchFState extends State<SearchF> {
                         },
                       ),
                     ),
-                    searchOut.isEmpty
+                    searchOut.isEmpty && loading
                         ? Loading()
                         : Column(
                             children: searchOut
@@ -140,7 +142,6 @@ class _SearchFState extends State<SearchF> {
           )
         ])),
         bottomNavigationBar: new BottomBar(),
-        drawer: new DarwerBar(),
       ),
     );
   }
@@ -170,7 +171,7 @@ Widget Item(context, id, category, address, email, inger, dis, time, image,
     child: Container(
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
-          color: Colors.blue[300],
+          color: Colors.grey[300],
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             bottomLeft: Radius.circular(30),
@@ -198,12 +199,11 @@ Widget Item(context, id, category, address, email, inger, dis, time, image,
                   Text('${category}')
                 ],
               ),
-              leading: Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  child: Image.network(image),
-                ),
+              leading: CircleAvatar(
+                radius: 30,
+                backgroundImage: NetworkImage(image),
               ),
+        
             ),
           ),
         ],

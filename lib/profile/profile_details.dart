@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class ProfileDetails extends StatelessWidget {
   
-  final String text , sub;
+  final String  sub;
   final Widget icon;
 
-  const ProfileDetails({Key key, @required this.text,@required this.sub,@required this.icon}) : super(key: key);
+  const ProfileDetails({Key key,@required this.sub,@required this.icon}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,6 @@ class ProfileDetails extends StatelessWidget {
               alignment: Alignment.topRight,
               child:icon,
             ),
-            Text(text, style: TextStyle(fontSize: 17),),
             Text(sub),
           ],
         ),

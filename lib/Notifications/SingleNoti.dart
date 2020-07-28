@@ -16,60 +16,67 @@ class _SingleNotState extends State<SingleNot> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 3),
-      child: Column(
-        children: <Widget>[
-          Container(
-            color: Colors.blue[400],
-            child: ListTile(
-              title: Text(
-                '${widget.user}',
-                style: TextStyle(
-                    fontSize: 20, letterSpacing: 1, color: Colors.white),
-              ),
-              subtitle: Text(
-                'Just order ${widget.order}',
-                style: TextStyle(color: Colors.white),
-              ),
-              leading: CircleAvatar(
-                radius: 30,
-                backgroundImage: NetworkImage(widget.userImage),
-              ),
-              trailing: Container(
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.report,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => AlertF(
-                            type: 'Report',
-                          ),
-                        ));
-                      })),
-            ),
+      margin: EdgeInsets.all(10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.grey[350],
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(40),
+            bottomLeft: Radius.circular(40),
           ),
-          Container(
-            color: Colors.blue[400],
-            child: ButtonBar(
-              children: <Widget>[
-                RaisedButton.icon(
-                  color: Colors.green,
-                  label: Text('Accept'),
-                  icon: Icon(Icons.check),
-                  onPressed: () {/* ... */},
+        ),
+        child: Column(
+          children: <Widget>[
+            Container(
+              child: ListTile(
+                title: Text(
+                  '${widget.user}',
+                  style: TextStyle(
+                      fontSize: 20, letterSpacing: 1, color: Colors.black),
                 ),
-                RaisedButton.icon(
-                  color: Colors.red,
-                  label: Text('Refuse'),
-                  icon: Icon(Icons.no_encryption),
-                  onPressed: () {/* ... */},
+                subtitle: Text(
+                  'Just order ${widget.order}',
+                  style: TextStyle(color: Colors.black),
                 ),
-              ],
+                leading: CircleAvatar(
+                  radius: 30,
+                  backgroundImage: NetworkImage(widget.userImage),
+                ),
+                trailing: Container(
+                    child: IconButton(
+                        icon: Icon(
+                          Icons.report,
+                          color: Colors.red[300],
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => AlertF(
+                              type: 'Report',
+                            ),
+                          ));
+                        })),
+              ),
             ),
-          ),
-        ],
+            Container(
+              child: ButtonBar(
+                children: <Widget>[
+                  RaisedButton.icon(
+                    color: Colors.green,
+                    label: Text('Accept'),
+                    icon: Icon(Icons.check),
+                    onPressed: () {/* ... */},
+                  ),
+                  RaisedButton.icon(
+                    color: Colors.red,
+                    label: Text('Refuse'),
+                    icon: Icon(Icons.no_encryption),
+                    onPressed: () {/* ... */},
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

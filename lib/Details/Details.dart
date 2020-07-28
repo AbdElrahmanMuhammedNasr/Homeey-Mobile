@@ -36,7 +36,6 @@ class Details extends StatefulWidget {
 class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
-    // print('Details immage ${widget.image}');
 
     return MaterialApp(
         home: Scaffold(
@@ -47,8 +46,8 @@ class _DetailsState extends State<Details> {
               begin: Alignment.topCenter,
               colors: [
                 Colors.white,
-                Colors.white10,
-                Colors.white12,
+                Colors.white,
+                
               ],
             ),
           ),
@@ -93,9 +92,9 @@ class _DetailsState extends State<Details> {
                   height: 300,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(120),
-                      bottomLeft: Radius.circular(120),
-                      bottomRight: Radius.circular(120),
+                      topLeft: Radius.circular(150),
+                      bottomLeft: Radius.circular(150),
+                      bottomRight: Radius.circular(150),
                     ),
                     image: DecorationImage(
                         image: NetworkImage(
@@ -105,10 +104,6 @@ class _DetailsState extends State<Details> {
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(
-                      // color: Colors.black.withOpacity(0.6),
-                      // borderRadius: BorderRadius.circular(50),
-                      ),
                   child: Column(
                     children: <Widget>[
                       Padding(padding: EdgeInsets.all(5)),

@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hommey/Common/Alert.dart';
 import 'package:hommey/Common/Bottombar.dart';
-import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/Common/loading.dart';
-import 'package:hommey/Details/Details.dart';
 import 'package:hommey/Home/SingleFood.dart';
 import 'package:hommey/Models/user.dart';
-import 'package:hommey/profile/Profile_Page.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Foods extends StatefulWidget {
-
   String image;
 
   Foods({this.image});
@@ -22,6 +17,7 @@ class Foods extends StatefulWidget {
 
 class _FoodsState extends State<Foods> {
   final List<Map<String, dynamic>> userFood = [];
+  int counter = 0;
 
   @override
   void initState() {
@@ -38,6 +34,7 @@ class _FoodsState extends State<Foods> {
       final Map<String, dynamic> resData = json.decode(res.body);
       resData.forEach((String id, dynamic data) {
         if (data["email"] == new User().getUserName()) {
+          counter++;
           final obj = {
             "id": id,
             "image": data["image"],
@@ -92,7 +89,6 @@ class _FoodsState extends State<Foods> {
                               fontWeight: FontWeight.w300),
                         ),
                       ),
-                      
                     ],
                   ),
                 ],
@@ -118,12 +114,40 @@ class _FoodsState extends State<Foods> {
                           ),
                         ),
                         Container(
-                          height: 600,
+                          width: double.infinity,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                '${counter}',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                'Food',
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Raleway'),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          height: 580,
                           child: userFood.isEmpty
                               ? Loading()
                               : GridView.count(
                                   crossAxisCount: 2,
-                                  childAspectRatio: 2.2/ 3,
+                                  childAspectRatio: 2.3 / 3,
                                   children: userFood
                                       .map((e) => new SingleFood(
                                             id: e["id"],

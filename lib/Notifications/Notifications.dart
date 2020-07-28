@@ -108,7 +108,6 @@ class _NotificationsState extends State<Notifications> {
           ],
         )),
         bottomNavigationBar: new BottomBar(),
-        drawer: DarwerBar(),
       ),
     );
   }
