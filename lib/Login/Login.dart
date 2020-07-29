@@ -181,7 +181,7 @@ class _LoginState extends State<Login> {
 
                                   getAllUserProducts(context);
 
-                                  _formKey.currentState.reset();
+                                  // _formKey.currentState.reset();
                                 },
                                 child: Container(
                                   height: 50,
