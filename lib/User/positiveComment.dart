@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class PositiveComent extends StatefulWidget {
+
   String email;
   PositiveComent({this.email});
 
@@ -25,8 +26,7 @@ class _PositiveComentState extends State<PositiveComent> {
   }
 
   getAllUserComment() {
-    String theEmail;
-
+     String theEmail;
     if (widget.email.length < 0) {
       theEmail = new User().getUserName();
     } else {
@@ -39,7 +39,7 @@ class _PositiveComentState extends State<PositiveComent> {
 
       final Map<String, dynamic> resData = json.decode(res.body);
       resData.forEach((String id, dynamic data) {
-        if (data["chef"] == new User().getUserName()) {
+        if (data["chef"] == theEmail) {
           counter++;
           final obj = {
             "id": id,
