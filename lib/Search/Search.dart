@@ -30,7 +30,9 @@ class _SearchFState extends State<SearchF> {
         .then((http.Response res) {
       final Map<String, dynamic> resData = json.decode(res.body);
       resData.forEach((String id, dynamic data) {
-        if (data["name"] == _searchKey) {
+        if (data["name"] == _searchKey ||
+            data["category"] == _searchKey ||
+            data["address"] == _searchKey) {
           final obj = {
             "id": id,
             "image": data["image"],
@@ -142,6 +144,7 @@ class _SearchFState extends State<SearchF> {
           )
         ])),
         bottomNavigationBar: new BottomBar(),
+        drawer: DarwerBar(),
       ),
     );
   }
@@ -171,7 +174,7 @@ Widget Item(context, id, category, address, email, inger, dis, time, image,
     child: Container(
       margin: EdgeInsets.all(10),
       decoration: BoxDecoration(
-          color: Colors.grey[300],
+          color: Colors.grey[350],
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             bottomLeft: Radius.circular(30),
@@ -203,7 +206,6 @@ Widget Item(context, id, category, address, email, inger, dis, time, image,
                 radius: 30,
                 backgroundImage: NetworkImage(image),
               ),
-        
             ),
           ),
         ],

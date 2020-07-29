@@ -81,7 +81,7 @@ class _SingleFoodState extends State<SingleFood> {
             ),
             subtitle: Center(
               child: Text(
-                '${widget.price} \$',
+                '${widget.price} EGP',
                 style: TextStyle(
                     fontFamily: 'Raleway', fontWeight: FontWeight.w700),
               ),

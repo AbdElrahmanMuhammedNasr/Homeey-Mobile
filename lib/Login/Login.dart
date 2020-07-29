@@ -122,6 +122,7 @@ class _LoginState extends State<Login> {
                                 child: Padding(
                                   padding: EdgeInsets.all(5),
                                   child: TextFormField(
+                                    keyboardType: TextInputType.emailAddress,
                                     decoration: InputDecoration(
                                         hintText: "Email",
                                         border: InputBorder.none),

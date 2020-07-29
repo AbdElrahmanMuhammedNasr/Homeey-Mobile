@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
@@ -19,9 +20,11 @@ class _FormFState extends State<FormF> {
   String _inger;
   String _dis;
   String _address;
-  String _category;
+  String _category = 'Snack';
   String _time;
   String _uploadedFileURL;
+
+  List<String> category = ['Vegan', 'Lunch', 'Breakfast', 'Dinner'];
 
   bool uploadDone = false;
 
@@ -78,7 +81,8 @@ class _FormFState extends State<FormF> {
                             child: Column(
                               children: <Widget>[
                                 Container(
-                                    margin: EdgeInsets.symmetric(horizontal: 10),
+                                    margin:
+                                        EdgeInsets.symmetric(horizontal: 10),
                                     child: Column(
                                       children: <Widget>[
                                         _image != null
@@ -239,30 +243,20 @@ class _FormFState extends State<FormF> {
                                     },
                                   ),
                                 ),
+                                Text('Catigory is ${_category}'),
                                 Container(
-                                  margin: EdgeInsets.all(10),
-                                  height: 60.0,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: TextFormField(
-                                    validator: (String val) {
-                                      if (val.isEmpty) {
-                                        return 'required';
-                                      }
-                                    },
-                                    decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(10),
-                                      border: InputBorder.none,
-                                      labelText: 'Category',
-                                      prefixIcon: Icon(
-                                        Icons.category,
-                                        color: Colors.blue,
-                                      ),
-                                    ),
-                                    onSaved: (String val) {
-                                      _category = val;
+                                  child: DropdownButton(
+                                    hint: Text("Select Category"),
+                                    items: category
+                                        .map((e) => DropdownMenuItem(
+                                              value: e,
+                                              child: Text('${e}'),
+                                            ))
+                                        .toList(),
+                                    onChanged: (Value) {
+                                      setState(() {
+                                        _category = Value;
+                                      });
                                     },
                                   ),
                                 ),
@@ -301,6 +295,7 @@ class _FormFState extends State<FormF> {
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: TextFormField(
+                                    keyboardType: TextInputType.number,
                                     validator: (String val) {
                                       if (val.isEmpty) {
                                         return 'required';
@@ -365,6 +360,7 @@ class _FormFState extends State<FormF> {
           ),
         ),
         bottomNavigationBar: BottomBar(),
+        drawer: DarwerBar(),
       ),
     );
   }

@@ -10,8 +10,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ProfilePage extends StatefulWidget {
-  String name;
+  String name = '';
   ProfilePage({this.name});
+  String theEamil;
+
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -27,15 +29,18 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   getAllUserProducts() {
-    print('i am in user functio');
+    if (widget.name.length < 0) {
+      widget.theEamil = new User().getUserName();
+    } else {
+      widget.theEamil = widget.name;
+    }
+
     http
         .get('https://hommey-b9aa6.firebaseio.com/user.json')
         .then((http.Response res) {
-      print('i am in home functio2');
-
       final Map<String, dynamic> resData = json.decode(res.body);
       resData.forEach((String id, dynamic data) {
-        if (data["email"] == new User().getUserName()) {
+        if (data["email"] == widget.theEamil) {
           final obj = {
             "id": id,
             "image": data["image"],
@@ -59,15 +64,16 @@ class _ProfilePageState extends State<ProfilePage> {
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
-              image: DecorationImage(
-              image: AssetImage('images/1.jpg') ,fit: BoxFit.fill,
-              ),
-              ),
+            image: DecorationImage(
+              image: AssetImage('images/1.jpg'),
+              fit: BoxFit.fill,
+            ),
+          ),
           child: userData.isEmpty
               ? Loading()
               : Column(children: <Widget>[
                   Container(
-                    color: Colors.grey[350],
+                    color: Colors.blue,
                     height: 55,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -172,6 +178,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => Foods(
                                         image: userData[0]["image"],
+                                        email: widget.theEamil,
                                       )));
                             },
                             child: ProfileDetails(
@@ -185,7 +192,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           GestureDetector(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => PositiveComent(),
+                                builder: (context) => PositiveComent(
+                                  email: widget.theEamil,
+                                ),
                               ));
                             },
                             child: ProfileDetails(

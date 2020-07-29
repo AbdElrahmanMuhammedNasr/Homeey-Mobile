@@ -7,6 +7,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class PositiveComent extends StatefulWidget {
+  String email;
+  PositiveComent({this.email});
+
   @override
   _PositiveComentState createState() => _PositiveComentState();
 }
@@ -22,6 +25,13 @@ class _PositiveComentState extends State<PositiveComent> {
   }
 
   getAllUserComment() {
+    String theEmail;
+
+    if (widget.email.length < 0) {
+      theEmail = new User().getUserName();
+    } else {
+      theEmail = widget.email;
+    }
     http
         .get('https://hommey-b9aa6.firebaseio.com/Comments.json')
         .then((http.Response res) {
@@ -125,11 +135,17 @@ class _PositiveComentState extends State<PositiveComent> {
                             SizedBox(
                               height: 20,
                             ),
-                            SingleChildScrollView(
-                                child: userComment
-                                    .map((e) => SingleComment(e["image"],e["name"],e["postedin"],e["rate"],e["review"],  ))
-                                    .toList()
-                                    )
+                            Column(
+                              children: userComment
+                                  .map((e) => SingleComment(
+                                        e["image"],
+                                        e["name"],
+                                        e["postedin"],
+                                        e["rate"],
+                                        e["review"],
+                                      ))
+                                  .toList(),
+                            ),
                           ],
                         ),
                       ),
@@ -139,6 +155,7 @@ class _PositiveComentState extends State<PositiveComent> {
         ),
       ),
       bottomNavigationBar: BottomBar(),
+      drawer: DarwerBar(),
     );
   }
 }
@@ -146,26 +163,51 @@ class _PositiveComentState extends State<PositiveComent> {
 Widget SingleComment(image, name, postedin, rate, review) {
   return Container(
     child: ListTile(
-      leading: Image.network(image),
-      title: Text('${name.split("@")[0]}'),
+      leading: CircleAvatar(
+        radius: 30,
+        backgroundImage: NetworkImage(image),
+      ),
+      title: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              '${name.split("@")[0]}',
+              style: TextStyle(fontSize: 20),
+            ),
+            Container(
+                margin: EdgeInsets.only(left: 20),
+                child: Row(
+                  children: <Widget>[
+                    Text('${rate}'),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                      ),
+                    ),
+                  ],
+                )),
+          ],
+        ),
+      ),
       subtitle: Container(
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
-                child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(review),
-            )),
-            Container(
-              margin: EdgeInsets.only(left: 20),
               child: Align(
-                alignment: Alignment.centerRight,
-                child: Icon(
-                  Icons.star,
-                  color: Colors.yellow,
-                ),
+                alignment: Alignment.centerLeft,
+                child: Text(review),
               ),
             ),
+            Container(
+              child: Text('${postedin}'),
+            )
           ],
         ),
       ),

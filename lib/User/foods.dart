@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hommey/Common/Bottombar.dart';
+import 'package:hommey/Common/DrawerBar.dart';
 import 'package:hommey/Common/loading.dart';
 import 'package:hommey/Home/SingleFood.dart';
 import 'package:hommey/Models/user.dart';
@@ -8,8 +9,9 @@ import 'package:http/http.dart' as http;
 
 class Foods extends StatefulWidget {
   String image;
+  String email;
 
-  Foods({this.image});
+  Foods({this.image, this.email});
 
   @override
   _FoodsState createState() => _FoodsState();
@@ -26,6 +28,13 @@ class _FoodsState extends State<Foods> {
   }
 
   getAllUserProducts() {
+    String theEmail;
+    if (widget.email.length < 0) {
+      theEmail = new User().getUserName();
+    } else {
+      theEmail = widget.email;
+    }
+
     http
         .get('https://hommey-b9aa6.firebaseio.com/products.json')
         .then((http.Response res) {
@@ -33,7 +42,7 @@ class _FoodsState extends State<Foods> {
 
       final Map<String, dynamic> resData = json.decode(res.body);
       resData.forEach((String id, dynamic data) {
-        if (data["email"] == new User().getUserName()) {
+        if (data["email"] == theEmail) {
           counter++;
           final obj = {
             "id": id,
@@ -172,6 +181,7 @@ class _FoodsState extends State<Foods> {
         ),
       ),
       bottomNavigationBar: BottomBar(),
+      drawer: DarwerBar(),
     );
   }
 }

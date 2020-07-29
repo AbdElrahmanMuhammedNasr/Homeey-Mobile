@@ -24,7 +24,7 @@ class SingleCart extends StatefulWidget {
 class _SingleCartState extends State<SingleCart> {
   @override
   Widget build(BuildContext context) {
-      // print(widget.image);
+    // print(widget.image);
 
     return Container(
       width: 160.0,
@@ -33,7 +33,10 @@ class _SingleCartState extends State<SingleCart> {
         margin: EdgeInsets.all(10.0),
         child: Column(
           children: <Widget>[
-            Image.network(widget.image),
+            Container(
+              margin: EdgeInsets.only(top: 20),
+                height: 250,
+                child: Image.network(widget.image)),
             SizedBox(
               height: 20,
             ),
