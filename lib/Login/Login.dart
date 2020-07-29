@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hommey/Common/loading.dart';
 import 'package:hommey/Home/Home.dart';
 import 'package:hommey/Models/user.dart';
 import 'package:hommey/SignUp/SignUp.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'dart:io';
 
 class Login extends StatefulWidget {
   @override
@@ -20,8 +20,10 @@ class _LoginState extends State<Login> {
 
   bool login = false;
 
- Future getAllUserProducts() async{
-   await http
+  Future getAllUserProducts(context) async {
+    final List<Map<String, dynamic>> userData = [];
+
+    await http
         .get('https://hommey-b9aa6.firebaseio.com/Login.json')
         .then((http.Response res) {
       final Map<String, dynamic> resData = json.decode(res.body);
@@ -30,17 +32,28 @@ class _LoginState extends State<Login> {
         print('1');
         if (data["email"].toString() == _email.toString() &&
             data["password"].toString() == _password.toString()) {
-          print('2');
+          final obj = {
+            "id": id,
+            "email": data["email"],
+            "type": data["type"],
+          };
+          userData.add(obj);
+
+          User u = new User();
+          u.setUserName(_email);
+          u.setRole(userData[0]["type"]);
+          // print('hereeeeeeeeeeeeeeeeeeeeeeeeeeeee');
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => Home(),
+            ),
+          );
 
           setState(() {
             login = true;
           });
-          // print(login);
         }
       });
-    });
-    setState(() {
-      login = false;
     });
   }
 
@@ -164,24 +177,11 @@ class _LoginState extends State<Login> {
                               InkWell(
                                 onTap: () {
                                   _formKey.currentState.save();
-                                  // print('-----------------------');
                                   // print(login);
 
-                                  //  getAllUserProducts();
-                                  // print(login);
+                                  getAllUserProducts(context);
 
-                                  // print('-----------------------');
-                                  // if (login == true) {
-                                    c.setUserName(_email);
-                                  //   if (c.getUserName().length > 0) {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) => Home(),
-                                        ),
-                                      );
-                                      _formKey.currentState.reset();
-                                  //   }
-                                  // }
+                                  _formKey.currentState.reset();
                                 },
                                 child: Container(
                                   height: 50,

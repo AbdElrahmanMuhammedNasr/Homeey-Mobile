@@ -79,17 +79,19 @@ class _HomeState extends State<Home> {
                       )
                     ],
                   ),
-                  IconButton(
-                    icon: Icon(Icons.account_circle, color: Colors.white),
-                    onPressed: () => {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              ProfilePage(name: User().getUserName()),
-                        ),
-                      )
-                    },
-                  )
+                  new User().getRole() != 'producer'
+                      ? Container()
+                      : IconButton(
+                          icon: Icon(Icons.account_circle, color: Colors.white),
+                          onPressed: () => {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    ProfilePage(name: User().getUserName()),
+                              ),
+                            )
+                          },
+                        )
                 ],
               ),
             ),
@@ -99,7 +101,7 @@ class _HomeState extends State<Home> {
                   ? Loading()
                   : GridView.count(
                       crossAxisCount: 2,
-                      childAspectRatio:2.5/3,
+                      childAspectRatio: 2.5 / 3,
                       children: food
                           .map((e) => new SingleFood(
                                 id: e["id"],

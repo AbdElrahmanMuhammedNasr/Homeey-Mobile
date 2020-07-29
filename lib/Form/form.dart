@@ -23,10 +23,9 @@ class _FormFState extends State<FormF> {
   String _category = 'Snack';
   String _time;
   String _uploadedFileURL;
+  bool uploadDone = false;
 
   List<String> category = ['Vegan', 'Lunch', 'Breakfast', 'Dinner'];
-
-  bool uploadDone = false;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -81,56 +80,56 @@ class _FormFState extends State<FormF> {
                             child: Column(
                               children: <Widget>[
                                 Container(
-                                    margin:
-                                        EdgeInsets.symmetric(horizontal: 10),
-                                    child: Column(
-                                      children: <Widget>[
-                                        _image != null
-                                            ? Container()
-                                            : OutlineButton(
-                                                borderSide: BorderSide(
-                                                    color: Colors.blue),
-                                                onPressed: () {
-                                                  _openImageOptins();
-                                                },
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: <Widget>[
-                                                    Icon(
-                                                      Icons.camera_alt,
-                                                      color: Colors.blue,
-                                                    ),
-                                                    SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                    Text(
-                                                      'Add Image',
-                                                      style: TextStyle(
-                                                          color: Colors.blue),
-                                                    )
-                                                  ],
-                                                ),
+                                  margin: EdgeInsets.symmetric(horizontal: 10),
+                                  child: Column(
+                                    children: <Widget>[
+                                      _image != null
+                                          ? Container()
+                                          : OutlineButton(
+                                              borderSide: BorderSide(
+                                                  color: Colors.blue),
+                                              onPressed: () {
+                                                _openImageOptins();
+                                              },
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: <Widget>[
+                                                  Icon(
+                                                    Icons.camera_alt,
+                                                    color: Colors.blue,
+                                                  ),
+                                                  SizedBox(
+                                                    width: 5,
+                                                  ),
+                                                  Text(
+                                                    'Add Image',
+                                                    style: TextStyle(
+                                                        color: Colors.blue),
+                                                  )
+                                                ],
                                               ),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        _image == null
-                                            ? Text('Please Pick an image')
-                                            : ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(100),
-                                                child: Image.file(
-                                                  _image,
-                                                  height: 200,
-                                                  width: 200,
-                                                  // MediaQuery.of(context).size.width /
-                                                  //     1.4,
-                                                  fit: BoxFit.fill,
-                                                ),
+                                            ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      _image == null
+                                          ? Text('Please Pick an image')
+                                          : ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(100),
+                                              child: Image.file(
+                                                _image,
+                                                height: 200,
+                                                width: 200,
+                                                // MediaQuery.of(context).size.width /
+                                                //     1.4,
+                                                fit: BoxFit.fill,
                                               ),
-                                      ],
-                                    )),
+                                            ),
+                                    ],
+                                  ),
+                                ),
                                 Container(
                                   margin: EdgeInsets.all(10),
                                   height: 60.0,
