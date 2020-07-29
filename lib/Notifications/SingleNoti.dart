@@ -34,9 +34,20 @@ class _SingleNotState extends State<SingleNot> {
                   style: TextStyle(
                       fontSize: 20, letterSpacing: 1, color: Colors.black),
                 ),
-                subtitle: Text(
-                  'Just order ${widget.order}',
-                  style: TextStyle(color: Colors.black),
+                subtitle: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'ordered ${widget.order}',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                       Text(
+                        '${widget.time.substring( widget.time.split(".")[0].length -8).split('.')[0]}',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ],
+                  ),
                 ),
                 leading: CircleAvatar(
                   radius: 30,

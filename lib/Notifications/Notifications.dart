@@ -18,7 +18,7 @@ class _NotificationsState extends State<Notifications> {
   ];
 
   getAllNotifications() {
-    print('not1 ${new User().getUserName()}');
+    // print('not1 ${new User().getUserName()}');
 
     http
         .get('https://hommey-b9aa6.firebaseio.com/Notifications.json')

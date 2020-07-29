@@ -24,7 +24,6 @@ class _HomeState extends State<Home> {
   }
 
   getAllProducts() {
-    print('i am in home functio');
     http
         .get('https://hommey-b9aa6.firebaseio.com/products.json')
         .then((http.Response res) {

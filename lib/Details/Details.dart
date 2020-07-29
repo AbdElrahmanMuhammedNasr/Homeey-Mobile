@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hommey/Common/Alert.dart';
 import 'package:hommey/Common/Bottombar.dart';
 import 'package:hommey/Common/DrawerBar.dart';
+import 'package:hommey/Models/user.dart';
 import 'package:hommey/profile/Profile_Page.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class Details extends StatefulWidget {
   String id;
@@ -34,9 +37,40 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
+  final List<Map<String, dynamic>> userData = [];
+
+  getAllUserProducts() {
+    http
+        .get('https://hommey-b9aa6.firebaseio.com/user.json')
+        .then((http.Response res) {
+      final Map<String, dynamic> resData = json.decode(res.body);
+      resData.forEach((String id, dynamic data) {
+        if (data["email"] == new User().getUserName()) {
+          final obj = {
+            "id": id,
+            "image": data["image"],
+            "firstName": data["firstName"],
+            "lastName": data["lastName"],
+            "date": data["date"],
+            "phone": data["phone"],
+            "email": data["email"],
+          };
+          setState(() {
+            userData.add(obj);
+          });
+        }
+      });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getAllUserProducts();
+  }
+
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
         home: Scaffold(
       body: SafeArea(
@@ -47,7 +81,6 @@ class _DetailsState extends State<Details> {
               colors: [
                 Colors.white,
                 Colors.white,
-                
               ],
             ),
           ),
@@ -236,7 +269,7 @@ class _DetailsState extends State<Details> {
                                         })
                                   ],
                                 )),
-                            Container(
+                           userData.isEmpty? Container():Container(
                               child: RaisedButton.icon(
                                 color: Colors.green,
                                 colorBrightness: Brightness.dark,
@@ -254,6 +287,13 @@ class _DetailsState extends State<Details> {
                                     MaterialPageRoute(
                                       builder: (context) => AlertF(
                                         type: 'order',
+                                        email: widget.email,
+                                        order: widget.name,
+                                        user: new User().getUserName(),
+                                        userImage: userData[0]['image'],
+                                        image: widget.image,
+                                        name: widget.name,
+                                        price: widget.price,
                                       ),
                                     ),
                                   );

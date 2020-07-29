@@ -57,7 +57,7 @@ class _SingleCartState extends State<SingleCart> {
                     SizedBox(
                       height: 10,
                     ),
-                    Text('Ordered in :${widget.time}'),
+                    Text('Ordered in :${widget.time.split('.')[0]}'),
                     SizedBox(
                       height: 10,
                     ),
