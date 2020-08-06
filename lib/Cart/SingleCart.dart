@@ -28,7 +28,7 @@ class _SingleCartState extends State<SingleCart> {
 
     return Container(
       width: 160.0,
-      color: Colors.blueAccent,
+      color: Colors.orange[600],
       child: Card(
         margin: EdgeInsets.all(10.0),
         child: Column(

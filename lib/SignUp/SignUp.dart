@@ -37,9 +37,9 @@ class _SignUp extends State<SignUp> {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               colors: [
-                Colors.blue[900],
-                Colors.blue[800],
-                Colors.blue[400],
+                Colors.orange[900],
+                Colors.orange[800],
+                Colors.orange[400],
               ],
             ),
           ),

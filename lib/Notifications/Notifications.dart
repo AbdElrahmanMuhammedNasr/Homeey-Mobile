@@ -13,12 +13,9 @@ class Notifications extends StatefulWidget {
 }
 
 class _NotificationsState extends State<Notifications> {
-  List<Map<String, dynamic>> nots = [
-    // {"name": 'Abdo', "order": 'rice', "image": '1.jpg'},
-  ];
+  List<Map<String, dynamic>> nots = [ ];
 
   getAllNotifications() {
-    // print('not1 ${new User().getUserName()}');
 
     http
         .get('https://hommey-b9aa6.firebaseio.com/Notifications.json')
@@ -52,13 +49,14 @@ class _NotificationsState extends State<Notifications> {
 
   @override
   Widget build(BuildContext context) {
+    // print('***********************${nots.map((e) => e["id"])}');
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
             child: Column(
           children: <Widget>[
             Container(
-              color: Colors.blue,
+              color: Colors.orange[900],
               height: 55,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -97,6 +95,7 @@ class _NotificationsState extends State<Notifications> {
                       child: Column(
                         children: nots
                             .map((e) => SingleNot(
+                                id:e["id"],
                                 order: e['order'],
                                 time: e['time'],
                                 user: e['user'],

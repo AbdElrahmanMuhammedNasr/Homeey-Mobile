@@ -73,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ? Loading()
               : Column(children: <Widget>[
                   Container(
-                    color: Colors.blue,
+                    color: Colors.orange[900],
                     height: 55,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
         child: Column(
           children: <Widget>[
             Container(
-              color: Colors.blue,
+              color: Colors.orange[900],
               height: 55,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,7 +113,7 @@ class _HomeState extends State<Home> {
                                 email: e["email"],
                                 inger: e["inger"],
                                 dis: e["dis"],
-                                time: e["time"],
+                                time: e["time"].toString(),
                               ))
                           .toList(),
                     ),

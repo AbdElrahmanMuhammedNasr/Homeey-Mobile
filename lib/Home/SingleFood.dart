@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hommey/Common/Alert.dart';
 import 'package:hommey/Details/Details.dart';
-import 'package:hommey/Like/Like.dart';
 
 class SingleFood extends StatefulWidget {
   String id;

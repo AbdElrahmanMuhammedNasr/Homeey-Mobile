@@ -42,7 +42,7 @@ class _LoginState extends State<Login> {
           User u = new User();
           u.setUserName(_email);
           u.setRole(userData[0]["type"]);
-          // print('hereeeeeeeeeeeeeeeeeeeeeeeeeeeee');
+          print('hereeeeeeeeeeeeeeeeeeeeeeeeeeeee');
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => Home(),
@@ -70,9 +70,9 @@ class _LoginState extends State<Login> {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               colors: [
-                Colors.blue[900],
-                Colors.blue[800],
-                Colors.blue[400],
+                Colors.orange[900],
+                Colors.orange[800],
+                Colors.orange[400],
               ],
             ),
           ),
@@ -187,7 +187,7 @@ class _LoginState extends State<Login> {
                                   height: 50,
                                   margin: EdgeInsets.symmetric(horizontal: 50),
                                   decoration: BoxDecoration(
-                                    color: Colors.blue,
+                                    color: Colors.orange[900],
                                     borderRadius: BorderRadius.circular(30),
                                   ),
                                   child: Center(

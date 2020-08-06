@@ -61,7 +61,7 @@ class _SearchFState extends State<SearchF> {
         body: SafeArea(
             child: Column(children: <Widget>[
           Container(
-            color: Colors.blue,
+            color: Colors.orange[900],
             height: 55,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

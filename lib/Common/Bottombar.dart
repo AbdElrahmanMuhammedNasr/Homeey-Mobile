@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hommey/Cart/Cart.dart';
 import 'package:hommey/Form/form.dart';
 import 'package:hommey/Home/Home.dart';
-import 'package:hommey/Like/Like.dart';
 import 'package:hommey/Models/user.dart';
 import 'package:hommey/Notifications/Notifications.dart';
 import 'package:hommey/Search/Search.dart';
